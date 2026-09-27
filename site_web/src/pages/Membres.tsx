@@ -78,7 +78,7 @@ export const PageMembres: React.FC = () => {
                 vers={`/membres/${org.id}`}
                 title={org.name}
                 aria-label={`${org.name} — voir la fiche`}
-                className="group flex h-28 w-[calc(50vw-2.5rem)] min-w-[9.5rem] max-w-[12rem] cursor-pointer items-center justify-center rounded-carte border border-line bg-surface px-5 transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:-translate-y-0.5 hover:border-rve-green/40 hover:shadow-md sm:h-32 sm:w-44 sm:px-6 lg:w-48 [&_img]:opacity-55 [&_img]:mix-blend-multiply [&_img]:brightness-[var(--densite,1)] [&_img]:grayscale [&_img]:transition-[filter,opacity] [&_img]:duration-200 hover:[&_img]:opacity-100 hover:[&_img]:brightness-100 hover:[&_img]:grayscale-0"
+                className="group flex h-28 w-[9.25rem] cursor-pointer items-center justify-center rounded-carte border border-line bg-surface px-5 transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:-translate-y-0.5 hover:border-rve-green/40 hover:shadow-md sm:h-32 sm:w-44 sm:px-6 lg:w-48 [&_img]:opacity-55 [&_img]:mix-blend-multiply [&_img]:brightness-[var(--densite,1)] [&_img]:grayscale [&_img]:transition-[filter,opacity] [&_img]:duration-200 hover:[&_img]:opacity-100 hover:[&_img]:brightness-100 hover:[&_img]:grayscale-0"
               >
                 {org.logo}
               </Lien>

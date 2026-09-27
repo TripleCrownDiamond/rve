@@ -1,0 +1,242 @@
+/* RVE-Bénin — identité issue de la charte et des voix du réseau */
+:root {
+  --vert: #109030;
+  --vert-fonce: #0c7427;
+  --vert-doux: #f2f9f3;
+  --jaune: #f8c000;
+  --rouge: #e82830;
+  --charbon: #303030;
+  --texte-secondaire: #5c5c5c;
+  --filet: #dfe5df;
+  --blanc: #fff;
+  --conteneur: 1200px;
+  --gouttiere: 24px;
+  --police-titres: "Montserrat", "Segoe UI", sans-serif;
+  --police-texte: "Open Sans", "Segoe UI", sans-serif;
+  --transition: 180ms ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--charbon);
+  background: var(--blanc);
+  font-family: var(--police-texte);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+h1, h2, h3 { margin: 0; font-family: var(--police-titres); text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--vert-fonce); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+:focus-visible { outline: 3px solid var(--vert-fonce); outline-offset: 4px; }
+.aplat-liste a:focus-visible { outline-color: var(--blanc); }
+
+.lien-saut {
+  position: absolute; z-index: 100; top: 12px; left: -9999px;
+  padding: 12px 18px; color: var(--charbon); background: var(--blanc);
+}
+.lien-saut:focus-visible { left: 12px; }
+.conteneur { width: min(100%, var(--conteneur)); margin-inline: auto; padding-inline: var(--gouttiere); }
+.section { padding-block: clamp(72px, 8vw, 112px); }
+.section-repos { background: var(--vert-doux); }
+.titre-section { max-width: 23ch; font-size: clamp(1.8rem, 3.2vw, 2.75rem); line-height: 1.14; font-weight: 700; letter-spacing: -.035em; }
+.section-intro { max-width: 58ch; color: var(--texte-secondaire); font-size: 1.0625rem; }
+.titre-section + .section-intro { margin-top: 18px; }
+.en-tete-section { max-width: 660px; }
+
+/* Le tricolore reste réservé aux logos officiels de la marque. */
+.filet-tricolore { height: 4px; border: 0; background: var(--vert); }
+.bouton {
+  display: inline-flex; min-height: 48px; align-items: center; justify-content: center;
+  padding: 13px 22px; border: 1px solid transparent; border-radius: 4px;
+  font-family: var(--police-titres); font-size: .9rem; font-weight: 700; line-height: 1.25;
+  text-align: center; text-decoration: none; cursor: pointer;
+  transition: color var(--transition), background-color var(--transition), border-color var(--transition);
+}
+.bouton-primaire { color: var(--blanc); background: var(--vert-fonce); }
+.bouton-primaire:hover { background: #075d1f; }
+.bouton-secondaire { color: var(--vert-fonce); border-color: var(--vert); background: transparent; }
+.bouton-secondaire:hover { color: var(--blanc); background: var(--vert); }
+.bouton-blanc { color: var(--charbon); background: var(--blanc); }
+.bouton-blanc:hover { background: var(--vert-doux); }
+
+/* Navigation : le logotype garde ses proportions natives, sans plaque ni cadre. */
+.barre { position: sticky; z-index: 50; top: 0; background: var(--blanc); border-bottom: 1px solid #edf0ed; }
+.barre-inner { display: flex; min-height: 132px; align-items: center; justify-content: space-between; gap: 24px; }
+.barre-logo { display: inline-flex; flex: 0 0 auto; align-items: center; }
+.barre-logo img { width: 220px; height: auto; }
+.barre-nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 27px); }
+.barre-nav a { padding-block: 8px; color: var(--charbon); border-bottom: 2px solid transparent; font-size: .875rem; text-decoration: none; white-space: nowrap; }
+.barre-nav a:hover, .barre-nav a[aria-current="true"] { color: var(--vert-fonce); border-bottom-color: var(--vert); }
+.barre-cta { flex: 0 0 auto; }
+.bascule-menu { display: none; padding: 10px; border: 1px solid var(--filet); border-radius: 4px; color: var(--charbon); background: var(--blanc); cursor: pointer; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; clip-path: inset(50%); }
+
+/* Le geste visuel de la page : une photographie documentaire à taille réelle. */
+.hero { position: relative; overflow: hidden; color: var(--charbon); background: var(--blanc); }
+.hero-photo { position: absolute; inset: 0 0 0 52%; overflow: hidden; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 38%; }
+.hero-voile { position: absolute; inset: 0; background: rgba(48,48,48,.12); }
+.hero-inner { display: flex; min-height: 590px; max-width: min(530px, calc(52vw - 48px)); flex-direction: column; justify-content: center; padding-block: 72px; }
+.hero h1 { font-size: clamp(2.6rem, 5vw, 4.35rem); font-weight: 800; line-height: 1.03; letter-spacing: -.055em; }
+.hero-texte { max-width: 52ch; margin-top: 24px; color: var(--texte-secondaire); font-size: 1.0625rem; line-height: 1.75; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero-ligne { max-width: 46ch; margin-top: 32px; color: var(--texte-secondaire); font-size: .875rem; }
+
+/* Six engagements, sans boîte répétée ni pictogrammes décoratifs. */
+.domaines { border-bottom: 1px solid var(--filet); }
+.domaines-liste { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 40px !important; }
+.domaine { min-height: 100px; padding: 22px 24px 22px 0; border-top: 1px solid var(--filet); }
+.domaine:nth-child(3n + 2), .domaine:nth-child(3n + 3) { padding-left: 24px; border-left: 1px solid var(--filet); }
+.domaine svg { display: none; }
+.domaine h3 { max-width: 30ch; font-size: 1rem; line-height: 1.45; font-weight: 600; }
+
+/* Une organisation de femmes se raconte par ses membres, pas par des compteurs. */
+.reseau-grille { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(40px, 7vw, 92px); align-items: center; }
+.photo-cadre img { width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; object-position: center; }
+.photo-legende { margin-top: 12px; color: var(--texte-secondaire); font-size: .8125rem; }
+.reseau-colonne-droite .section-intro { margin-top: 20px !important; }
+.encadre { margin-top: 26px; padding: 18px 0 18px 22px; border-left: 3px solid var(--vert); color: var(--charbon); font-size: 1rem; }
+.reseau-chiffres { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 24px; padding-top: 18px; border-top: 1px solid #cbd9cd; }
+.reseau-chiffres > div { display: flex; align-items: baseline; gap: 7px; }
+.reseau-chiffres dt { color: var(--vert-fonce); font-family: var(--police-titres); font-size: 1.15rem; font-weight: 700; }
+.reseau-chiffres dd { margin: 0; color: var(--texte-secondaire); font-size: .8125rem; }
+
+/* Les identités des organisations restent en couleur et sans cartes ajoutées. */
+.college { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(28px, 4vw, 56px); padding-block: 34px; border-top: 1px solid var(--filet); }
+#membres .en-tete-section + .college { padding-top: 8px; border-top: 0; }
+.college h3 { max-width: 24ch; font-size: 1.1rem; line-height: 1.35; }
+.college-compte { display: block; margin-top: 7px; color: var(--texte-secondaire); font-size: .875rem; }
+.college-membres { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; align-items: start; }
+.membre { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 12px; margin: 0; }
+.membre img { width: 100%; height: 76px; object-fit: contain; object-position: left center; }
+.membre figcaption { max-width: 24ch; font-size: .78rem; font-weight: 600; line-height: 1.4; }
+.membres-cta { margin-top: 28px; }
+
+/* Reportages : grands visuels, légendes utiles, pas de décor de carte. */
+.article-terrain { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 76px); align-items: center; padding-block: 42px; border-top: 1px solid var(--filet); }
+.article-terrain:first-of-type { padding-top: 0; border-top: 0; }
+.article-terrain:nth-of-type(even) .article-photo { order: 2; }
+.article-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.article-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; color: var(--texte-secondaire); font-size: .8125rem; }
+.article-tag { color: var(--vert-fonce); font-weight: 700; }
+.article-terrain h3 { margin-top: 14px; font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.2; letter-spacing: -.03em; }
+.article-terrain .article-texte { max-width: 58ch; margin-top: 14px; color: var(--texte-secondaire); }
+.article-lien { display: inline-block; margin-top: 18px; font-weight: 700; }
+
+/* Ressources : un seul grand aplat de marque, avec des liens explicites. */
+.aplat-vert { color: var(--blanc); background: var(--vert-fonce); }
+.aplat-vert-inner { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(36px, 6vw, 96px); align-items: center; }
+.aplat-vert h2 { max-width: 17ch; font-size: clamp(1.8rem, 3.2vw, 2.75rem); line-height: 1.13; letter-spacing: -.035em; }
+.aplat-vert .aplat-texte { max-width: 52ch; margin-top: 16px; color: rgba(255,255,255,.9); }
+.aplat-liste { margin: 0; padding: 0; list-style: none; }
+.aplat-liste li { border-top: 1px solid rgba(255,255,255,.35); }
+.aplat-liste a { display: flex; justify-content: space-between; gap: 18px; padding: 15px 0; color: var(--blanc); font-weight: 600; text-decoration: none; }
+.aplat-liste a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.aplat-liste .aplat-type { flex: 0 0 auto; font-size: .75rem; font-weight: 400; }
+
+/* Contact — styles alignés avec le vrai balisage dl > div. */
+.contact-grille { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(40px, 7vw, 96px); }
+.contact-grille .section-intro { margin-top: 18px !important; }
+.coordonnees { margin: 24px 0 0; }
+.coordonnees > div { display: grid; grid-template-columns: 105px minmax(0, 1fr); gap: 14px; padding-block: 14px; border-top: 1px solid var(--filet); font-size: .9rem; }
+.coordonnees dt { font-family: var(--police-titres); font-weight: 700; }
+.coordonnees dd { margin: 0; }
+.coordonnees dd a { overflow-wrap: anywhere; }
+.formulaire { display: grid; gap: 17px; }
+.champ { display: grid; gap: 7px; }
+.champ label { font-family: var(--police-titres); font-size: .875rem; font-weight: 600; }
+.champ input, .champ textarea { width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid #aeb7ae; border-radius: 3px; color: var(--charbon); background: var(--blanc); font: inherit; }
+.champ textarea { min-height: 130px; resize: vertical; }
+.champ input:focus-visible, .champ textarea:focus-visible { border-color: var(--vert); outline: 2px solid var(--vert); outline-offset: 2px; }
+.formulaire-note { margin-top: 14px; color: var(--texte-secondaire); font-size: .8rem; }
+
+/* Pied clair : le logotype noir transparent conserve sa vraie couleur. */
+.pied { padding-top: 64px; color: var(--charbon); background: var(--vert-doux); }
+.pied-logo { display: inline-block; }
+.pied-logo img { width: 270px; height: auto; }
+.pied-description { max-width: 34ch; margin-top: 16px; }
+.pied-grille { position: relative; display: grid; grid-template-columns: 2fr 1fr 1fr 1.35fr; gap: clamp(24px, 4vw, 52px); padding-bottom: 44px; }
+.pied h3 { margin-bottom: 14px; font-size: .95rem; }
+.pied p, .pied a { color: var(--texte-secondaire); font-size: .875rem; }
+.pied nav a, .pied li a { display: block; padding-block: 4px; text-decoration: none; }
+.pied nav a:hover, .pied li a:hover { color: var(--vert-fonce); text-decoration: underline; }
+.pied ul { margin: 0; padding: 0; list-style: none; }
+.pied-partenaires { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 22px; padding-block: 22px; border-top: 1px solid #d3e0d5; }
+.pied-partenaires span { color: var(--texte-secondaire); font-size: .8rem; }
+.pied-partenaires img { width: auto; max-width: 150px; height: 34px; object-fit: contain; }
+.pied-legal { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding-block: 18px; border-top: 1px solid #d3e0d5; color: var(--texte-secondaire); font-size: .78rem; }
+.pied-legal p { font-size: inherit; }
+
+@media (max-width: 1050px) {
+  .barre-inner { gap: 16px; min-height: 116px; }
+  .barre-logo img { width: 190px; height: auto; }
+  .barre-nav { gap: 14px; }
+  .barre-nav a { font-size: .8rem; }
+  .barre-cta { padding-inline: 16px; }
+}
+@media (max-width: 900px) {
+  .barre-inner { min-height: 108px; }
+  .barre-logo img { width: 190px; height: auto; }
+  .barre-nav, .barre-cta { display: none; }
+  .bascule-menu { display: inline-flex; }
+  .barre.ouvert .barre-inner { flex-wrap: wrap; }
+  .barre.ouvert .barre-nav { display: flex; order: 3; width: 100%; flex-direction: column; align-items: stretch; gap: 0; padding-block: 8px 16px; border-top: 1px solid var(--filet); }
+  .barre.ouvert .barre-nav a { padding-block: 10px; font-size: .95rem; }
+  .hero-photo { left: 50%; }
+  .hero-inner { max-width: 48%; min-height: 540px; padding-block: 54px; }
+  .hero h1 { font-size: clamp(2.25rem, 5vw, 3.35rem); }
+  .domaines-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .domaine:nth-child(n) { padding: 20px 18px 20px 0; border-left: 0; }
+  .domaine:nth-child(even) { padding-left: 18px; border-left: 1px solid var(--filet); }
+  .reseau-grille, .contact-grille { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 36px; }
+  .college { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .pied-grille { grid-template-columns: 1.5fr 1fr 1fr; }
+  .pied-grille > div:last-child { grid-column: 2 / 4; }
+}
+@media (max-width: 640px) {
+  :root { --gouttiere: 20px; }
+  .section { padding-block: 64px; }
+  .barre-inner { min-height: 100px; }
+  .barre-logo img { width: 176px; height: auto; }
+  .hero { display: flex; flex-direction: column; }
+  .hero-photo { position: relative; inset: auto; order: 0; height: clamp(260px, 70vw, 370px); }
+  .hero-photo img { object-position: center 35%; }
+  .hero-voile { display: none; }
+  .hero > .conteneur { order: 1; width: 100%; }
+  .hero-inner { max-width: 100%; min-height: 0; padding-block: 42px 50px; }
+  .hero h1 { max-width: 13ch; font-size: clamp(2.35rem, 11vw, 3.45rem); }
+  .hero-texte { margin-top: 18px; font-size: 1rem; }
+  .hero-actions { margin-top: 24px; }
+  .hero-ligne { margin-top: 22px; }
+  .domaines-liste { grid-template-columns: 1fr; margin-top: 28px !important; }
+  .domaine:nth-child(n) { min-height: auto; padding: 16px 0; border-left: 0; }
+  .reseau-grille, .contact-grille, .aplat-vert-inner { grid-template-columns: 1fr; }
+  .photo-cadre img { aspect-ratio: 4 / 3; }
+  .reseau-chiffres { gap: 12px 16px; }
+  .college { padding-block: 26px; }
+  .college-membres { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 18px; }
+  .membre img { height: 68px; }
+  .article-terrain { grid-template-columns: 1fr; gap: 22px; padding-block: 30px; }
+  .article-terrain:nth-of-type(even) .article-photo { order: 0; }
+  .aplat-vert-inner { gap: 24px; }
+  .coordonnees > div { grid-template-columns: 88px minmax(0, 1fr); gap: 10px; }
+  .pied { padding-top: 48px; }
+  .pied-grille { grid-template-columns: 1fr 1fr; gap: 28px 20px; padding-bottom: 32px; }
+  .pied-grille > div:first-child { grid-column: 1 / -1; }
+  .pied-grille > div:last-child { grid-column: auto; }
+  .pied-logo img { width: min(230px, 100%); }
+}
+@media (max-width: 380px) {
+  .hero-actions { align-items: stretch; flex-direction: column; }
+  .hero-actions .bouton { width: 100%; }
+  .pied-grille { grid-template-columns: 1fr; }
+  .pied-grille > div:first-child, .pied-grille > div:last-child { grid-column: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}

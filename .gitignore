@@ -1,0 +1,36 @@
+# Dépendances et artefacts de build
+node_modules/
+dist/
+.vite/
+*.log
+.DS_Store
+
+# ---------------------------------------------------------------------
+# Documents du client — volontairement hors du dépôt.
+#
+# Ce dépôt est public. Ces dossiers contiennent des coordonnées réelles
+# des organisations membres, les statuts et le règlement du réseau, et un
+# contrat nominatif. Les publier les rendrait indexables, et l'historique
+# Git les conserverait même après suppression.
+#
+# Ils restent sur le poste de travail. S'ils doivent être versionnés,
+# c'est dans un dépôt privé.
+# ---------------------------------------------------------------------
+01_Documents/
+01_CHARTE_GRAPHIQUE/
+02_Offres/
+03_Logos/
+04_Photos/
+05_Donnees/
+06_Images_Generees/
+_SAUVEGARDES/
+
+# Skills et agents installés localement : outillage du poste, pas le projet.
+.claude/skills/
+.claude/plugins/
+.claude/projects/
+
+# Planches de travail intermédiaires
+_contact_sheet.html
+_planche_actifs.html
+.freebuff/

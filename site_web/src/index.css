@@ -1,0 +1,149 @@
+/* tastemaker: macro=Editorial-Spine · hero=photo-veil · proof=chiffre-cle-aplat · footer=dark-wave
+   mood=institutionnel-chaleureux · palette=charte imposée (non générée) · contraste=matrice §08 vérifiée
+   autocritique 1-5 — montrer:4 philosophie:5 hiérarchie:4 spécificité:5 retenue:4 variété:4 */
+
+@import "tailwindcss";
+
+@theme {
+  /* ---------------------------------------------------------------
+     TYPOGRAPHIE — Charte §09
+     --------------------------------------------------------------- */
+  --font-display: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', 'Inter', sans-serif;
+
+  /* ---------------------------------------------------------------
+     COULEURS DE MARQUE — Charte §08
+     Deux usages distincts par teinte :
+       · le ton "aplat"  → fonds, blocs pleins, pastilles
+       · le ton "ink"    → texte et petits éléments sur fond clair
+     Le ton d'aplat ne passe pas 4,5:1 sur blanc (le vert plafonne à
+     4,16:1 — mesuré), d'où un second ton vérifié pour le texte.
+
+     ⚠ Conflit interne à la charte, résolu ici sans substitution :
+     §43 impose « bouton primaire : fond #109030, texte blanc » alors
+     que §08 impose 4,5:1 au texte courant. Le couple mesure 4,16:1.
+     §08 admettant « 3:1 pour un titre de grand corps », le libellé des
+     boutons pleins est posé en grand corps gras (≥ 18,66 px / 700),
+     seuil où 4,16:1 est conforme. Les deux règles tiennent ensemble.
+     --------------------------------------------------------------- */
+  --color-rve-green: #109030;        /* aplat — charte "vert institutionnel" */
+  --color-rve-green-ink: #0C7427;    /* texte sur blanc — 5,97:1 (charte §18) */
+  --color-rve-green-deep: #09571D;   /* état actif / pressé */
+
+  --color-rve-yellow: #F8C000;       /* aplat — charte "jaune signature" */
+  --color-rve-yellow-ink: #8A6A00;   /* texte sur blanc — 5,12:1 */
+
+  --color-rve-red: #E82830;          /* aplat — charte "rouge engagement" */
+  --color-rve-red-ink: #C21F27;      /* texte sur blanc — 5,98:1 */
+
+  --color-rve-lime: #82BB27;         /* accent sur fond sombre — charte "vert lime" */
+
+  /* ---------------------------------------------------------------
+     NEUTRES
+     La charte ne documente que #303030 (texte) et #979797 (gris repère,
+     qu'elle interdit explicitement en texte courant : contraste 2,99:1).
+     L'échelle ci-dessous comble ce vide, toutes les valeurs de texte
+     étant vérifiées ≥ 4,5:1 sur blanc.
+     --------------------------------------------------------------- */
+  --color-ink: #303030;              /* texte principal — charte */
+  --color-ink-soft: #55554F;         /* texte secondaire — 7,51:1 */
+  --color-ink-muted: #6E6E66;        /* légendes, métadonnées — 5,21:1 */
+  --color-ink-faint: #979797;        /* charte "gris repère" — décor et bordures de champ, jamais du texte */
+
+  --color-line: #E6E6E6;             /* bordure de carte — valeur exacte charte §43 */
+  --color-line-soft: #F0F0F0;        /* séparateurs discrets */
+
+  /* ---------------------------------------------------------------
+     SURFACES — Charte §19
+     « Dériver des teintes de fond très claires à partir du vert
+       (5 à 10 % de saturation) pour les zones de repos. »
+     Toutes dérivées de la teinte 135° du vert institutionnel, donc
+     aucune quatrième couleur n'est introduite (interdit chromatique §18).
+     --------------------------------------------------------------- */
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #F6FDF8;   /* cartes posées sur fond clair — sat 3 % */
+  --color-surface-sunken: #EEF8F0;   /* bandes de repos — sat 5 % */
+  --color-surface-rest: #E2F1E6;     /* repos appuyé — sat 8 % */
+
+  /* ---------------------------------------------------------------
+     FONDS SOMBRES — dérivés de la même teinte 135°.
+     La charte interdit #303030 en aplat de fond de page (§19) mais
+     prévoit la version blanche du logo « sur fond vert ou noir » (§07).
+     Un noir bleuté serait une quatrième teinte : on reste sur le vert.
+     --------------------------------------------------------------- */
+  --color-forest: #14361D;           /* bloc vert profond */
+
+  /* Texte posé sur les fonds sombres. Le pied de page utilisait les gris
+     de la palette claire (#6E6E66 : 3,46:1 sur le fond du pied), donc
+     sous le seuil de 4,5:1. Ces trois valeurs sont dérivées de la même
+     teinte 135° et vérifiées contre --color-night. */
+  --color-on-night: #E1EDE4;         /* texte principal sur sombre — 14,78:1 */
+  --color-on-night-soft: #CEDBD1;    /* texte courant — 12,44:1 */
+  --color-on-night-muted: #A1B2A5;   /* légendes, mentions — 7,99:1 */
+  --color-night: #0C1B10;            /* voile photo */
+  --color-night-deep: #09110B;       /* fond de section sombre */
+
+  /* ---------------------------------------------------------------
+     RAYONS — Charte §43, valeurs exactes
+     --------------------------------------------------------------- */
+  --radius-bouton: 6px;              /* bouton primaire et secondaire */
+  --radius-carte: 8px;               /* carte */
+
+  /* ---------------------------------------------------------------
+     MOUVEMENT — Charte §44 : « Des animations sobres de 150 à 250 ms. »
+     Plafond de marque, plus serré que l'usage courant du web. Une
+     séquence peut enchaîner plusieurs battements, mais aucune
+     animation isolée ne dépasse 250 ms.
+     --------------------------------------------------------------- */
+  --duree-micro: 150ms;              /* survol, pression */
+  --duree-etat: 200ms;               /* bascule, sélection */
+  --duree-entree: 250ms;             /* entrée d'un bloc — plafond charte */
+  --courbe-sortie: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* L'en-tête est fixe et recouvre le haut de la page : sans cette marge,
+   une ancre déposerait le titre de section sous le bandeau. */
+:where(section[id]) {
+  scroll-margin-top: 5.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background-color: var(--color-surface);
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-display);
+}
+
+/* Focus clavier visible sur toute interaction — WCAG 2.4.7 + charte §43
+   (« focus contour 2 px »). */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-rve-green);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Contour d'image à faible opacité — profondeur constante sans teinte
+   parasite : noir pur, jamais un neutre teinté. */
+.contour-image {
+  outline: 1px solid oklch(0 0 0 / 0.1);
+  outline-offset: -1px;
+}
+
+/* Respect du réglage système de réduction des animations — WCAG 2.3.3.
+   Le contenu reste visible : les entrées sont écrites pour être lisibles
+   à leur état final même si l'animation ne joue pas. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

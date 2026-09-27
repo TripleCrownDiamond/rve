@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---------------------------------------------------------------
+     TYPOGRAPHIE — Charte §09
+     --------------------------------------------------------------- */
+  --font-display: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', 'Inter', sans-serif;
+
+  /* ---------------------------------------------------------------
+     COULEURS DE MARQUE — Charte §08
+     Deux usages distincts par teinte :
+       · le ton "aplat"  → fonds, blocs pleins, pastilles
+       · le ton "ink"    → texte et petits éléments sur fond clair
+     Le ton d'aplat ne passe pas 4,5:1 sur blanc (le vert plafonne à
+     4,2:1), d'où un second ton vérifié pour le texte.
+     --------------------------------------------------------------- */
+  --color-rve-green: #109030;        /* aplat — charte "vert institutionnel" */
+  --color-rve-green-ink: #0C7427;    /* texte sur blanc — 5,97:1 (charte §18) */
+  --color-rve-green-deep: #09571D;   /* état actif / pressé */
+
+  --color-rve-yellow: #F8C000;       /* aplat — charte "jaune signature" */
+  --color-rve-yellow-ink: #8A6A00;   /* texte sur blanc — 5,12:1 */
+
+  --color-rve-red: #E82830;          /* aplat — charte "rouge engagement" */
+  --color-rve-red-ink: #C21F27;      /* texte sur blanc — 5,98:1 */
+
+  --color-rve-lime: #82BB27;         /* accent sur fond sombre — charte "vert lime" */
+
+  /* ---------------------------------------------------------------
+     NEUTRES
+     La charte ne documente que #303030 (texte) et #979797 (gris repère,
+     qu'elle interdit explicitement en texte courant : contraste 2,99:1).
+     L'échelle ci-dessous comble ce vide, toutes les valeurs de texte
+     étant vérifiées ≥ 4,5:1 sur blanc.
+     --------------------------------------------------------------- */
+  --color-ink: #303030;              /* texte principal — charte */
+  --color-ink-soft: #55554F;         /* texte secondaire — 7,51:1 */
+  --color-ink-muted: #6E6E66;        /* légendes, métadonnées — 5,21:1 */
+  --color-ink-faint: #979797;        /* charte "gris repère" — décor uniquement, jamais du texte */
+
+  --color-line: #E6E6E0;             /* bordures */
+  --color-line-soft: #F0F0EC;        /* séparateurs discrets */
+
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FCFCFD;   /* cartes posées sur fond clair */
+  --color-surface-sunken: #FAFAF8;   /* bandes de repos */
+
+  /* ---------------------------------------------------------------
+     FONDS SOMBRES
+     --------------------------------------------------------------- */
+  --color-night: #101814;            /* voile photo */
+  --color-night-deep: #0A1016;       /* fond de section sombre */
+  --color-forest: #173523;           /* bloc vert profond */
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background-color: var(--color-surface);
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-display);
+}
+
+/* Focus clavier visible sur toute interaction — WCAG 2.4.7 */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-rve-green);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Respect du réglage système de réduction des animations — WCAG 2.3.3 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

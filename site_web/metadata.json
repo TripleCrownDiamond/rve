@@ -1,0 +1,6 @@
+{
+  "name": "RVE-Bénin — Réseau Voix EssentiELLES Bénin",
+  "description": "Plateforme institutionnelle du Réseau Voix EssentiELLES Bénin fédérant les organisations féminines de la société civile pour les droits, la santé et le leadership des femmes et des filles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

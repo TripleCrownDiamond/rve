@@ -3,7 +3,7 @@ import { Vague } from './Vague';
 import { MEMBER_ORGANIZATIONS } from './MemberLogos';
 import { Lien } from '../router';
 
-/** L’accueil donne un aperçu ; les neuf fiches restent dans l’annuaire. */
+/** Les neuf membres sont visibles sur l’accueil ; leurs fiches restent dans l’annuaire. */
 export const CollegesSection: React.FC = () => {
   const membres = MEMBER_ORGANIZATIONS.filter((m) => m.category !== 'Partenaire Stratégique');
   return (
@@ -16,8 +16,8 @@ export const CollegesSection: React.FC = () => {
             <p className="mt-4 max-w-[48ch] leading-relaxed text-white/90">Le réseau réunit des organisations féminines aux expériences et aux territoires complémentaires.</p>
             <Lien vers="/membres" className="mt-6 inline-flex rounded-bouton border border-white px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-rve-green-ink">Découvrir les neuf organisations</Lien>
           </div>
-          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4" aria-label="Aperçu des organisations membres">
-            {membres.slice(0, 4).map((m) => <li key={m.id}><Lien vers={`/membres/${m.id}`} className="flex min-h-32 flex-col items-start justify-between rounded-carte bg-white/12 p-4 text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white"><span className="flex h-12 w-12 items-center justify-center rounded-full bg-white p-1.5 [&_img]:max-h-10">{m.logo}</span><span className="mt-4 text-sm font-semibold leading-snug">{m.shortName}</span></Lien></li>)}
+          <ul className="grid grid-cols-3 gap-2.5 sm:gap-3" aria-label="Les neuf organisations membres">
+            {membres.map((m) => <li key={m.id}><Lien vers={`/membres/${m.id}`} aria-label={`Découvrir ${m.name}`} className="flex min-h-28 flex-col items-start justify-between rounded-carte bg-white/12 p-3 text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white sm:p-4"><span className="flex h-11 w-11 items-center justify-center rounded-full bg-white p-1.5 [&_img]:max-h-9">{m.logo}</span><span className="mt-3 text-xs font-semibold leading-snug sm:text-sm">{m.shortName}</span></Lien></li>)}
           </ul>
         </div>
       </div>

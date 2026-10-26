@@ -16,8 +16,27 @@ export const CollegesSection: React.FC = () => {
             <p className="mt-4 max-w-[48ch] leading-relaxed text-white/90">Le réseau réunit des organisations féminines aux expériences et aux territoires complémentaires.</p>
             <Lien vers="/membres" className="mt-6 inline-flex rounded-bouton border border-white px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-rve-green-ink">Découvrir les neuf organisations</Lien>
           </div>
-          <ul className="grid grid-cols-3 gap-2.5 sm:gap-3" aria-label="Les neuf organisations membres">
-            {membres.map((m) => <li key={m.id}><Lien vers={`/membres/${m.id}`} aria-label={`Découvrir ${m.name}`} className="flex min-h-28 flex-col items-start justify-between rounded-carte bg-white/12 p-3 text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white sm:p-4"><span className="flex h-11 w-11 items-center justify-center rounded-full bg-white p-1.5 [&_img]:max-h-9">{m.logo}</span><span className="mt-3 text-xs font-semibold leading-snug sm:text-sm">{m.shortName}</span></Lien></li>)}
+          <ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3" aria-label="Les neuf organisations membres">
+            {membres.map((m) => (
+              <li key={m.id}>
+                <Lien
+                  vers={`/membres/${m.id}`}
+                  aria-label={`Découvrir ${m.name} : ${m.profileComplete ? m.description : 'fiche de présentation à compléter'}`}
+                  className="group relative flex min-h-40 flex-col items-start justify-between overflow-hidden rounded-carte bg-white/12 p-3 text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white sm:p-4"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white p-1.5 [&_img]:max-h-9">{m.logo}</span>
+                  <span className="mt-3 block w-full">
+                    <span className="block text-xs font-semibold leading-snug sm:text-sm">{m.shortName}</span>
+                    <span className="mt-1 line-clamp-2 text-[11px] leading-snug text-white/85 sm:hidden">{m.profileComplete ? m.focus : 'Présentation à compléter'}</span>
+                  </span>
+                  <span className="pointer-events-none absolute inset-0 hidden flex-col justify-center bg-white p-3 text-rve-green-ink opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 sm:flex sm:p-4" aria-hidden="true">
+                    <span className="line-clamp-2 text-xs font-bold leading-snug">{m.name}</span>
+                    <span className="mt-2 line-clamp-3 text-[11px] leading-snug text-ink-soft">{m.profileComplete ? m.description : 'La fiche de présentation de cette organisation est en cours de collecte.'}</span>
+                    {m.zone && <span className="mt-2 line-clamp-1 text-[10px] font-semibold">{m.zone}</span>}
+                  </span>
+                </Lien>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

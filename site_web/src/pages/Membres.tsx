@@ -74,13 +74,19 @@ export const PageMembres: React.FC = () => {
               <Lien
                 vers={`/membres/${org.id}`}
                 title={org.name}
-                aria-label={`${org.name} — voir la fiche`}
-                className="group flex h-full min-h-52 flex-col items-start rounded-carte border border-line bg-surface p-6 transition-[border-color,box-shadow] duration-200 hover:border-rve-green/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-rve-green"
+                aria-label={`${org.name} : ${org.profileComplete ? org.description : 'fiche de présentation à compléter'}. Voir la fiche`}
+                className="group relative flex h-full min-h-60 flex-col items-start overflow-hidden rounded-carte border border-line bg-surface p-6 transition-[border-color,box-shadow] duration-200 hover:border-rve-green/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-rve-green"
               >
                 <span className="flex h-20 w-full items-center justify-start [&_img]:max-w-32">{org.logo}</span>
                 <span className="mt-4 font-display text-base font-bold leading-snug text-ink">{org.name}</span>
                 <span className="mt-2 text-sm leading-relaxed text-ink-soft">{org.profileComplete ? org.focus : 'Profil à compléter'}</span>
                 {org.zone && <span className="mt-auto pt-4 text-xs font-medium text-rve-green-ink">{org.zone}</span>}
+                <span className="pointer-events-none absolute inset-0 hidden flex-col justify-center bg-rve-green p-6 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 sm:flex" aria-hidden="true">
+                  <span className="font-display text-base font-bold leading-snug">{org.name}</span>
+                  <span className="mt-3 line-clamp-5 text-sm leading-relaxed text-white/90">{org.profileComplete ? org.description : 'La fiche de présentation de cette organisation est en cours de collecte.'}</span>
+                  {org.zone && <span className="mt-4 text-xs font-semibold text-white">Zone : {org.zone}</span>}
+                  <span className="mt-4 text-xs font-bold">Voir la fiche →</span>
+                </span>
               </Lien>
             </li>
           ))}

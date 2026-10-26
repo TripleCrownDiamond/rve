@@ -24,6 +24,7 @@ import { PagePartenariats } from './pages/Partenariats.tsx';
 import { PageContact, PageConfidentialite } from './pages/Contact.tsx';
 import { PageProjets } from './pages/Projets.tsx';
 import { PageAdhesion } from './pages/Adhesion.tsx';
+import { PageAgenda } from './pages/Agenda.tsx';
 import { PageHeader, PageBody } from './components/PageHeader.tsx';
 import { Lien } from './router';
 
@@ -94,6 +95,8 @@ export default function App() {
         return id ? <PageAction id={id} /> : <PageActions />;
       case 'projets':
         return <PageProjets />;
+      case 'agenda':
+        return <PageAgenda />;
       case 'membres':
         return id ? <PageMembre id={id} /> : <PageMembres />;
       case 'gouvernance':

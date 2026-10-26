@@ -61,7 +61,7 @@ restent vides tant qu'aucune annonce validée n'est fournie.
 
 Pages publiques : accueil, présentation du réseau, domaines, actions, projets,
 organisations membres et fiches, gouvernance, documents institutionnels,
-partenariats, opportunités, adhésion, contact et confidentialité. Les statuts et le
+agenda, partenariats, opportunités, adhésion, contact et confidentialité. Les statuts et le
 règlement intérieur sont disponibles au téléchargement sur la page ressources.
 
 Les documents de travail internes restent hors du dépôt : voir `.gitignore`.

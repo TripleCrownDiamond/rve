@@ -55,6 +55,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onOpenJoin }) => 
                 </Lien>
               </li>
               <li><Lien vers="/projets" className="hover:text-white transition-colors">Projets</Lien></li>
+              <li><Lien vers="/agenda" className="hover:text-white transition-colors">Agenda</Lien></li>
               <li>
                 <Lien vers="/membres" className="hover:text-white transition-colors">
                   Organisations membres

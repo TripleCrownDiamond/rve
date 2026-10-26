@@ -5,6 +5,7 @@ import { PageHeader, PageBody } from '../components/PageHeader';
 import { PageIntrouvable } from './Domaines';
 import { Reveal } from '../components/Reveal';
 import { Arc } from '../components/Decor';
+import { Lien } from '../router';
 import {
   Carte,
   CarteCorps,
@@ -30,11 +31,11 @@ export const PageActions: React.FC = () => {
   return (
     <>
       <PageHeader
-        titre="Actions et impact"
-        amorce="Concertations, ateliers techniques, plaidoyer institutionnel : ce que le réseau fait, et avec qui."
+        titre="Actualités du réseau"
+        amorce="Articles et comptes rendus sur les concertations, ateliers techniques et actions de plaidoyer du RVE-Bénin."
         image="/assets/img/participante-table.jpg"
         cadrage="55% 35%"
-        fil={[{ label: 'Actions & Impact' }]}
+        fil={[{ label: 'Actualités' }]}
       />
 
       <PageBody className="relative">
@@ -79,6 +80,7 @@ export const PageActions: React.FC = () => {
             </Carte>
           ))}
         </Grille>
+        <div className="mt-12 border-t border-line pt-8"><p className="max-w-[65ch] text-sm leading-relaxed text-ink-soft">Ces articles présentent uniquement les activités documentées et relues. Les nouvelles publications seront ajoutées après validation des faits par les organisations concernées.</p><Lien vers="/agenda" className="mt-4 inline-flex font-semibold text-rve-green-ink underline">Voir l’agenda du réseau</Lien></div>
       </PageBody>
     </>
   );
@@ -102,7 +104,7 @@ export const PageAction: React.FC<{ id: string }> = ({ id }) => {
         titre={article.title}
         image={article.imageUrl || '/assets/img/pleniere-parakou.jpg'}
         fil={[
-          { label: 'Actions & Impact', vers: '/actions' },
+          { label: 'Actualités', vers: '/actions' },
           { label: article.category },
         ]}
         meta={[article.date, article.readTime]}

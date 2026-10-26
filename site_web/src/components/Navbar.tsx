@@ -5,6 +5,7 @@ import {
   ArrowUpRight,
   BookOpen,
   Briefcase,
+  CalendarDays,
   ChevronDown,
   Handshake,
   Landmark,
@@ -80,8 +81,9 @@ const FAMILLES: Famille[] = [
     vers: '/domaines',
     enfants: [
       { label: 'Domaines d’intervention', vers: '/domaines', detail: 'Les six champs de travail', icone: Target },
-      { label: 'Actions & impact', vers: '/actions', detail: 'Actualités et comptes rendus', icone: Newspaper },
+      { label: 'Actualités', vers: '/actions', detail: 'Articles et comptes rendus', icone: Newspaper },
       { label: 'Projets', vers: '/projets', detail: 'Les participations documentées du réseau', icone: Target },
+      { label: 'Agenda', vers: '/agenda', detail: 'Activités et rendez-vous confirmés', icone: CalendarDays },
     ],
     encart: {
       titre: 'Dernières actualités',

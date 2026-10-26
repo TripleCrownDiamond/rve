@@ -13,7 +13,7 @@ Le serveur local indique son adresse au démarrage. `npm run lint` vérifie les 
 
 ## Pages disponibles
 
-Accueil, réseau, gouvernance, six domaines d’intervention, actions, projets, annuaire et fiches des organisations membres, opportunités, ressources, partenariats, adhésion, contact et confidentialité. Les documents institutionnels publiables sont dans `public/assets/documents/`.
+Accueil, réseau, gouvernance, six domaines d’intervention, actualités et articles, projets, agenda, annuaire et fiches des organisations membres, opportunités, ressources, partenariats, adhésion, contact et confidentialité. Les documents institutionnels publiables sont dans `public/assets/documents/`.
 
 ## Formulaires et espace membre
 

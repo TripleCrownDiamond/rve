@@ -20,11 +20,7 @@ interface HeroProps {
  * à une seule puce et des flèches inertes seraient du décor. C'est aussi la
  * forme qu'un champ répétable de CMS alimentera directement.
  *
- * La photographie retenue montre une membre du réseau au micro en séance
- * plénière : c'est l'image la plus proche du nom même du réseau. Le voile
- * est directionnel (dense à gauche, nul à droite) pour dégager une zone de
- * texte sans assombrir les visages, conformément à la charte §04 qui impose
- * un voile d'au moins 40 % dès qu'un texte se pose sur une photographie.
+ * La photographie du groupe réuni sert de fond au slide unique.
  */
 
 interface Slide {
@@ -40,22 +36,13 @@ interface Slide {
 
 const SLIDES: Slide[] = [
   {
-    id: 'pleniere',
-    image: '/assets/img/pleniere-parakou.jpg',
-    cadrage: '62% 42%',
+    id: 'groupe',
+    image: '/assets/img/hero-reseau.jpg',
+    cadrage: '50% 35%',
     titre: 'Des voix de femmes pour un Bénin plus inclusif',
     largeurTitre: '11em',
     amorce:
       'Le Réseau Voix EssentiELLES Bénin fédère neuf organisations féminines de la société civile autour des droits, de la santé, du leadership et de l’autonomisation des femmes et des filles.',
-  },
-  {
-    id: 'atelier',
-    image: '/assets/img/atelier-ecriture.jpg',
-    cadrage: '50% 38%',
-    titre: 'Une position se prépare avant de se porter',
-    largeurTitre: '13em',
-    amorce:
-      'Ateliers, concertations et travaux de plaidoyer : les organisations membres construisent ensemble les positions que le réseau défend ensuite auprès des institutions.',
   },
 ];
 

@@ -32,15 +32,15 @@ export const CollegesSection: React.FC = () => {
                   onClick={() => setMembreSelectionne(m.id)}
                   aria-label={`Afficher les informations de ${m.name}`}
                   aria-expanded={membreSelectionne === m.id}
-                  className="group relative flex min-h-40 w-full cursor-pointer flex-col items-start justify-between overflow-hidden rounded-carte bg-white/12 p-3 text-left text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white sm:p-4"
+                  className="group relative flex min-h-36 w-full cursor-pointer flex-col items-start justify-between overflow-hidden rounded-carte bg-white/12 p-3 text-left text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white sm:p-4"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white p-1.5 [&_img]:max-h-9">{m.logo}</span>
+                  <span className={`flex h-16 w-full max-w-32 items-center justify-center overflow-hidden rounded-carte bg-white p-1.5 ${['fran', 'bwaa', 'frh'].includes(m.id) ? '[&_img]:h-full [&_img]:max-h-none [&_img]:object-cover' : '[&_img]:max-h-14'}`}>{m.logo}</span>
                   <span className="mt-3 block w-full">
-                    <span className="block text-xs font-semibold leading-snug sm:text-sm">{m.shortName}</span>
+                    <span className="block text-sm font-bold leading-snug sm:text-base">{m.shortName}</span>
                     <span className="mt-1 line-clamp-2 text-[11px] leading-snug text-white/85 sm:hidden">{m.profileComplete ? m.focus : 'Présentation à compléter'}</span>
                   </span>
                   <span className="pointer-events-none absolute inset-0 hidden flex-col justify-center bg-white p-3 text-rve-green-ink opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 sm:flex sm:p-4" aria-hidden="true">
-                    <span className="line-clamp-2 text-xs font-bold leading-snug">{m.name}</span>
+                    <span className="line-clamp-2 text-sm font-bold leading-snug">{m.name}</span>
                     <span className="mt-2 line-clamp-3 text-[11px] leading-snug text-ink-soft">{m.profileComplete ? m.description : 'La fiche de présentation de cette organisation est en cours de collecte.'}</span>
                     {m.zone && <span className="mt-2 line-clamp-1 text-[10px] font-semibold">{m.zone}</span>}
                   </span>

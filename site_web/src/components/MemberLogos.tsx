@@ -102,7 +102,7 @@ const LocalLogo = ({ src, alt }: { src: string; alt: string }) => {
       src={src}
       alt={alt}
       loading="lazy"
-      className="max-h-16 w-full object-contain"
+      className="max-h-24 w-full object-contain"
       style={{ '--densite': luminosite } as React.CSSProperties}
     />
   );

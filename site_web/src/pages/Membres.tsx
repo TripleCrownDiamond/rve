@@ -77,7 +77,7 @@ export const PageMembres: React.FC = () => {
                 aria-label={`${org.name} : ${org.profileComplete ? org.description : 'fiche de présentation à compléter'}. Voir la fiche`}
                 className="group relative flex h-full min-h-64 flex-col items-start overflow-hidden rounded-carte border border-line bg-surface p-6 transition-[border-color,box-shadow] duration-200 hover:border-rve-green/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-rve-green"
               >
-                <span className={`flex h-24 w-44 items-center justify-start overflow-hidden ${['fran', 'bwaa', 'frh'].includes(org.id) ? '[&_img]:h-full [&_img]:max-h-none [&_img]:object-cover' : '[&_img]:max-h-24'}`}>{org.logo}</span>
+                <span className={`mx-auto flex h-24 w-44 items-center justify-center overflow-hidden ${['fran', 'bwaa', 'frh'].includes(org.id) ? '[&_img]:h-full [&_img]:max-h-none [&_img]:object-cover' : '[&_img]:max-h-24'}`}>{org.logo}</span>
                 <span className="mt-4 font-display text-lg font-bold leading-snug text-ink">{org.name}</span>
                 <span className="mt-2 text-sm leading-relaxed text-ink-soft">{org.profileComplete ? org.focus : 'Profil à compléter'}</span>
                 {org.zone && <span className="mt-auto pt-4 text-xs font-medium text-rve-green-ink">{org.zone}</span>}

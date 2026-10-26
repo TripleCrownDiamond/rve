@@ -139,15 +139,9 @@ export const Hero: React.FC<HeroProps> = ({
               <img
                 src={slide.image}
                 alt=""
-                className="h-[118%] w-full scale-105 object-cover blur-xl"
+                className="h-[118%] w-full object-cover"
                 style={{ objectPosition: slide.cadrage }}
                 fetchPriority={index === 0 ? 'high' : 'auto'}
-              />
-              <img
-                src={slide.image}
-                alt=""
-                className="absolute left-0 top-20 h-auto w-full"
-                style={{ maskImage: 'linear-gradient(to bottom, black 68%, transparent 100%)' }}
               />
             </Parallaxe>
             {/* Voile. Sur grand écran il est directionnel : dense à gauche

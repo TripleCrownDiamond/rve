@@ -139,9 +139,15 @@ export const Hero: React.FC<HeroProps> = ({
               <img
                 src={slide.image}
                 alt=""
-                className="h-[118%] w-full object-cover"
+                className="h-[118%] w-full scale-105 object-cover blur-xl"
                 style={{ objectPosition: slide.cadrage }}
                 fetchPriority={index === 0 ? 'high' : 'auto'}
+              />
+              <img
+                src={slide.image}
+                alt=""
+                className="absolute left-0 top-20 h-auto w-full"
+                style={{ maskImage: 'linear-gradient(to bottom, black 68%, transparent 100%)' }}
               />
             </Parallaxe>
             {/* Voile. Sur grand écran il est directionnel : dense à gauche
@@ -150,7 +156,7 @@ export const Hero: React.FC<HeroProps> = ({
                 plus de côté à préserver : le voile devient uniforme pour
                 tenir les 40 % minimum qu'impose §04 partout où du texte se
                 pose sur une photographie. */}
-            <div className="absolute inset-0 bg-night-deep/70 lg:hidden" />
+            <div className="absolute inset-0 bg-night-deep/55 lg:hidden" />
             <div className="absolute inset-0 hidden bg-gradient-to-r from-night-deep via-night-deep/75 to-transparent lg:block" />
             <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night-deep/80 to-transparent" />
           </motion.div>

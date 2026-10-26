@@ -98,7 +98,7 @@ export default function App() {
       case 'opportunites':
         return id ? <PageOpportunite id={id} /> : <PageOpportunites />;
       case 'partenariats':
-        return <PagePartenariats />;
+        return id ? <PageMembre id={id} /> : <PagePartenariats />;
       case 'contact':
         return <PageContact />;
       case 'adhesion':

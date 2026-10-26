@@ -35,7 +35,7 @@ export const PartenairesSection: React.FC = () => {
           {partenaires.map((partenaire) => (
             <li key={partenaire.id}>
               <Lien
-                vers={`/membres/${partenaire.id}`}
+                vers={`/partenariats/${partenaire.id}`}
                 className="group flex h-full flex-col rounded-carte border border-line bg-white p-6 transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-rve-green/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-rve-green"
                 aria-label={`Découvrir ${partenaire.name}`}
               >

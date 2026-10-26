@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MEMBER_ORGANIZATIONS } from '../components/MemberLogos';
 import { PageHeader, PageBody } from '../components/PageHeader';
 import { PageIntrouvable } from './Domaines';
@@ -14,33 +14,14 @@ import {
 } from '../components/ui';
 import { Lien } from '../router';
 
-const FILTRES = [
-  { cle: 'tous', label: 'Toutes' },
-  { cle: 'membres', label: 'Organisations membres' },
-  { cle: 'partenaires', label: 'Partenaires' },
-] as const;
-
 /** Grille de marques. Le logo est le sujet ; le nom vit dans la fiche. */
 export const PageMembres: React.FC = () => {
-  const [filtre, setFiltre] = useState<(typeof FILTRES)[number]['cle']>('tous');
-
-  const liste = MEMBER_ORGANIZATIONS.filter((m) => {
-    if (filtre === 'partenaires') return m.category === 'Partenaire Stratégique';
-    if (filtre === 'membres') return m.category !== 'Partenaire Stratégique';
-    return true;
-  });
-
-  const compte = (cle: string) =>
-    cle === 'tous'
-      ? MEMBER_ORGANIZATIONS.length
-      : cle === 'partenaires'
-        ? MEMBER_ORGANIZATIONS.filter((m) => m.category === 'Partenaire Stratégique').length
-        : MEMBER_ORGANIZATIONS.filter((m) => m.category !== 'Partenaire Stratégique').length;
+  const liste = MEMBER_ORGANIZATIONS.filter((m) => m.category !== 'Partenaire Stratégique');
 
   return (
     <>
       <PageHeader
-        titre="Les organisations du réseau"
+        titre="Les organisations membres"
         amorce="Découvrez les neuf organisations membres du RVE-Bénin, leurs domaines d’action, leurs territoires et leurs coordonnées disponibles."
         image="/assets/img/pleniere-parakou.jpg"
         cadrage="40% 45%"
@@ -50,25 +31,7 @@ export const PageMembres: React.FC = () => {
       <PageBody className="relative">
         <Arc className="absolute -right-16 top-20 h-28 w-64 opacity-[0.07]" />
 
-        <div className="relative mb-10 flex flex-wrap items-center gap-2">
-          {FILTRES.map((f) => (
-            <button
-              key={f.cle}
-              type="button"
-              onClick={() => setFiltre(f.cle)}
-              aria-pressed={filtre === f.cle}
-              className={`cursor-pointer rounded-bouton border px-4 py-2 text-[0.8125rem] font-semibold transition-colors duration-150 ${
-                filtre === f.cle
-                  ? 'border-rve-green bg-rve-green/8 text-rve-green-ink'
-                  : 'border-line text-ink-soft hover:bg-surface-sunken hover:text-ink'
-              }`}
-            >
-              {`${f.label} (${compte(f.cle)})`}
-            </button>
-          ))}
-        </div>
-
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {liste.map((org) => (
             <li key={org.id}>
               <Lien
@@ -101,6 +64,9 @@ export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
   const org = MEMBER_ORGANIZATIONS.find((m) => m.id === id);
   if (!org) return <PageIntrouvable quoi="Cette organisation" retour="/membres" />;
 
+  const estPartenaire = org.category === 'Partenaire Stratégique';
+  const cheminParent = estPartenaire ? '/partenariats' : '/membres';
+  const libelleParent = estPartenaire ? 'Partenariats' : 'Membres';
   const autres = MEMBER_ORGANIZATIONS.filter((m) => m.id !== id && m.category === org.category).slice(0, 3);
 
   return (
@@ -109,7 +75,7 @@ export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
         titre={org.name}
         image="/assets/img/atelier-ecriture.jpg"
         cadrage="45% 40%"
-        fil={[{ label: 'Membres', vers: '/membres' }, { label: org.shortName }]}
+        fil={[{ label: libelleParent, vers: cheminParent }, { label: org.shortName }]}
         meta={[org.category]}
       />
 
@@ -130,8 +96,8 @@ export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
               {org.address && <div><h3 className="font-semibold text-ink">Siège</h3><p className="mt-2 text-ink-soft">{org.address}</p></div>}
             </div>}
 
-            <Bouton vers="/membres" icone="fleche" ton="secondaire" className="mt-10">
-              Voir toutes les organisations
+            <Bouton vers={cheminParent} icone="fleche" ton="secondaire" className="mt-10">
+              {estPartenaire ? 'Voir les partenariats' : 'Voir toutes les organisations membres'}
             </Bouton>
           </div>
 
@@ -157,11 +123,11 @@ export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
           </aside>
         </div>
 
-        <div className="mt-20 border-t border-line pt-12">
-          <TitreSection niveau={3} titre={org.category === 'Partenaire Stratégique' ? 'Autres partenaires' : 'Autres organisations membres'} />
+        {autres.length > 0 && <div className="mt-20 border-t border-line pt-12">
+          <TitreSection niveau={3} titre={estPartenaire ? 'Autres partenaires' : 'Autres organisations membres'} />
           <Grille className="mt-8">
             {autres.map((m) => (
-              <Carte key={m.id} vers={`/membres/${m.id}`}>
+              <Carte key={m.id} vers={`${cheminParent}/${m.id}`}>
                 <CarteCorps>
                   <span className="flex h-20 items-center justify-start">
                     {m.logo}
@@ -174,7 +140,7 @@ export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
               </Carte>
             ))}
           </Grille>
-        </div>
+        </div>}
       </PageBody>
     </>
   );

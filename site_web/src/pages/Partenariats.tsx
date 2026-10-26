@@ -92,6 +92,28 @@ export const PagePartenariats: React.FC = () => {
           className="absolute -left-24 top-32 h-60 w-60 opacity-[0.07]"
         />
 
+        {partenaires.length > 0 && (
+          <div className="relative mb-16">
+            <TitreSection titre="Les partenaires du réseau" />
+            <p className="mt-3 max-w-[62ch] text-ink-soft">Speak Up Africa accompagne le programme Voix EssentiELLES. Le réseau a notamment participé à une activité de la FJAD soutenue dans le cadre de la phase 2 du programme.</p>
+            <ul className="mt-8 flex flex-wrap gap-4 sm:gap-5">
+              {partenaires.map((p) => (
+                <li key={p.id}>
+                  <Lien
+                    vers={`/partenariats/${p.id}`}
+                    title={p.name}
+                    aria-label={`${p.name} — voir la fiche`}
+                    className="group flex h-28 w-44 cursor-pointer items-center justify-center rounded-carte border border-line bg-surface px-6 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-rve-green/40 hover:shadow-md sm:h-32 sm:w-48"
+                  >
+                    {p.logo}
+                  </Lien>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <TitreSection titre="Formes de collaboration" className="relative mb-8" />
         <Grille colonnes={2} className="relative">
           {FORMES.map(({ icone: Icone, titre, texte, engagements }) => (
             <Carte key={titre}>
@@ -115,27 +137,6 @@ export const PagePartenariats: React.FC = () => {
             </Carte>
           ))}
         </Grille>
-
-        {partenaires.length > 0 && (
-          <div className="mt-20 border-t border-line pt-12">
-            <TitreSection niveau={3} titre="Ils appuient le réseau" />
-            <p className="mt-3 max-w-[62ch] text-ink-soft">Speak Up Africa accompagne le programme Voix EssentiELLES. Le réseau a notamment participé à une activité de la FJAD soutenue dans le cadre de la phase 2 du programme.</p>
-            <ul className="mt-8 flex flex-wrap gap-4 sm:gap-5">
-              {partenaires.map((p) => (
-                <li key={p.id}>
-                  <Lien
-                    vers={`/membres/${p.id}`}
-                    title={p.name}
-                    aria-label={`${p.name} — voir la fiche`}
-                    className="group flex h-28 w-44 cursor-pointer items-center justify-center rounded-carte border border-line bg-surface px-6 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-rve-green/40 hover:shadow-md sm:h-32 sm:w-48"
-                  >
-                    {p.logo}
-                  </Lien>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
 
         <div className="mt-20 grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">

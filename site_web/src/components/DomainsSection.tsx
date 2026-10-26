@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Anneau, Flottante, Tache } from './Decor';
+import React from 'react';
+import { Flottante, Tache } from './Decor';
 import { Reveal } from './Reveal';
+import { Lien } from '../router';
 import { 
   Users2, 
   HeartPulse, 
@@ -8,7 +9,6 @@ import {
   GraduationCap, 
   TrendingUp, 
   FlaskConical, 
-  ChevronRight, 
   ArrowUpRight 
 } from 'lucide-react';
 
@@ -128,21 +128,20 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
         <Tache couleur="var(--color-rve-yellow)" className="h-64 w-64 opacity-[0.09]" />
       </Flottante>
       <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
-        {/* Charte §29 : « H1 en haut, six blocs icône-titre-texte en grille
-            3 × 2, vague légère en pied. Aucun autre élément. » Le sur-titre
-            en capitales et la note latérale sur les ODD tombent donc. */}
+        {/* L’accueil présente trois portes d’entrée. Les six domaines et
+            leurs descriptions complètes vivent sur la page dédiée. */}
         <Reveal as="header" className="mb-16 max-w-2xl">
           <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
-            6 piliers essentiels pour une transformation systémique
+            Les domaines d’action du réseau
           </h2>
           <p className="mt-4 text-base leading-relaxed text-ink-soft">
-            Une approche globale et transversale pour répondre avec précision aux défis structurels auxquels sont confrontées les femmes et les filles béninoises.
+            Le RVE-Bénin agit sur les droits, la santé, le climat, l’éducation, l’autonomie économique et la production de données.
           </p>
         </Reveal>
 
-        {/* 6 Cards Grid (3x2 on desktop) */}
+        {/* Trois domaines mis en avant ; l’ensemble reste accessible en un clic. */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {DOMAINS.map((domain) => (
+          {DOMAINS.slice(0, 3).map((domain) => (
             <button
               key={domain.id}
               type="button"
@@ -178,6 +177,9 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
             </button>
           ))}
         </div>
+        <Lien vers="/domaines" className="mt-8 inline-flex items-center gap-2 font-semibold text-rve-green-ink underline-offset-4 hover:underline">
+          Voir les six domaines d’intervention <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </Lien>
       </div>
 
     </section>

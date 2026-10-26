@@ -8,7 +8,6 @@ import {
   CartePied,
   CarteVisuel,
   Etiquette,
-  Grille,
   Meta,
 } from './ui';
 import { ArrowRight } from 'lucide-react';
@@ -65,11 +64,6 @@ interface ActionsSectionProps {
 export const ActionsSection: React.FC<ActionsSectionProps> = ({
   onSelectArticle,
 }) => {
-  const [une, ...suite] = [
-    ARTICLES.find((a) => a.isMain) || ARTICLES[0],
-    ...ARTICLES.filter((a) => !(a.isMain || a === ARTICLES[0])),
-  ];
-
   return (
     <section id="actions" className="overflow-hidden bg-surface-sunken py-20 lg:py-28">
       <div className="relative mx-auto w-full max-w-[1240px] px-6 sm:px-8">
@@ -78,62 +72,31 @@ export const ActionsSection: React.FC<ActionsSectionProps> = ({
         </Flottante>
         <Reveal as="header" className="mb-14 max-w-2xl">
           <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
-            L’impact en mouvement sur le terrain et auprès des institutions
+            Actualités du réseau
           </h2>
           <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-ink-soft">
-            Initiatives, ateliers stratégiques et missions de plaidoyer portés
-            par les organisations membres.
+            Retrouvez les actions documentées du RVE-Bénin et de ses organisations membres.
           </p>
         </Reveal>
 
-        {/* Deux rangées autonomes, au lieu de deux colonnes de hauteurs
-            différentes. C'est ce qui produisait le vide : la colonne des
-            articles secondaires dépassait l'article à la une, qui s'arrêtait
-            en laissant un trou sous lui. Une rangée ne peut pas creuser de
-            vide sous sa voisine. */}
-        <Carte
-          onClick={() => onSelectArticle(une)}
-          className="overflow-hidden lg:grid lg:grid-cols-2"
-        >
-          {/* Ratio fixe : la photographie n'est plus étirée pour rattraper
-              la hauteur d'une colonne voisine. */}
-          <CarteVisuel
-            src={une.imageUrl}
-            ratio="aspect-[16/11] lg:aspect-auto lg:h-full"
-          />
-          <CarteCorps className="justify-center lg:p-10">
-            <Etiquette>{une.category}</Etiquette>
-            <span className="mt-3 font-display text-[clamp(1.25rem,2.2vw,1.75rem)] font-extrabold leading-tight text-ink">
-              {une.title}
-            </span>
-            <span className="mt-4 line-clamp-3 leading-relaxed text-ink-soft">
-              {une.excerpt}
-            </span>
-            <Meta
-              items={[une.date, une.location, une.readTime]}
-              className="mt-6"
-            />
-            <CartePied>Lire l’article</CartePied>
-          </CarteCorps>
-        </Carte>
-
-        <Grille className="mt-8">
-          {suite.slice(0, 3).map((article) => (
+        <div className="grid gap-6 lg:grid-cols-2">
+          {ARTICLES.slice(0, 2).map((article) => (
             <Carte key={article.id} onClick={() => onSelectArticle(article)}>
-              <CarteVisuel src={article.imageUrl} />
+              <CarteVisuel src={article.imageUrl} ratio="aspect-[16/9]" />
               <CarteCorps>
                 <Etiquette>{article.category}</Etiquette>
-                <span className="mt-2 font-display text-base font-bold leading-snug text-ink">
+                <span className="mt-3 font-display text-xl font-bold leading-snug text-ink">
                   {article.title}
                 </span>
                 <span className="mt-3 line-clamp-2 text-sm leading-relaxed text-ink-soft">
                   {article.excerpt}
                 </span>
                 <Meta items={[article.date, article.readTime]} className="mt-auto pt-5" />
+                <CartePied>Lire l’article</CartePied>
               </CarteCorps>
             </Carte>
           ))}
-        </Grille>
+        </div>
 
         <div className="mt-12 flex justify-center">
           <Bouton vers="/actions" ton="secondaire" icone="fleche">

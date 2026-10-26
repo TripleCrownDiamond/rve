@@ -33,7 +33,12 @@ export function useRoute(): Route {
   const [route, setRoute] = useState<Route>(lire);
 
   useEffect(() => {
-    const auChangement = () => setRoute(lire());
+    const auChangement = () => {
+      setRoute(lire());
+      // Le navigateur peut restaurer l'ancienne position après le changement
+      // de fragment. On remonte une fois la nouvelle page affichée.
+      window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    };
     window.addEventListener('hashchange', auChangement);
     return () => window.removeEventListener('hashchange', auChangement);
   }, []);

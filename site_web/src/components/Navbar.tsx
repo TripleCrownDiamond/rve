@@ -112,7 +112,7 @@ const FAMILLES: Famille[] = [
     encart: {
       titre: 'Rejoindre le réseau',
       texte: 'Les organisations féminines de la société civile béninoise peuvent déposer une candidature.',
-      vers: '/partenariats',
+      vers: '/adhesion',
       action: 'Comment adhérer',
       image: '/assets/img/participante-table.jpg',
     },
@@ -184,7 +184,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
           <Logo variant={opaque ? 'color' : 'white'} size="sm" />
         </Lien>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav aria-label="Navigation principale" className="hidden items-center gap-1 lg:flex">
           {FAMILLES.map((famille) => {
             const ouvert = deroulant === famille.label;
             const actif = familleActive(famille);
@@ -228,7 +228,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
               >
                 <button
                   type="button"
-                  onClick={() => setDeroulant(ouvert ? null : famille.label)}
+                  onClick={() => setDeroulant(famille.label)}
                   aria-expanded={ouvert}
                   aria-haspopup="true"
                   className={`relative flex cursor-pointer items-center gap-1.5 rounded-bouton px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors duration-150 ${
@@ -299,10 +299,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
             l'en-tête. Centré sur son bouton, il débordait hors de l'écran
             pour la première et la dernière famille. */}
         {familleOuverte && familleOuverte.enfants.length > 0 && (
-<div className="absolute inset-x-0 top-full pt-3">
+          <div className="absolute inset-x-0 top-full pt-3">
                     <div className="overflow-hidden rounded-carte border border-line bg-surface shadow-xl">
                       <div className="grid gap-0 md:grid-cols-5">
-                        <ul className="p-3 md:col-span-3">
+                        <div className="p-5 md:col-span-3 lg:p-7">
+                          <div className="mb-4 flex items-center justify-between gap-4 border-b border-line pb-4">
+                            <p className="font-display text-lg font-bold text-ink">{familleOuverte.label}</p>
+                            <Lien vers={familleOuverte.vers} onClick={() => setDeroulant(null)} className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-rve-green-ink hover:underline">
+                              Vue d’ensemble <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                            </Lien>
+                          </div>
+                        <ul className="grid gap-2 sm:grid-cols-2">
                           {familleOuverte.enfants.map((enfant) => {
                             const Icone = enfant.icone;
                             const courant = racine === enfant.vers;
@@ -349,6 +356,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
                             );
                           })}
                         </ul>
+                        </div>
 
                         {familleOuverte.encart && (
                           <Lien
@@ -385,7 +393,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
                         )}
                       </div>
                     </div>
-                  </div>
+          </div>
         )}
 
         <button

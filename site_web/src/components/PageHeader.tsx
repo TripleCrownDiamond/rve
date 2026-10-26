@@ -121,7 +121,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
 
       <Vague
         termine="var(--color-surface)"
-        className="pointer-events-none absolute inset-x-0 -bottom-px block h-16 w-full rotate-180 sm:h-20"
+        className="pointer-events-none absolute -left-12 -bottom-px block h-16 w-[calc(100%+6rem)] max-w-none rotate-180 sm:h-20"
       />
     </header>
   );

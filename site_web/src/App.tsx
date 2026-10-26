@@ -29,15 +29,11 @@ import { PageHeader, PageBody } from './components/PageHeader.tsx';
 import { Lien } from './router';
 
 import { ActionArticle } from './components/ActionsSection.tsx';
-import { ResourceItem } from './components/ResourcesSection.tsx';
-import { MemberOrg } from './components/MemberLogos.tsx';
 import { DomainItem } from './components/DomainsSection.tsx';
 import {
   ContactModal,
   JoinModal,
   ArticleModal,
-  ResourceModal,
-  MemberDetailModal,
   DomainDetailModal,
 } from './components/Modals.tsx';
 
@@ -57,8 +53,6 @@ export default function App() {
   const [sujetContact, setSujetContact] = useState('Renseignement général');
   const [adhesionOuverte, setAdhesionOuverte] = useState(false);
   const [article, setArticle] = useState<ActionArticle | null>(null);
-  const [ressource, setRessource] = useState<ResourceItem | null>(null);
-  const [membre, setMembre] = useState<MemberOrg | null>(null);
   const [domaine, setDomaine] = useState<DomainItem | null>(null);
 
   const ouvrirContact = (sujet?: string) => {
@@ -82,8 +76,6 @@ export default function App() {
             onOpenContact={ouvrirContact}
             onOpenJoin={ouvrirAdhesion}
             onSelectArticle={setArticle}
-            onSelectResource={setRessource}
-            onSelectMember={setMembre}
             onSelectDomain={setDomaine}
           />
         );
@@ -140,12 +132,6 @@ export default function App() {
         onClose={() => setAdhesionOuverte(false)}
       />
       <ArticleModal article={article} onClose={() => setArticle(null)} />
-      <ResourceModal resource={ressource} onClose={() => setRessource(null)} />
-      <MemberDetailModal
-        member={membre}
-        onClose={() => setMembre(null)}
-        onContact={ouvrirContact}
-      />
       <DomainDetailModal
         domain={domaine}
         onClose={() => setDomaine(null)}

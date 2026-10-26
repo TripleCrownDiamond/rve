@@ -2,6 +2,7 @@ import React from 'react';
 import { Hero } from '../components/Hero.tsx';
 import { AboutSection } from '../components/AboutSection.tsx';
 import { CollegesSection } from '../components/CollegesSection.tsx';
+import { PartenairesSection } from '../components/PartenairesSection.tsx';
 import { DomainsSection, DomainItem } from '../components/DomainsSection.tsx';
 import { ActionsSection, ActionArticle } from '../components/ActionsSection.tsx';
 import { ContactSection } from '../components/ContactSection.tsx';
@@ -39,6 +40,7 @@ export const Accueil: React.FC<AccueilProps> = ({
       />
       <AboutSection onOpenJoin={onOpenJoin} />
       <CollegesSection />
+      <PartenairesSection />
       <DomainsSection onSelectDomain={onSelectDomain} />
       <ActionsSection onSelectArticle={onSelectArticle} />
       <ContactSection onOpenContact={onOpenContact} onOpenJoin={onOpenJoin} />

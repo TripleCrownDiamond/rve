@@ -21,8 +21,11 @@ import {
 } from './pages/Divers.tsx';
 import { PageOpportunites, PageOpportunite } from './pages/Opportunites.tsx';
 import { PagePartenariats } from './pages/Partenariats.tsx';
-import { PageConnexion } from './pages/Connexion.tsx';
-import { PageAdmin } from './pages/Admin.tsx';
+import { PageContact, PageConfidentialite } from './pages/Contact.tsx';
+import { PageProjets } from './pages/Projets.tsx';
+import { PageAdhesion } from './pages/Adhesion.tsx';
+import { PageHeader, PageBody } from './components/PageHeader.tsx';
+import { Lien } from './router';
 
 import { ActionArticle } from './components/ActionsSection.tsx';
 import { ResourceItem } from './components/ResourcesSection.tsx';
@@ -67,8 +70,8 @@ export default function App() {
   // pied de page du site : ce ne sont pas des pages du site public, et les
   // y enfermer donnerait un tableau de bord qui se croit encore une page
   // d'accueil.
-  if (section === 'connexion') return <PageConnexion />;
-  if (section === 'admin') return <PageAdmin />;
+  // Aucune authentification côté serveur n'est disponible sur ce site statique.
+  // L'ancienne maquette acceptait tout mot de passe et ne doit pas être publiée.
 
   const page = (() => {
     switch (section) {
@@ -89,6 +92,8 @@ export default function App() {
         return id ? <PageDomaine id={id} /> : <PageDomaines />;
       case 'actions':
         return id ? <PageAction id={id} /> : <PageActions />;
+      case 'projets':
+        return <PageProjets />;
       case 'membres':
         return id ? <PageMembre id={id} /> : <PageMembres />;
       case 'gouvernance':
@@ -99,6 +104,15 @@ export default function App() {
         return id ? <PageOpportunite id={id} /> : <PageOpportunites />;
       case 'partenariats':
         return <PagePartenariats />;
+      case 'contact':
+        return <PageContact />;
+      case 'adhesion':
+        return <PageAdhesion />;
+      case 'connexion':
+      case 'admin':
+        return <><PageHeader titre="Espace membre en préparation" amorce="L’accès aux comptes des organisations sera ouvert lorsque l’authentification sera mise en service." image="/assets/img/atelier-ecriture.jpg" fil={[{ label: 'Espace membre' }]} /><PageBody><div className="max-w-2xl rounded-carte border border-line bg-surface p-8"><p className="leading-relaxed text-ink-soft">Pour demander une mise à jour de votre fiche ou transmettre une information au réseau, contactez le Secrétariat exécutif.</p><Lien vers="/contact" className="mt-6 inline-flex rounded-bouton bg-rve-green px-5 py-3 text-sm font-bold text-white hover:bg-rve-green-ink">Contacter le Secrétariat exécutif</Lien></div></PageBody></>;
+      case 'confidentialite':
+        return <PageConfidentialite />;
       default:
         return <PageIntrouvable quoi="Cette page" retour="/" />;
     }

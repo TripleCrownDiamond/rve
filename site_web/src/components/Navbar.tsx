@@ -14,6 +14,7 @@ import {
   UserRound,
   Users2,
   X,
+  Mail,
 } from 'lucide-react';
 import { Lien, useRoute } from '../router';
 
@@ -62,13 +63,13 @@ const FAMILLES: Famille[] = [
     label: 'Le réseau',
     vers: '/reseau',
     enfants: [
-      { label: 'Présentation', vers: '/reseau', detail: 'Mission, collèges et valeurs', icone: BookOpen },
+      { label: 'Présentation', vers: '/reseau', detail: 'Mission, membres et valeurs', icone: BookOpen },
       { label: 'Organisations membres', vers: '/membres', detail: 'Les neuf OSC et leurs partenaires', icone: Users2 },
       { label: 'Gouvernance', vers: '/gouvernance', detail: 'Les quatre organes de décision', icone: Landmark },
     ],
     encart: {
       titre: 'Neuf organisations, une seule voix',
-      texte: 'Trois collèges thématiques préparent les positions que le réseau porte ensemble.',
+      texte: 'Les organisations membres mettent leurs expériences en commun.',
       vers: '/reseau',
       action: 'Découvrir le réseau',
       image: '/assets/img/pleniere-parakou.jpg',
@@ -80,6 +81,7 @@ const FAMILLES: Famille[] = [
     enfants: [
       { label: 'Domaines d’intervention', vers: '/domaines', detail: 'Les six champs de travail', icone: Target },
       { label: 'Actions & impact', vers: '/actions', detail: 'Actualités et comptes rendus', icone: Newspaper },
+      { label: 'Projets', vers: '/projets', detail: 'Les participations documentées du réseau', icone: Target },
     ],
     encart: {
       titre: 'Dernières actualités',
@@ -102,7 +104,8 @@ const FAMILLES: Famille[] = [
     enfants: [
       { label: 'Partenariats', vers: '/partenariats', detail: 'Quatre formes de collaboration', icone: Handshake },
       { label: 'Opportunités', vers: '/opportunites', detail: 'Emplois, appels d’offres, candidatures', icone: Briefcase },
-      { label: 'Espace membre', vers: '/connexion', detail: 'Connexion à l’administration', icone: UserRound },
+      { label: 'Contact', vers: '/contact', detail: 'Coordonnées et demande de collaboration', icone: Mail },
+      { label: 'Adhésion', vers: '/adhesion', detail: 'Présenter une organisation', icone: UserRound },
     ],
     encart: {
       titre: 'Rejoindre le réseau',
@@ -260,9 +263,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
           {/* Accès au back-office. Discret : il ne concerne que le
               secrétariat, pas les visiteurs du site. */}
           <Lien
-            vers="/connexion"
-            aria-label="Connexion à l’espace d’administration"
-            title="Connexion"
+            vers="/adhesion"
+            aria-label="Présenter une organisation"
+            title="Adhésion"
             className={`flex h-9 w-9 items-center justify-center rounded-bouton transition-colors duration-150 ${
               opaque
                 ? 'text-ink-muted hover:bg-surface-sunken hover:text-ink'
@@ -462,12 +465,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
                 Contact
               </button>
               <Lien
-                vers="/connexion"
+                vers="/adhesion"
                 onClick={() => setMenuOuvert(false)}
                 className="flex w-full items-center justify-center gap-2 rounded-bouton border border-line py-2.5 text-center text-sm font-semibold text-ink-soft transition-colors duration-150 hover:bg-surface-sunken"
               >
                 <UserRound className="h-4 w-4" aria-hidden="true" />
-                Espace membre
+                Demande d’adhésion
               </Lien>
               <button
                 onClick={() => {

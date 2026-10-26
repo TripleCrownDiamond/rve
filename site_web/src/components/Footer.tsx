@@ -40,34 +40,35 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onOpenJoin }) => 
             </h4>
             <ul className="space-y-2.5 text-xs text-on-night-soft">
               <li>
-                <a href="#a-propos" className="hover:text-white transition-colors">
+                <Lien vers="/reseau" className="hover:text-white transition-colors">
                   À propos du réseau
-                </a>
+                </Lien>
               </li>
               <li>
-                <a href="#domaines" className="hover:text-white transition-colors">
+                <Lien vers="/domaines" className="hover:text-white transition-colors">
                   6 Domaines d’intervention
-                </a>
+                </Lien>
               </li>
               <li>
-                <a href="#actions" className="hover:text-white transition-colors">
+                <Lien vers="/actions" className="hover:text-white transition-colors">
                   Actions & Actualités
-                </a>
+                </Lien>
               </li>
+              <li><Lien vers="/projets" className="hover:text-white transition-colors">Projets</Lien></li>
               <li>
-                <a href="#membres" className="hover:text-white transition-colors">
+                <Lien vers="/membres" className="hover:text-white transition-colors">
                   Organisations membres
-                </a>
+                </Lien>
               </li>
               <li>
-                <a href="#gouvernance" className="hover:text-white transition-colors">
+                <Lien vers="/gouvernance" className="hover:text-white transition-colors">
                   Gouvernance & Statuts
-                </a>
+                </Lien>
               </li>
               <li>
-                <a href="#ressources" className="hover:text-white transition-colors">
-                  Rapports & Guides
-                </a>
+                <Lien vers="/ressources" className="hover:text-white transition-colors">
+                  Documents institutionnels
+                </Lien>
               </li>
             </ul>
           </div>
@@ -127,26 +128,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onOpenJoin }) => 
           </div>
 
           <div className="flex items-center gap-6">
-            <button
-              onClick={() => onOpenContact('Mentions légales')}
-              className="hover:text-white transition-colors cursor-pointer"
-            >
-              Mentions Légales & Statuts
-            </button>
+            <Lien vers="/ressources" className="hover:text-white transition-colors">Statuts et règlement</Lien>
             <span aria-hidden="true" className="text-on-night-muted">·</span>
-            <button
-              onClick={() => onOpenContact('Politique de confidentialité')}
-              className="hover:text-white transition-colors cursor-pointer"
-            >
-              Protection des Données
-            </button>
+            <Lien vers="/confidentialite" className="hover:text-white transition-colors">Confidentialité</Lien>
             <span aria-hidden="true" className="text-on-night-muted">·</span>
             <Lien
-              vers="/connexion"
+              vers="/adhesion"
               className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
             >
               <UserRound className="h-3.5 w-3.5" aria-hidden="true" />
-              Espace membre
+              Adhésion
             </Lien>
             <span aria-hidden="true" className="text-on-night-muted">·</span>
             <span className="font-medium text-rve-lime">Bénin</span>

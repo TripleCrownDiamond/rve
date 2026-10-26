@@ -37,63 +37,24 @@ export interface ActionArticle {
 
 export const ARTICLES: ActionArticle[] = [
   {
-    id: 'assemblee-constitutive-rve',
-    title: 'Assemblée Générale et dynamisation de la coalition : Les voix féminines unies pour le plaidoyer national',
-    excerpt: 'Réunies à Cotonou avec la participation active de Sa Majesté Reine Adjignon Natabou, de la FJAD, de BWAA, de WOPA et des organisations membres, les déléguées ont posé les jalons de la feuille de route 2025-2027.',
-    fullContent: `Dans une ferveur solidaire et fraternelle, les représentantes des neuf organisations fondatrices du Réseau Voix EssentiELLES Bénin se sont réunies à Cotonou pour structurer leur action commune en faveur des droits des femmes et des filles.
+    id: 'participation-gc8-fonds-mondial',
+    title: 'Le RVE-Bénin participe au processus GC8 du Fonds mondial',
+    excerpt: 'De mars à juin 2026, le réseau a pris part aux dialogues pays, consultations communautaires et ateliers techniques liés à la demande de financement GC8.',
+    fullContent: `Le RVE-Bénin a participé à plus d'une dizaine de réunions stratégiques, dialogues pays, consultations communautaires et ateliers techniques entre mars et juin 2026.
 
-Cette rencontre a été marquée par une convergence inédite entre autorités coutumières patrimoniales — incarnées avec dignité par Sa Majesté Reine Adjignon Natabou — et leaders de la société civile contemporaine. Ensemble, elles ont validé la charte de gouvernance, élu le Conseil d’Administration et arrêté les axes prioritaires du plaidoyer national.
+Le réseau a contribué à l'identification des priorités communautaires et à l'intégration des enjeux de genre, de droits humains et d'accès équitable aux services de santé dans la demande nationale. Il a rédigé une note stratégique de plaidoyer et proposé des interventions sur le renforcement des capacités, les systèmes communautaires et la lutte contre les discriminations.
 
-« Notre force réside dans cette capacité à réunir l’histoire et le présent de la femme béninoise, des cours royales d’Abomey aux amphithéâtres universitaires et aux coopératives de pêcheuses du lac Ahémé », a souligné la Présidente du Conseil d’Administration.
-
-Les priorités immédiates retenues portent sur le renforcement du dialogue avec le Ministère des Affaires Sociales et de la Microfinance, l’élargissement de la Couverture Sanitaire Universelle aux femmes du secteur informel et l’intensification de la veille citoyenne contre les violences basées sur le genre.`,
-    date: '13 Août 2025',
-    category: 'Gouvernance & Plaidoyer',
-    readTime: '4 min de lecture',
-    isMain: true,
-    author: 'Secrétariat Exécutif RVE-Bénin',
-    location: 'Cotonou, Bénin',
-    imageUrl: ACTION_IMAGES['assemblee-constitutive-rve'],
+Cette participation a renforcé les compétences des membres sur les mécanismes du Fonds mondial et les relations du réseau avec les acteurs nationaux de la santé.`,
+    date: 'Juin 2026', category: 'Santé et plaidoyer', readTime: '2 min de lecture', isMain: true, author: 'RVE-Bénin', location: 'Bénin', imageUrl: '/assets/img/hero-reseau.jpg',
   },
   {
-    id: 'atelier-strategique-fjad-bwaa',
-    title: 'Atelier technique de co-construction : Vers un plaidoyer commun pour la santé reproductive et l’éducation',
-    excerpt: 'Séance de travail intensif entre les équipes techniques de la FJAD, de BWAA et des partenaires experts pour modéliser des indicateurs d’impact communautaire.',
-    fullContent: `Durant trois jours d'échanges méthodologiques, les membres du groupe de travail Santé & Droits ont croisé leurs données de terrain avec les standards internationaux de l'OMS et de l'Union Africaine.
+    id: 'atelier-medias-handicap-parakou',
+    title: 'À Parakou, un plaidoyer pour une information inclusive sur le handicap',
+    excerpt: 'Le 19 juin 2026, le réseau a participé à un atelier de la FJAD destiné aux professionnels des médias sur la stigmatisation des filles et des femmes handicapées.',
+    fullContent: `La Fondation des Jeunes Amazones pour le Développement (FJAD), membre du réseau, a organisé à Parakou une session d'information et de plaidoyer pour les professionnels des médias dans le cadre du projet Handi’Women DSSR, soutenu par Speak Up Africa à travers Voix EssentiELLES – Phase 2.
 
-L'objectif : doter le RVE-Bénin d’un argumentaire chiffré et indiscutable à présenter lors des prochaines assises budgétaires de l'Assemblée Nationale du Bénin. Les travaux ont notamment permis d'identifier 14 communes prioritaires nécessitant un appui urgent en cliniques mobiles pour le dépistage précoce des cancers féminins.`,
-    date: '11 Août 2025',
-    category: 'Santé Publique',
-    readTime: '3 min de lecture',
-    author: 'Commission Santé & Recherche',
-    location: 'Abomey-Calavi, Bénin',
-    imageUrl: ACTION_IMAGES['atelier-strategique-fjad-bwaa'],
-  },
-  {
-    id: 'partenariat-speak-up-africa',
-    title: 'Synergie d’impact avec Speak Up Africa : Catalyser le leadership féminin dans la santé mondiale',
-    excerpt: 'Renforcement du partenariat stratégique pour accompagner le déploiement opérationnel des initiatives communautaires portées par les femmes.',
-    fullContent: `Grâce à l’accompagnement technique et financier de Speak Up Africa, initiative régionale phare pour la santé et le développement durable, le Réseau Voix EssentiELLES Bénin consolide sa structure et sa visibilité institutionnelle.
-
-Ce partenariat permet d'accélérer les formations en gestion de projets, en communication d'influence et en suivi-évaluation pour l’ensemble des coordinatrices d’OSC membres, faisant du RVE-Bénin un interlocuteur de confiance pour les partenaires techniques et financiers internationaux.`,
-    date: '28 Juillet 2025',
-    category: 'Partenariats Stratégiques',
-    readTime: '3 min de lecture',
-    author: 'Direction des Relations Extérieures',
-    location: 'Cotonou & Dakar',
-    imageUrl: ACTION_IMAGES['partenariat-speak-up-africa'],
-  },
-  {
-    id: 'microfinance-cooperatives-rurales',
-    title: 'Autonomisation financière : Déploiement d’un guichet solidaire pour 500 artisanes et transformatrices',
-    excerpt: 'Partenariat tripartite entre le réseau, les institutions de microfinance et les coopératives locales de transformation agro-alimentaire dans l’Ouémé et le Zou.',
-    fullContent: `Face au défi de l’accès au crédit pour les femmes du secteur rural, le RVE-Bénin a finalisé un accord-cadre facilitant des lignes de micro-crédits à taux préférentiel associées à un coaching en gestion financière élémentaire et transition numérique.`,
-    date: '15 Juillet 2025',
-    category: 'Autonomisation Économique',
-    readTime: '2 min de lecture',
-    author: 'Pôle Entrepreneuriat',
-    location: 'Porto-Novo & Bohicon',
-    imageUrl: ACTION_IMAGES['microfinance-cooperatives-rurales'],
+Le RVE-Bénin, représenté par Mme BIO SANNAN S. Zalia (FADeC ONG), a réaffirmé son engagement pour les droits des femmes et filles handicapées. Les échanges ont porté sur les formes de stigmatisation et le rôle des médias dans une information responsable, inclusive et respectueuse des droits humains.`,
+    date: '19 juin 2026', category: 'Inclusion', readTime: '2 min de lecture', author: 'RVE-Bénin', location: 'Parakou, Bénin', imageUrl: '/assets/img/pleniere-parakou.jpg',
   },
 ];
 

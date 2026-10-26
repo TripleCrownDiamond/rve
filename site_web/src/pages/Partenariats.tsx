@@ -13,6 +13,7 @@ import {
   TitreSection,
 } from '../components/ui';
 import { Lien } from '../router';
+import { ContactForm } from '../components/ContactForm';
 
 /**
  * Partenariats.
@@ -41,9 +42,9 @@ const FORMES = [
     texte:
       'Soutien d’un bailleur ou d’une agence à un programme porté par le réseau ou par l’une de ses organisations membres.',
     engagements: [
-      'Des comptes audités chaque année par un cabinet indépendant',
+      'Des objectifs et indicateurs définis ensemble',
       'Un rapportage aux échéances convenues',
-      'La traçabilité documentaire des dépenses engagées',
+      'Un suivi documenté des activités soutenues',
     ],
   },
   {
@@ -52,8 +53,8 @@ const FORMES = [
     texte:
       'Mise en commun d’expertises : méthodologie d’enquête, formation des équipes, appui à la production de données de terrain.',
     engagements: [
-      'Un protocole de travail signé entre les parties',
-      'Le partage des données produites avec les organisations membres',
+      'Un cadre de travail défini entre les parties',
+      'Des règles de partage des données convenues en amont',
       'La mention des contributions respectives dans les publications',
     ],
   },
@@ -118,6 +119,7 @@ export const PagePartenariats: React.FC = () => {
         {partenaires.length > 0 && (
           <div className="mt-20 border-t border-line pt-12">
             <TitreSection niveau={3} titre="Ils appuient le réseau" />
+            <p className="mt-3 max-w-[62ch] text-ink-soft">Speak Up Africa accompagne le programme Voix EssentiELLES. Le réseau a notamment participé à une activité de la FJAD soutenue dans le cadre de la phase 2 du programme.</p>
             <ul className="mt-8 flex flex-wrap gap-4 sm:gap-5">
               {partenaires.map((p) => (
                 <li key={p.id}>
@@ -139,11 +141,9 @@ export const PagePartenariats: React.FC = () => {
           <div className="lg:col-span-7">
             <TitreSection
               titre="Engager une collaboration"
-              amorce="Écrivez au secrétariat exécutif en précisant la forme envisagée et le sujet concerné. Une première rencontre est proposée sous quinze jours."
+              amorce="Écrivez au secrétariat exécutif en précisant la forme envisagée et le sujet concerné."
             />
-            <Bouton vers="/" icone="fleche" className="mt-8">
-              Écrire au secrétariat
-            </Bouton>
+            <div className="mt-8"><ContactForm typeInitial="Partenariat" titre="Présenter une proposition" /></div>
           </div>
           <aside className="lg:col-span-4 lg:col-start-9">
             <Encadre titre="À joindre à votre demande">

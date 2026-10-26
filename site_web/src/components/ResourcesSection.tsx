@@ -10,69 +10,12 @@ export interface ResourceItem {
   size: string;
   description: string;
   pages: number;
+  url: string;
 }
 
 export const RESOURCES: ResourceItem[] = [
-  {
-    id: 'rapport-annuel-2025',
-    title: 'Rapport Annuel d’Activité & Bilan d’Étape 2025',
-    category: 'Rapport',
-    year: '2025',
-    format: 'PDF',
-    size: '3.4 Mo',
-    description: 'Document institutionnel récapitulant les réalisations, les avancées du plaidoyer en santé et droits des femmes, et les états financiers audités du réseau.',
-    pages: 48,
-  },
-  {
-    id: 'guide-plaidoyer-vbg',
-    title: 'Guide Pratique de Plaidoyer Juridique contre les VBG au Bénin',
-    category: 'Guide',
-    year: '2025',
-    format: 'PDF',
-    size: '2.1 Mo',
-    description: 'Manuel de référence pour les activistes locales et juristes communautaires sur la mise en œuvre de la loi 2021-11 portant dispositions spéciales de répression des infractions commises à raison du sexe.',
-    pages: 36,
-  },
-  {
-    id: 'note-politique-csu',
-    title: 'Note d’Orientation Stratégique : Intégration du Genre dans la Couverture Sanitaire Universelle',
-    category: 'Note de plaidoyer',
-    year: '2025',
-    format: 'PDF',
-    size: '1.2 Mo',
-    description: 'Recommandations formulées à l’attention du Ministère de la Santé et des parlementaires pour la prise en charge intégrale des soins obstétricaux et néonataux d’urgence.',
-    pages: 18,
-  },
-  {
-    id: 'etude-femmes-climat-benin',
-    title: 'Étude d’Impact : Résilience Climatique & Autonomie Économique des Femmes Rurales au Bénin',
-    category: 'Publication',
-    year: '2025',
-    format: 'PDF',
-    size: '4.8 Mo',
-    description: 'Enquête de terrain menée auprès de 1 200 exploitantes agricoles dans les départements de l’Alibori, des Collines et du Couffo.',
-    pages: 64,
-  },
-  {
-    id: 'charte-ethique-rve',
-    title: 'Charte Éthique & Statuts Réglementaires du RVE-Bénin',
-    category: 'Rapport',
-    year: '2025',
-    format: 'PDF',
-    size: '850 Ko',
-    description: 'Texte fondamental régissant l’adhésion, les droits et devoirs des organisations membres, ainsi que le code de conduite en matière de transparence.',
-    pages: 24,
-  },
-  {
-    id: 'fiche-mentorat-jeunes-filles',
-    title: 'Cahier de Mentorat : Éveil au Leadership & Parcours d’Excellence pour Filles',
-    category: 'Guide',
-    year: '2025',
-    format: 'PDF',
-    size: '1.9 Mo',
-    description: 'Outil pédagogique conçu par la FJAD et la commission Éducation pour l’animation de cercles de mentorat dans les collèges et universités.',
-    pages: 30,
-  },
+  { id: 'statuts-rve', title: 'Statuts du RVE-Bénin', category: 'Publication', year: '2026', format: 'PDF', size: '381 Ko', pages: 13, description: 'Statuts mis en conformité et adoptés en assemblée générale extraordinaire le 29 avril 2026.', url: '/assets/documents/statuts-rve-benin.pdf' },
+  { id: 'reglement-rve', title: 'Règlement intérieur du RVE-Bénin', category: 'Publication', year: '2026', format: 'PDF', size: '292 Ko', pages: 6, description: 'Règlement intérieur mis en conformité et adopté en assemblée générale extraordinaire le 29 avril 2026.', url: '/assets/documents/reglement-interieur-rve-benin.pdf' },
 ];
 
 interface ResourcesSectionProps {
@@ -107,7 +50,7 @@ export const ResourcesSection: React.FC<ResourcesSectionProps> = ({ onDownloadRe
               Savoirs partagés, données probantes et outils de plaidoyer
             </h2>
             <p className="mt-4 text-base max-w-[62ch] text-ink-soft leading-relaxed">
-              Consultez et téléchargez gratuitement les études, manuels méthodologiques, rapports d'activité et notes de positionnement du RVE-Bénin.
+              Consultez les documents institutionnels disponibles au téléchargement.
             </p>
           </div>
 

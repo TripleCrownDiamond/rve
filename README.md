@@ -1,5 +1,7 @@
 # RVE-Bénin — site web
 
+Le plan de communication 2026–2027 se trouve dans `03_PLAN_COMMUNICATION/` en Markdown et en Word. Il couvre diagnostic, publics, messages, canaux, validation, calendrier de quatre semaines, supports et indicateurs.
+
 Site du **Réseau Voix EssentiELLES Bénin**, fédération de neuf organisations
 féminines de la société civile béninoise.
 
@@ -51,10 +53,16 @@ Points de contrainte notables :
 
 ## État
 
-Maquette sans serveur. L'authentification, les commentaires et les actions
-du tableau de bord sont inertes ; ils seront branchés avec la base de
-données. Les écrans le signalent explicitement plutôt que de le laisser
-croire.
+Site public statique. L'authentification et les actions du tableau de bord
+nécessitent encore une base de données. Les formulaires de contact, de partenariat
+et d'adhésion préparent un e-mail que le visiteur doit envoyer depuis sa messagerie. Les fiches membres proviennent de la fiche
+de collecte du réseau ; trois profils restent à compléter. Les opportunités
+restent vides tant qu'aucune annonce validée n'est fournie.
 
-Les documents institutionnels du réseau ne sont pas versionnés ici : voir
-`.gitignore`.
+Pages publiques : accueil, présentation du réseau, domaines, actions, projets,
+organisations membres et fiches, gouvernance, documents institutionnels,
+partenariats, opportunités, adhésion, contact et confidentialité. Les statuts et le
+règlement intérieur sont disponibles au téléchargement sur la page ressources.
+
+Les documents de travail internes restent hors du dépôt : voir `.gitignore`.
+Les copies destinées à la publication sont dans `site_web/public/assets/documents/`.

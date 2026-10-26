@@ -5,265 +5,17 @@ import { ActionArticle } from './ActionsSection.tsx';
 import { ResourceItem } from './ResourcesSection.tsx';
 import { MemberOrg } from './MemberLogos.tsx';
 import { DomainItem } from './DomainsSection.tsx';
+import { Lien } from '../router';
 
-/** Contact / Partnership Dialog */
-export const ContactModal: React.FC<{
-  isOpen: boolean;
-  onClose: () => void;
-  defaultSubject?: string;
-}> = ({ isOpen, onClose, defaultSubject = 'Renseignement général' }) => {
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    org: '',
-    email: '',
-    phone: '',
-    subject: defaultSubject,
-    message: '',
-  });
-
+/** Contact by the visitor's own email client until a server endpoint is available. */
+export const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; defaultSubject?: string }> = ({ isOpen, onClose, defaultSubject = 'Renseignement général' }) => {
   if (!isOpen) return null;
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-line overflow-hidden">
-        {/* Header */}
-        <div className="px-6 py-5 bg-surface-raised border-b border-line-soft flex items-center justify-between">
-          <div>
-            <h3 className="text-lg font-bold text-ink">Contacter le RVE-Bénin</h3>
-            <p className="text-xs text-ink-muted">Secrétariat Exécutif · Cotonou, Bénin</p>
-          </div>
-          <button
-            onClick={onClose}
-            className="p-1.5 rounded-lg text-ink-muted hover:text-ink hover:bg-surface-sunken transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Content */}
-        <div className="p-6">
-          {submitted ? (
-            <div className="py-8 text-center space-y-4">
-              <div className="w-12 h-12 bg-surface-rest text-rve-green rounded-full mx-auto flex items-center justify-center">
-                <CheckCircle className="w-7 h-7" />
-              </div>
-              <h4 className="text-lg font-bold text-ink">Message transmis avec succès</h4>
-              <p className="text-xs sm:text-sm text-ink-soft max-w-sm mx-auto leading-relaxed">
-                Le Secrétariat Exécutif du Réseau Voix EssentiELLES Bénin a bien reçu votre communication. Une réponse vous sera apportée sous 48 heures ouvrées.
-              </p>
-              <button
-                onClick={() => {
-                  setSubmitted(false);
-                  onClose();
-                }}
-                className="mt-4 px-5 py-2.5 text-xs font-semibold text-white bg-rve-green rounded-xl hover:bg-rve-green-ink transition-colors"
-              >
-                Fermer la fenêtre
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <RangeeChamps>
-                <Champ
-                  label="Nom complet"
-                  obligatoire
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="ex. Mariam Kora"
-                />
-                <Champ
-                  label="Organisation / Institution"
-                  type="text"
-                  value={formData.org}
-                  onChange={(e) => setFormData({ ...formData, org: e.target.value })}
-                  placeholder="ex. Agence, ONG ou Ministère"
-                />
-              </RangeeChamps>
-
-              <RangeeChamps>
-                <Champ
-                  label="Adresse email"
-                  obligatoire
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="nom@organisation.org"
-                />
-                <Champ
-                  label="Téléphone / WhatsApp"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="+229 97 00 00 00"
-                />
-              </RangeeChamps>
-
-              <Champ
-                label="Objet"
-                obligatoire
-                type="text"
-                value={formData.subject}
-                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-              />
-
-              <ChampTexte
-                label="Message ou proposition"
-                obligatoire
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Précisez votre demande, proposition de partenariat ou de concertation…"
-              />
-
-              <div className="pt-2 flex items-center justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="px-4 py-2 text-xs font-semibold text-ink-soft hover:text-ink rounded-xl"
-                >
-                  Annuler
-                </button>
-                <button
-                  type="submit"
-                  className="flex cursor-pointer items-center gap-1.5 rounded-bouton bg-rve-green px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-150 hover:bg-rve-green-ink"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Envoyer la demande</span>
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+  return <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" role="dialog" aria-modal="true" aria-label="Contacter le RVE-Bénin"><div className="w-full max-w-lg rounded-carte bg-surface p-7 shadow-xl"><div className="flex items-start justify-between gap-4"><h2 className="font-display text-xl font-bold text-ink">Contacter le RVE-Bénin</h2><button onClick={onClose} aria-label="Fermer" className="text-ink-muted"><X className="h-5 w-5" /></button></div><p className="mt-4 text-ink-soft">La page de contact comprend un formulaire pour préparer votre demande dans votre messagerie.</p><Lien vers="/contact" onClick={onClose} className="mt-7 inline-flex rounded-bouton bg-rve-green px-5 py-3 text-sm font-bold text-white hover:bg-rve-green-ink">Ouvrir le formulaire</Lien><p className="mt-4 text-sm text-ink-muted">Objet suggéré : {defaultSubject}</p></div></div>;
 };
 
-/** Join / Adhesion Modal */
-export const JoinModal: React.FC<{
-  isOpen: boolean;
-  onClose: () => void;
-}> = ({ isOpen, onClose }) => {
-  const [submitted, setSubmitted] = useState(false);
-  const [oscName, setOscName] = useState('');
-  const [departement, setDepartement] = useState('Littoral (Cotonou)');
-
+export const JoinModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-line overflow-hidden">
-        <div className="px-6 py-5 bg-surface-raised border-b border-line-soft flex items-center justify-between">
-          <div>
-            <h3 className="text-lg font-bold text-ink">Adhérer au Réseau RVE-Bénin</h3>
-            <p className="text-xs text-rve-green font-medium">Rejoindre la coalition des OSC féminines</p>
-          </div>
-          <button onClick={onClose} className="p-1.5 rounded-lg text-ink-muted hover:text-ink hover:bg-surface-sunken">
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        <div className="p-6">
-          {submitted ? (
-            <div className="py-6 text-center space-y-4">
-              <div className="w-12 h-12 bg-surface-rest text-rve-green rounded-full mx-auto flex items-center justify-center">
-                <CheckCircle className="w-7 h-7" />
-              </div>
-              <h4 className="text-lg font-bold text-ink">Demande d'adhésion enregistrée</h4>
-              <p className="text-xs sm:text-sm text-ink-soft max-w-sm mx-auto leading-relaxed">
-                Votre dossier préliminaire a été transmis à la Commission d'Adhésion et de Conformité du Conseil d'Administration. Vous recevrez les termes de référence et la fiche de collecte.
-              </p>
-              <button
-                onClick={() => {
-                  setSubmitted(false);
-                  onClose();
-                }}
-                className="px-5 py-2.5 text-xs font-semibold text-white bg-rve-green rounded-xl hover:bg-rve-green-ink"
-              >
-                Fermer
-              </button>
-            </div>
-          ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
-              className="space-y-4"
-            >
-              <div className="p-3.5 rounded-xl bg-surface-sunken/60 border border-rve-lime/60 text-xs text-forest space-y-1">
-                <span className="font-bold block">Critères généraux d'éligibilité :</span>
-                <p>• Être une organisation féminine légalement enregistrée en République du Bénin.</p>
-                <p>• Avoir au moins 1 an d'activités vérifiables sur le terrain dans nos 6 domaines.</p>
-                <p>• Adhérer sans réserve à la charte éthique et au principe de sororité solidaire.</p>
-              </div>
-
-              <Champ
-                label="Dénomination de l’OSC"
-                obligatoire
-                type="text"
-                value={oscName}
-                onChange={(e) => setOscName(e.target.value)}
-                placeholder="Nom officiel de l’organisation"
-              />
-
-              <RangeeChamps>
-                <ChampSelect
-                  label="Département principal"
-                  obligatoire
-                  value={departement}
-                  onChange={(e) => setDepartement(e.target.value)}
-                  options={['Alibori','Atacora','Atlantique','Borgou','Collines','Couffo','Donga','Littoral (Cotonou)','Mono','Ouémé','Plateau','Zou']}
-                />
-                <Champ
-                  label="Numéro d’enregistrement / Journal Officiel"
-                  type="text"
-                  placeholder="N° Rép. Préfecture / MISP"
-                />
-              </RangeeChamps>
-
-              <RangeeChamps>
-                <Champ
-                  label="Email de contact"
-                  obligatoire
-                  type="email"
-                  placeholder="contact@ong.bj"
-                />
-                <Champ
-                  label="Téléphone de la présidente / coordinatrice"
-                  obligatoire
-                  type="tel"
-                  placeholder="+229 ..."
-                />
-              </RangeeChamps>
-
-              <div className="pt-2 flex items-center justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="px-4 py-2 text-xs font-semibold text-ink-soft hover:text-ink"
-                >
-                  Annuler
-                </button>
-                <button
-                  type="submit"
-                  className="flex cursor-pointer items-center gap-1.5 rounded-bouton bg-rve-green px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-150 hover:bg-rve-green-ink"
-                >
-                  <span>Transmettre le formulaire</span>
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+  return <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" role="dialog" aria-modal="true" aria-label="Rejoindre le réseau"><div className="w-full max-w-lg rounded-carte bg-surface p-7 shadow-xl"><div className="flex items-start justify-between gap-4"><h2 className="font-display text-xl font-bold text-ink">Rejoindre le réseau</h2><button onClick={onClose} aria-label="Fermer" className="text-ink-muted"><X className="h-5 w-5" /></button></div><p className="mt-4 text-ink-soft">Présentez votre organisation, ses domaines d’intervention et votre demande. Le Secrétariat exécutif vous indiquera la procédure applicable.</p><Lien vers="/adhesion" onClick={onClose} className="mt-7 inline-flex rounded-bouton bg-rve-green px-5 py-3 text-sm font-bold text-white hover:bg-rve-green-ink">Présenter mon organisation</Lien></div></div>;
 };
 
 /** Article Reader Modal */
@@ -326,6 +78,7 @@ export const ResourceModal: React.FC<{
   if (!resource) return null;
 
   const handleDownload = () => {
+    window.open(resource?.url, '_blank', 'noopener,noreferrer');
     setDownloaded(true);
     setTimeout(() => {
       setDownloaded(false);
@@ -376,7 +129,7 @@ export const ResourceModal: React.FC<{
           {downloaded ? (
             <div className="p-3 bg-surface-sunken border border-rve-lime rounded-xl text-xs text-rve-green flex items-center gap-2">
               <CheckCircle className="w-4 h-4 shrink-0" />
-              <span>Document prêt. Le téléchargement de « {resource.title} » a démarré.</span>
+              <span>Le document s’est ouvert dans un nouvel onglet.</span>
             </div>
           ) : null}
 

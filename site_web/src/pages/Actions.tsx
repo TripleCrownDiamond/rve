@@ -5,7 +5,6 @@ import { PageHeader, PageBody } from '../components/PageHeader';
 import { PageIntrouvable } from './Domaines';
 import { Reveal } from '../components/Reveal';
 import { Arc } from '../components/Decor';
-import { ActionsArticle, Commentaires } from '../components/ArticleSocial';
 import {
   Carte,
   CarteCorps,
@@ -118,13 +117,6 @@ export const PageAction: React.FC<{ id: string }> = ({ id }) => {
               {article.excerpt}
             </p>
 
-            <ActionsArticle
-              id={article.id}
-              titre={article.title}
-              jaimeBase={24}
-              nbCommentaires={2}
-              className="mt-8"
-            />
 
             <div className="mt-8 flex flex-col gap-6">
               {article.fullContent
@@ -138,7 +130,6 @@ export const PageAction: React.FC<{ id: string }> = ({ id }) => {
                 ))}
             </div>
 
-            <Commentaires articleId={article.id} />
           </article>
 
           <aside className="lg:col-span-3 lg:col-start-10">

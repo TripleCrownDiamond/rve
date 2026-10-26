@@ -36,7 +36,7 @@ export const PageRessources: React.FC = () => {
     <>
       <PageHeader
         titre="Ressources et publications"
-        amorce="Rapports, guides de plaidoyer et notes d’orientation produits par le réseau et ses organisations membres."
+        amorce="Documents institutionnels du réseau disponibles en consultation et au téléchargement."
         image="/assets/img/atelier-ecriture.jpg"
         cadrage="50% 42%"
         fil={[{ label: 'Ressources' }]}
@@ -127,12 +127,10 @@ export const PageRessource: React.FC<{ id: string }> = ({ id }) => {
                   </div>
                 ))}
               </dl>
-              <Bouton icone="fleche" className="mt-6 w-full">
-                <span className="inline-flex items-center gap-2">
+              <a href={res.url} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-bouton bg-rve-green px-5 py-3 text-sm font-bold text-white hover:bg-rve-green-ink">
                   <Download className="h-4 w-4" aria-hidden="true" />
                   Télécharger
-                </span>
-              </Bouton>
+              </a>
             </Encadre>
           </aside>
         </div>
@@ -149,7 +147,7 @@ export const PageGouvernance: React.FC = () => (
   <>
     <PageHeader
       titre="Une gouvernance démocratique et redevable"
-      amorce="Quatre organes, des mandats distincts, des comptes rendus systématiques : la structure qui permet à neuf organisations de décider ensemble."
+      amorce="Quatre organes définis dans les statuts pour orienter, administrer, contrôler et coordonner le réseau."
       image="/assets/img/pleniere-parakou.jpg"
       cadrage="50% 40%"
       fil={[{ label: 'Gouvernance' }]}
@@ -210,8 +208,8 @@ export const PageGouvernance: React.FC = () => (
 export const PageReseau: React.FC = () => (
   <>
     <PageHeader
-      titre="Neuf organisations qui cessent de travailler chacune de son côté"
-      amorce="Le RVE-Bénin réunit des organisations féminines qui intervenaient séparément sur les mêmes terrains. Elles préparent désormais leurs positions ensemble et les portent d’une seule voix."
+      titre="Neuf organisations réunies pour agir ensemble"
+      amorce="Créé en 2025, le RVE-Bénin fédère des organisations féminines pour mutualiser leurs ressources, renforcer leurs capacités et porter un plaidoyer collectif."
       image="/assets/img/participante-table.jpg"
       cadrage="55% 35%"
       fil={[{ label: 'Le réseau' }]}

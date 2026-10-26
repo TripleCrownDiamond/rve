@@ -82,6 +82,15 @@ export interface MemberOrg {
   category: 'Membre Fondateur' | 'Organisation Membre' | 'Partenaire Stratégique';
   description: string;
   focus: string;
+  zone?: string;
+  address?: string;
+  email?: string;
+  phone?: string;
+  website?: string;
+  socials?: { label: string; url: string }[];
+  contactPerson?: string;
+  contactRole?: string;
+  profileComplete?: boolean;
   logo: React.ReactNode;
 }
 
@@ -104,54 +113,56 @@ export const MEMBER_ORGANIZATIONS: MemberOrg[] = [
     id: 'fjad',
     name: 'Fondation des Jeunes Amazones pour le Développement',
     shortName: 'FJAD',
-    category: 'Membre Fondateur',
-    description: "Organisation pionnière mobilisée pour l'éveil citoyen, la défense des droits fondamentaux des filles et l'autonomie des jeunes femmes béninoises.",
-    focus: 'Droits des filles, leadership jeune, éveil citoyen',
+    category: 'Organisation Membre',
+    description: 'Association féministe engagée contre les inégalités de genre et les violences faites aux femmes et aux filles. Elle mène des campagnes de sensibilisation, des actions de plaidoyer et des services de protection.',
+    focus: 'Droits des femmes et des filles, DSSR, lutte contre les violences, leadership, réinsertion et résilience climatique',
+    zone: 'Bénin, principalement les quatre départements du Nord', address: 'Parakou, Albarika, Carrefour Kilombo', email: 'fjadamazone@gmail.com', phone: '+229 01 58 20 11 12', website: 'https://fjadamazones.org/', profileComplete: true,
+    socials: [{ label: 'Facebook', url: 'https://www.facebook.com/share/1PEYHR5ab5/' }, { label: 'LinkedIn', url: 'https://www.linkedin.com/company/fjadbenin/' }, { label: 'TikTok', url: 'https://www.tiktok.com/@fjad.amazones' }, { label: 'YouTube', url: 'https://www.youtube.com/@fjadamazones' }, { label: 'X', url: 'https://x.com/FjadAmazones' }], contactPerson: 'Bénédicta ALOAKINNOU', contactRole: 'Présidente',
     logo: <LocalLogo src="/assets/logos/fjad.jpg" alt="Logo FJAD" />,
   },
   {
     id: 'fran',
     name: 'Fondation Reine ADJIGNON NATABOU',
     shortName: 'FRAN',
-    category: 'Membre Fondateur',
-    description: 'Institution valorisant le leadership féminin d’inspiration patrimoniale et royale, la protection des orphelins, la paix et la médiation sociale.',
-    focus: 'Leadership traditionnel, médiation, protection sociale',
+    category: 'Organisation Membre',
+    description: 'Créée en 2016 et basée à Toviklin, la Fondation œuvre pour l’autonomisation des femmes et des filles ainsi que pour l’épanouissement des jeunes et des personnes vulnérables.',
+    focus: 'Autonomisation, santé communautaire et leadership féminin', zone: 'Couffo et Zou', address: 'Toviklin, arrondissement Avédjin, quartier Natabouhoué, palais Guinli', email: 'fondationreineadjignon@gmail.com', phone: '+229 01 61 32 83 83', profileComplete: true, contactPerson: 'Sa Majesté Reine GUINLITODJI ADJIGNON NATABOU', contactRole: 'Présidente',
     logo: <LocalLogo src="/assets/logos/fran.jpg" alt="Logo Fondation Reine Adjignon Natabou" />,
   },
   {
     id: 'fadec',
-    name: 'FADeC ONG',
+    name: 'Femmes Actrices de Développement Communautaire (FADeC ONG)',
     shortName: 'FADeC ONG',
     category: 'Organisation Membre',
-    description: 'Acteur de premier plan dans le renforcement des capacités communautaires, la santé reproductive, le développement local et la solidarité.',
-    focus: 'Santé communautaire, développement local, inclusion',
+    description: 'Créée en 2006 par les médiatrices EDUCOM, FADeC ONG agit pour la réduction de la pauvreté et la participation des femmes au développement communautaire.',
+    focus: 'DSSR, nutrition, protection, droits socioéconomiques, climat et droits humains', zone: 'Ouémé, Atlantique, Couffo, Zou, Collines et Donga', address: 'Cotonou, Fifadji, 9e arrondissement', email: 'fadec02@yahoo.fr', phone: '+229 01 97 64 15 59', website: 'https://www.fadec-benin-ong.org', profileComplete: true, contactPerson: 'Pauline CONDE', contactRole: 'Directrice exécutive',
     logo: <LocalLogo src="/assets/logos/fadec.jpg" alt="Logo FADeC" />,
   },
   {
     id: 'via-me',
-    name: 'Volontaires Itinérants Actifs pour le Mieux-Être',
+    name: 'Volontaires Itinérants Actifs pour le Mieux-Être (VIA-ME)',
     shortName: 'VIA-ME',
     category: 'Organisation Membre',
-    description: 'Réseau de volontaires de terrain déployant des cliniques mobiles, un soutien psychosocial et des actions de santé de proximité.',
-    focus: 'Cliniques itinérantes, accès aux soins, bien-être social',
+    description: 'Association de jeunes qui sensibilise, forme et éduque à l’engagement civique et au volontariat. Ses interventions couvrent notamment la santé, l’environnement et l’autonomisation des femmes.',
+    focus: 'Santé, engagement civique, volontariat, genre et autonomisation', zone: 'Ensemble du territoire national', address: 'Cotonou, Zogbo, Yenawa', email: 'viameoffice@gmail.com', phone: '+229 01 60 95 80 80', website: 'https://viame-association.org/', profileComplete: true, contactPerson: 'Dr Odry F. AGBESSI', contactRole: 'Présidente', socials: [{ label: 'Facebook', url: 'https://www.facebook.com/viame229' }, { label: 'Instagram', url: 'https://www.instagram.com/viame229/' }, { label: 'X', url: 'https://x.com/ViaMe8' }],
     logo: <LocalLogo src="/assets/logos/via-me.png" alt="Logo VIA-ME" />,
   },
   {
     id: 'wopa',
-    name: 'Women & Power Association',
+    name: 'Women & Power Association Benin',
     shortName: 'WOPA',
     category: 'Organisation Membre',
-    description: 'Mouvement voué au renforcement du pouvoir d’action politique et économique des femmes, au mentorat d’excellence et aux carrières publiques.',
-    focus: 'Pouvoir d’action féminin, carrières, mentorat',
+    description: 'La fiche de présentation de cette organisation est en cours de collecte.',
+    focus: 'À renseigner par l’organisation', email: 'wopasbenin@gmail.com',
     logo: <LocalLogo src="/assets/logos/wopas.png" alt="Logo Women and Power Association" />,
   },
   {
     id: 'gjfa',
-    name: 'Groupe de Jeunes Filles & Femmes Autonomes',
+    name: 'Groupe de Jeunes Filles et Femmes Autonomes (GJFA ONG)',
     shortName: 'GJFA',
     category: 'Organisation Membre',
-    description: 'Collectif dynamique focalisé sur l’autonomisation financière, les micro-entreprises féminines et la formation professionnelle qualifiante.',
-    focus: 'Autonomisation financière, formation professionnelle',
+    description: 'Organisation béninoise créée en 2018 pour défendre les droits des femmes et accompagner les jeunes filles, notamment en milieu rural, vers une participation autonome et équitable à la vie de leur communauté.',
+    focus: 'DSSR, lutte contre les violences, leadership, autonomisation socioéconomique et environnement', zone: 'Mono et Couffo', address: 'Houéyogbé, Zoungbonou (Mono)', email: 'gjfa2018@gmail.com', phone: '+229 01 96 00 43 58', website: 'https://www.gjfabenin.org/', profileComplete: true, contactPerson: 'Anne Ella MAHOUKPO', contactRole: 'Coordonnatrice', socials: [{ label: 'Facebook', url: 'https://www.facebook.com/share/1HSW46NvbL/' }, { label: 'LinkedIn', url: 'https://www.linkedin.com/company/gjfa/' }, { label: 'X', url: 'https://x.com/gjfa_ong' }],
     logo: <LocalLogo src="/assets/logos/gjfa.jpg" alt="Logo GJFA" />,
   },
   {
@@ -159,8 +170,8 @@ export const MEMBER_ORGANIZATIONS: MemberOrg[] = [
     name: 'Benin Women Alumni Association',
     shortName: 'BWAA',
     category: 'Organisation Membre',
-    description: 'Réseau réunissant des lauréates et alumni de programmes internationaux pour catalyser l’innovation sociale, la recherche et l’impact.',
-    focus: 'Réseau d’excellence, innovation, programmes internationaux',
+    description: 'Organisation à but non lucratif créée en 2017, réunissant des femmes béninoises de plusieurs générations. Elle agit par la formation, le plaidoyer, le mentorat et la mobilisation communautaire.',
+    focus: 'Leadership féminin, lutte contre les VBG, entrepreneuriat, formation et mentorat', zone: 'Zou, Abomey-Calavi et Cotonou', address: 'Cotonou, Zogbo', email: 'us.beninwomenalumni@gmail.com', phone: '+229 01 51 78 13 11', website: 'https://us-bwaa.org', profileComplete: true, contactPerson: 'Alice GOUGBE', contactRole: 'Présidente', socials: [{ label: 'Facebook', url: 'https://www.facebook.com/share/1GqFVCzhq1/' }, { label: 'TikTok', url: 'https://www.tiktok.com/@beninwomenalumni' }, { label: 'X', url: 'https://x.com/beninwomen' }],
     logo: <LocalLogo src="/assets/logos/bwaa.jpg" alt="Logo BWAA" />,
   },
   {
@@ -168,17 +179,17 @@ export const MEMBER_ORGANIZATIONS: MemberOrg[] = [
     name: 'Fondation Reine HANGBE',
     shortName: 'FRH',
     category: 'Organisation Membre',
-    description: 'Structure inspirée par l’héritage historique de la Reine Hangbé du Danxomè, valorisant le matrimoine, la culture et l’émancipation féminine.',
-    focus: 'Histoire & Matrimoine, émancipation culturelle',
+    description: 'La fiche de présentation de cette organisation est en cours de collecte.',
+    focus: 'À renseigner par l’organisation', email: 'reinehangbefondation@gmail.com',
     logo: <LocalLogo src="/assets/logos/frh.jpg" alt="Logo Fondation Reine Hangbe" />,
   },
   {
     id: 'icone360',
-    name: 'Icône 360',
+    name: 'ICONE 360 ONG',
     shortName: 'Icône 360',
     category: 'Organisation Membre',
-    description: 'Agence et laboratoire d’idées spécialisé dans la communication d’impact, le plaidoyer numérique et la valorisation médiatique des femmes leaders.',
-    focus: 'Communication de plaidoyer, médias, visibilité',
+    description: 'La fiche de présentation de cette organisation est en cours de collecte.',
+    focus: 'À renseigner par l’organisation', email: 'ongicone360@gmail.com',
     logo: <LocalLogo src="/assets/logos/icone360.jpg" alt="Logo Icône 360" />,
   },
   {
@@ -186,8 +197,8 @@ export const MEMBER_ORGANIZATIONS: MemberOrg[] = [
     name: 'Speak Up Africa',
     shortName: 'Speak Up Africa',
     category: 'Partenaire Stratégique',
-    description: 'Organisation d’action et de plaidoyer panafricaine catalyseur de l’initiative Voix EssentiELLES, appuyant la santé publique et le leadership.',
-    focus: 'Plaidoyer panafricain, santé globale, appui institutionnel',
+    description: 'Speak Up Africa accompagne le programme Voix EssentiELLES, dans le cadre duquel le réseau bénéficie d’un appui.',
+    focus: 'Programme Voix EssentiELLES', website: 'https://www.speakupafrica.org/fr/program/voix-essentielles/', profileComplete: true,
     logo: <LocalLogo src="/assets/logos/speakup-africa.png" alt="Logo Speak Up Africa" />,
   },
 ];

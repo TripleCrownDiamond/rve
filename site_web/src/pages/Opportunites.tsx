@@ -51,93 +51,7 @@ export interface Opportunite {
   profil: string[];
 }
 
-export const OPPORTUNITES: Opportunite[] = [
-  {
-    id: 'chargee-plaidoyer',
-    titre: 'Chargée de plaidoyer et relations institutionnelles',
-    type: 'Offre d’emploi',
-    resume:
-      'Porter les positions du réseau auprès des ministères sectoriels et des assemblées locales, et préparer les notes qui les appuient.',
-    lieu: 'Cotonou',
-    contrat: 'Temps plein',
-    publie: '2 septembre 2026',
-    echeance: '15 octobre 2026',
-    missions: [
-      'Préparer les positions communes avec les trois collèges thématiques',
-      'Assurer le suivi des rencontres avec les ministères et les partenaires techniques',
-      'Rédiger les notes d’orientation et les argumentaires remis aux décideurs',
-    ],
-    profil: [
-      'Formation supérieure en sciences politiques, droit ou développement',
-      'Expérience du plaidoyer auprès d’institutions publiques',
-      'Maîtrise du français ; la pratique de langues nationales est un atout',
-    ],
-  },
-  {
-    id: 'audit-financier-2026',
-    titre: 'Audit financier annuel des comptes du réseau',
-    type: 'Appel d’offres',
-    resume:
-      'Sélection d’un cabinet indépendant pour l’audit des comptes de l’exercice et la revue des procédures de gestion.',
-    lieu: 'Cotonou',
-    contrat: 'Prestation',
-    publie: '18 août 2026',
-    echeance: '30 septembre 2026',
-    missions: [
-      'Audit des états financiers de l’exercice écoulé',
-      'Revue des procédures de gestion et de passation',
-      'Remise d’un rapport et d’une lettre de recommandations',
-    ],
-    profil: [
-      'Cabinet inscrit à l’ordre des experts-comptables',
-      'Références en audit d’organisations de la société civile',
-      'Disponibilité sur la période de clôture',
-    ],
-  },
-  {
-    id: 'academie-leadership',
-    titre: 'Académie du leadership féminin — appel à candidatures',
-    type: 'Appel à candidatures',
-    resume:
-      'Cycle de formation destiné aux jeunes professionnelles et élues locales souhaitant renforcer leur capacité d’intervention publique.',
-    lieu: 'Plusieurs départements',
-    contrat: 'Programme',
-    publie: '5 juillet 2026',
-    echeance: '20 août 2026',
-    close: true,
-    missions: [
-      'Six modules répartis sur quatre mois',
-      'Accompagnement individuel par une marraine du réseau',
-      'Travail de terrain restitué en fin de cycle',
-    ],
-    profil: [
-      'Être engagée dans une organisation ou une instance locale',
-      'Disponibilité sur l’ensemble du cycle',
-      'Candidature portée par une organisation membre ou partenaire',
-    ],
-  },
-  {
-    id: 'stage-communication',
-    titre: 'Stage — communication et production de contenus',
-    type: 'Stage',
-    resume:
-      'Appui à la production éditoriale du réseau : comptes rendus d’activités, contenus pour les réseaux sociaux, couverture des rencontres.',
-    lieu: 'Cotonou',
-    contrat: 'Stage · 6 mois',
-    publie: '12 septembre 2026',
-    echeance: '10 octobre 2026',
-    missions: [
-      'Rédiger les comptes rendus des rencontres et ateliers',
-      'Préparer les contenus des publications du réseau',
-      'Constituer et tenir à jour la photothèque',
-    ],
-    profil: [
-      'Formation en communication, journalisme ou lettres',
-      'Aisance rédactionnelle en français',
-      'Intérêt pour les questions de droits des femmes',
-    ],
-  },
-];
+export const OPPORTUNITES: Opportunite[] = [];
 
 const ICONES: Record<TypeOpportunite, React.ElementType> = {
   'Offre d’emploi': Briefcase,
@@ -184,6 +98,7 @@ export const PageOpportunites: React.FC = () => {
           ))}
         </div>
 
+        {liste.length === 0 && <div className="relative rounded-carte border border-line bg-surface p-8"><h2 className="font-display text-xl font-bold text-ink">Aucune opportunité publiée actuellement</h2><p className="mt-3 max-w-[60ch] text-ink-soft">Les appels validés par le réseau et ses organisations membres paraîtront ici avec leurs conditions et dates limites.</p></div>}
         <Grille colonnes={2} className="relative">
           {liste.map((o) => {
             const Icone = ICONES[o.type];

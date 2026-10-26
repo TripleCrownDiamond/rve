@@ -41,7 +41,7 @@ export const PageMembres: React.FC = () => {
     <>
       <PageHeader
         titre="Les organisations du réseau"
-        amorce="Neuf organisations féminines de la société civile béninoise, réparties en trois collèges thématiques, et les partenaires qui les appuient."
+        amorce="Découvrez les neuf organisations membres du RVE-Bénin, leurs domaines d’action, leurs territoires et leurs coordonnées disponibles."
         image="/assets/img/pleniere-parakou.jpg"
         cadrage="40% 45%"
         fil={[{ label: 'Membres' }]}
@@ -68,19 +68,19 @@ export const PageMembres: React.FC = () => {
           ))}
         </div>
 
-        {/* Rangées centrées plutôt qu'une grille à colonnes fixes : le
-            filtre fait varier le compte, et une grille rigide laisserait
-            des cellules orphelines dans un angle à chaque changement. */}
-        <ul className="flex flex-wrap justify-center gap-4 sm:gap-5">
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {liste.map((org) => (
             <li key={org.id}>
               <Lien
                 vers={`/membres/${org.id}`}
                 title={org.name}
                 aria-label={`${org.name} — voir la fiche`}
-                className="group flex h-28 w-[9.25rem] cursor-pointer items-center justify-center rounded-carte border border-line bg-surface px-5 transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:-translate-y-0.5 hover:border-rve-green/40 hover:shadow-md sm:h-32 sm:w-44 sm:px-6 lg:w-48 [&_img]:opacity-55 [&_img]:mix-blend-multiply [&_img]:brightness-[var(--densite,1)] [&_img]:grayscale [&_img]:transition-[filter,opacity] [&_img]:duration-200 hover:[&_img]:opacity-100 hover:[&_img]:brightness-100 hover:[&_img]:grayscale-0"
+                className="group flex h-full min-h-52 flex-col items-start rounded-carte border border-line bg-surface p-6 transition-[border-color,box-shadow] duration-200 hover:border-rve-green/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-rve-green"
               >
-                {org.logo}
+                <span className="flex h-20 w-full items-center justify-start [&_img]:max-w-32">{org.logo}</span>
+                <span className="mt-4 font-display text-base font-bold leading-snug text-ink">{org.name}</span>
+                <span className="mt-2 text-sm leading-relaxed text-ink-soft">{org.profileComplete ? org.focus : 'Profil à compléter'}</span>
+                {org.zone && <span className="mt-auto pt-4 text-xs font-medium text-rve-green-ink">{org.zone}</span>}
               </Lien>
             </li>
           ))}
@@ -95,7 +95,7 @@ export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
   const org = MEMBER_ORGANIZATIONS.find((m) => m.id === id);
   if (!org) return <PageIntrouvable quoi="Cette organisation" retour="/membres" />;
 
-  const autres = MEMBER_ORGANIZATIONS.filter((m) => m.id !== id).slice(0, 3);
+  const autres = MEMBER_ORGANIZATIONS.filter((m) => m.id !== id && m.category === org.category).slice(0, 3);
 
   return (
     <>
@@ -119,6 +119,11 @@ export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
               {org.focus}
             </p>
 
+            {(org.zone || org.address) && <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              {org.zone && <div><h3 className="font-semibold text-ink">Zone d’intervention</h3><p className="mt-2 text-ink-soft">{org.zone}</p></div>}
+              {org.address && <div><h3 className="font-semibold text-ink">Siège</h3><p className="mt-2 text-ink-soft">{org.address}</p></div>}
+            </div>}
+
             <Bouton vers="/membres" icone="fleche" ton="secondaire" className="mt-10">
               Voir toutes les organisations
             </Bouton>
@@ -134,11 +139,20 @@ export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
             <Encadre titre="Statut dans le réseau" className="mt-6">
               <p className="text-[0.9375rem] text-ink">{org.category}</p>
             </Encadre>
+            <Encadre titre="Contacter l’organisation" className="mt-6">
+              <div className="flex flex-col gap-3 text-sm break-words">
+                {org.email && <a className="text-rve-green-ink underline" href={`mailto:${org.email}`}>{org.email}</a>}
+                {org.phone && <a className="text-rve-green-ink underline" href={`tel:${org.phone.replace(/[^+\d]/g, '')}`}>{org.phone}</a>}
+                {org.website && <a className="text-rve-green-ink underline" href={org.website} target="_blank" rel="noopener noreferrer">Site officiel ↗</a>}
+                {org.socials?.map((s) => <a key={s.label} className="text-rve-green-ink underline" href={s.url} target="_blank" rel="noopener noreferrer">{s.label} ↗</a>)}
+                {org.contactPerson && <p className="border-t border-line pt-3 text-ink-soft">Contact : {org.contactPerson}{org.contactRole ? `, ${org.contactRole}` : ''}</p>}
+              </div>
+            </Encadre>
           </aside>
         </div>
 
         <div className="mt-20 border-t border-line pt-12">
-          <TitreSection niveau={3} titre="Autres organisations membres" />
+          <TitreSection niveau={3} titre={org.category === 'Partenaire Stratégique' ? 'Autres partenaires' : 'Autres organisations membres'} />
           <Grille className="mt-8">
             {autres.map((m) => (
               <Carte key={m.id} vers={`/membres/${m.id}`}>

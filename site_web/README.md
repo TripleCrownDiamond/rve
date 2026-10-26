@@ -1,20 +1,26 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Site public du RVE-Bénin
 
-# Run and deploy your AI Studio app
+Site vitrine du Réseau Voix EssentiELLES Bénin. Il utilise React, TypeScript, Vite et Tailwind CSS. Les couleurs, polices et composants suivent la charte graphique du réseau.
 
-This contains everything you need to run your app locally.
+## Lancer le site
 
-View your app in AI Studio: https://ai.studio/apps/7f5275b8-57c2-403f-83b5-62234df27f75
+```bash
+npm install
+npm run dev
+```
 
-## Run Locally
+Le serveur local indique son adresse au démarrage. `npm run lint` vérifie les types et `npm run build` produit les fichiers statiques dans `dist/`.
 
-**Prerequisites:**  Node.js
+## Pages disponibles
 
+Accueil, réseau, gouvernance, six domaines d’intervention, actions, projets, annuaire et fiches des organisations membres, opportunités, ressources, partenariats, adhésion, contact et confidentialité. Les documents institutionnels publiables sont dans `public/assets/documents/`.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Formulaires et espace membre
+
+Les formulaires de contact, de partenariat et d’adhésion contrôlent les champs dans le navigateur et préparent un e-mail à l’adresse du Secrétariat exécutif. Le visiteur doit confirmer l’envoi dans son application de messagerie. Aucun message n’est conservé par ce site statique.
+
+Les routes `/connexion` et `/admin` affichent une page d’information. Un espace membre ne pourra être ouvert qu’avec une authentification et un stockage côté serveur. Les informations absentes des fiches membres et les annonces non validées ne sont pas inventées.
+
+## Déploiement
+
+La racine du projet Vercel doit être `site_web`, la commande de build `npm run build` et le répertoire de sortie `dist`. Les URL internes utilisent le fragment `/#/` pour fonctionner sur un hébergement statique sans règle de réécriture.

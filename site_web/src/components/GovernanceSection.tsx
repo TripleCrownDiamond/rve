@@ -11,62 +11,10 @@ import {
 } from 'lucide-react';
 
 export const GOVERNANCE_BODIES = [
-  {
-    id: 'ag',
-    shortName: 'AG',
-    title: 'Assemblée Générale',
-    role: 'Instance Suprême de Délibération',
-    desc: 'Réunit l’ensemble des organisations membres à jour de leurs cotisations. Elle définit les orientations stratégiques générales, approuve les bilans moraux et financiers, et élit les membres des organes de direction.',
-    frequency: 'Annuelle en session ordinaire (ou extraordinaire sur convocation)',
-    composition: 'Déléguées plénipotentiaires des 9 OSC membres fondatrices et adhérentes',
-    powers: [
-      'Adoption et révision des statuts et du règlement intérieur',
-      'Élection et renouvellement des membres du Conseil d’Administration',
-      'Quitus sur les rapports d’audit et l’exercice budgétaire annuel',
-    ],
-  },
-  {
-    id: 'ca',
-    shortName: 'CA',
-    title: 'Conseil d’Administration',
-    role: 'Organe de Direction Stratégique',
-    desc: 'Mandaté par l’Assemblée Générale, le CA impulse la politique globale du réseau, supervise l’action du Secrétariat Exécutif, valide les partenariats stratégiques et veille au rayonnement national et sous-régional.',
-    frequency: 'Trimestrielle',
-    composition: 'Présidence, Vice-Présidence, Secrétariat Général, Trésorerie Générale, Responsables de pôles',
-    powers: [
-      'Validation du plan de travail annuel et du budget prévisionnel',
-      'Recrutement et évaluation de la coordination exécutive',
-      'Représentation institutionnelle auprès des ministères et institutions partenaires',
-    ],
-  },
-  {
-    id: 'cos',
-    shortName: 'COS',
-    title: 'Conseil d’Orientation et de Surveillance',
-    role: 'Vigie Éthique, Conformité & Sagesse',
-    desc: 'Composé de personnalités d’autorité morale, d’anciennes ministres, de reines traditionnelles et de juristes émérites. Il garantit le respect scrupuleux de l’éthique, des valeurs de sororité et arbitre les différends éventuels.',
-    frequency: 'Semestrielle et à la demande',
-    composition: 'Sages, autorités royales et patrimoniales, figures historiques des droits humains au Bénin',
-    powers: [
-      'Veille déontologique et conformité avec les valeurs fondamentales',
-      'Avis consultatifs sur les orientations sociétales majeures',
-      'Médiation et conciliation préventive interne',
-    ],
-  },
-  {
-    id: 'se',
-    shortName: 'SE',
-    title: 'Secrétariat Exécutif',
-    role: 'Bras Opérationnel & Gestion de Programmes',
-    desc: 'Équipe permanente de professionnelles chargées de la mise en œuvre quotidienne des projets, de la gestion administrative et financière, de la recherche d’opportunités et de la communication du réseau.',
-    frequency: 'Activité permanente et continue',
-    composition: 'Secrétaire Exécutive, Chargée de Plaidoyer & Droits, Responsable Santé & Projets, Responsable Administratif & Financier',
-    powers: [
-      'Exécution opérationnelle des conventions de subvention et projets',
-      'Animation du dialogue technique quotidien avec les points focaux des OSC',
-      'Production des rapports périodiques d’activités et de suivi financier',
-    ],
-  },
+  { id: 'ag', shortName: 'AG', title: 'Assemblée Générale', role: 'Instance suprême', desc: 'Elle réunit les membres, définit la politique générale du réseau, élit le Conseil d’Administration et se prononce sur les rapports d’activités et financiers.', frequency: 'Une fois par an en session ordinaire', composition: 'Ensemble des membres du réseau', powers: ['Vote le budget et approuve le programme d’activités', 'Élit les membres du Conseil d’Administration', 'Modifie les statuts et le règlement intérieur selon les règles prévues'] },
+  { id: 'ca', shortName: 'CA', title: 'Conseil d’Administration', role: 'Direction et suivi', desc: 'Il suit les décisions de l’Assemblée Générale, propose les orientations et soumet le programme annuel et le budget à son approbation.', frequency: 'Une fois par trimestre en session ordinaire', composition: 'Cinq membres élues pour un mandat de deux ans renouvelable', powers: ['Suit les décisions de l’Assemblée Générale', 'Soumet le programme et le budget annuels', 'Représente le réseau auprès des pouvoirs publics'] },
+  { id: 'cos', shortName: 'COS', title: 'Conseil d’Orientation et de Surveillance', role: 'Contrôle de gestion', desc: 'Deux personnes bénévoles élues par l’Assemblée Générale vérifient la régularité des procédures et des éléments financiers et lui rendent compte.', frequency: 'Contrôle possible à toute époque de l’année', composition: 'Deux conseillères ou conseillers bénévoles', powers: ['Vérifie la régularité des procédures', 'Contrôle les caisses, valeurs et bilans', 'Rend compte à l’Assemblée Générale'] },
+  { id: 'se', shortName: 'SE', title: 'Secrétariat Exécutif', role: 'Coordination opérationnelle', desc: 'Il met en œuvre au quotidien les décisions de l’Assemblée Générale et du Conseil d’Administration, coordonne les activités et prépare les rapports.', frequency: 'Activité courante', composition: 'À titre indicatif : Secrétaire Exécutive, communication et plaidoyer, assistance administrative, financière et logistique', powers: ['Coordonne les activités du réseau', 'Prépare les rapports et projets de budget', 'Assure la circulation de l’information interne et externe'] },
 ];
 
 export const GovernanceSection: React.FC = () => {

@@ -3,7 +3,6 @@ import { Hero } from '../components/Hero.tsx';
 import { AboutSection } from '../components/AboutSection.tsx';
 import { CollegesSection } from '../components/CollegesSection.tsx';
 import { DomainsSection, DomainItem } from '../components/DomainsSection.tsx';
-import { MomentsSection } from '../components/MomentsSection.tsx';
 import { ActionsSection, ActionArticle } from '../components/ActionsSection.tsx';
 import { VisionValuesSection } from '../components/VisionValuesSection.tsx';
 import { MembersSection } from '../components/MembersSection.tsx';
@@ -50,7 +49,6 @@ export const Accueil: React.FC<AccueilProps> = ({
       <AboutSection onOpenJoin={onOpenJoin} />
       <CollegesSection />
       <DomainsSection onSelectDomain={onSelectDomain} />
-      <MomentsSection />
       <ActionsSection onSelectArticle={onSelectArticle} />
       <VisionValuesSection />
       <MembersSection onOpenJoin={onOpenJoin} onSelectMember={onSelectMember} />

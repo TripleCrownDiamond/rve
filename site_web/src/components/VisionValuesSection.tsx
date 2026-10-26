@@ -73,20 +73,16 @@ export const VisionValuesSection: React.FC = () => {
           <div className="max-w-3xl relative z-10">
             <div className="flex items-center gap-2 text-xs font-semibold text-rve-green tracking-wider uppercase mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-rve-green" />
-              <span>Manifeste & Vision 2030</span>
+              <span>La vision du réseau</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-ink tracking-tight leading-tight mb-6">
               « Un Bénin où toutes les femmes et les filles jouissent pleinement de leurs droits, accèdent équitablement à la santé, à l’éducation et aux opportunités de développement, et participent pleinement aux décisions qui façonnent leur vie et leur communauté. »
             </h2>
 
-            <div className="pt-6 border-t border-line flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm text-ink-soft font-medium">
-              <span className="text-rve-green font-semibold">Adopté à l’unanimité des OSC membres</span>
-              <span aria-hidden="true" className="text-ink-faint">·</span>
-              <span>Charte éthique et politique RVE-Bénin</span>
-              <span aria-hidden="true" className="text-ink-faint">·</span>
-              <span>Cotonou, République du Bénin</span>
-            </div>
+            <p className="pt-6 border-t border-line text-xs sm:text-sm text-ink-soft font-medium">
+              Cette vision guide les actions et le plaidoyer du RVE-Bénin.
+            </p>
           </div>
         </div>
 

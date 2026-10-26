@@ -17,9 +17,8 @@ import {
 /**
  * Page « blocs » des domaines d'intervention.
  *
- * L'accueil n'en garde qu'une amorce ; le détail de ce que le réseau fait
- * dans chaque domaine vit ici. C'est ce transfert qui permet d'alléger
- * l'accueil sans rien perdre.
+ * L'accueil présente les six domaines ; leurs descriptions complètes
+ * et leurs actions sont rassemblées sur cette page.
  */
 export const PageDomaines: React.FC = () => (
   <>

@@ -128,8 +128,8 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
         <Tache couleur="var(--color-rve-yellow)" className="h-64 w-64 opacity-[0.09]" />
       </Flottante>
       <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
-        {/* L’accueil présente trois portes d’entrée. Les six domaines et
-            leurs descriptions complètes vivent sur la page dédiée. */}
+        {/* Les six domaines sont visibles sur l’accueil ; leur développement
+            complet reste disponible sur les pages dédiées. */}
         <Reveal as="header" className="mb-16 max-w-2xl">
           <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
             Les domaines d’action du réseau
@@ -139,9 +139,9 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
           </p>
         </Reveal>
 
-        {/* Trois domaines mis en avant ; l’ensemble reste accessible en un clic. */}
+        {/* Chaque domaine est accessible directement depuis l’accueil. */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {DOMAINS.slice(0, 3).map((domain) => (
+          {DOMAINS.map((domain) => (
             <button
               key={domain.id}
               type="button"
@@ -178,7 +178,7 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
           ))}
         </div>
         <Lien vers="/domaines" className="mt-8 inline-flex items-center gap-2 font-semibold text-rve-green-ink underline-offset-4 hover:underline">
-          Voir les six domaines d’intervention <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          Explorer tous les domaines en détail <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
         </Lien>
       </div>
 

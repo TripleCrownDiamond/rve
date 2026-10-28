@@ -53,7 +53,7 @@ export const MOMENTS: MomentItem[] = [
 
 export const MomentsSection: React.FC = () => {
   return (
-    <section className="overflow-hidden py-20 lg:py-28 bg-white border-b border-line-soft">
+    <section className="overflow-hidden py-20 lg:py-28 bg-white">
       <div className="relative max-w-[1240px] mx-auto px-6 sm:px-8">
         {/* Section Header */}
         <Flottante derive={14} duree={20} rotation={-6} className="pointer-events-none absolute -right-14 top-10">
@@ -74,7 +74,7 @@ export const MomentsSection: React.FC = () => {
           {MOMENTS.map((moment) => (
             <article
               key={moment.id}
-              className="flex h-full flex-col overflow-hidden rounded-carte border border-line bg-surface"
+              className="flex h-full flex-col overflow-hidden bg-surface"
             >
               {/* La photographie occupe la carte : c'est elle qui porte la
                   section, pas la légende. Seuls la date et le lieu restent
@@ -86,8 +86,7 @@ export const MomentsSection: React.FC = () => {
                   className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-night/85 to-transparent" />
-                <p className="absolute inset-x-0 bottom-0 flex items-center gap-2 p-4 text-[0.8125rem] font-medium text-white">
+                <p className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-rve-green-deep/85 p-4 text-[0.8125rem] font-medium text-white">
                   <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   <span className="truncate">{moment.location}</span>
                   <span aria-hidden="true" className="text-white/50">·</span>

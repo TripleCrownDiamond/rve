@@ -3,12 +3,6 @@ import { Flottante, Semis } from './Decor';
 import { Reveal } from './Reveal';
 import {
   Bouton,
-  Carte,
-  CarteCorps,
-  CartePied,
-  CarteVisuel,
-  Etiquette,
-  Meta,
 } from './ui';
 import { ArrowRight } from 'lucide-react';
 
@@ -79,22 +73,23 @@ export const ActionsSection: React.FC<ActionsSectionProps> = ({
           </p>
         </Reveal>
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-10 lg:grid-cols-2">
           {ARTICLES.slice(0, 2).map((article) => (
-            <Carte key={article.id} onClick={() => onSelectArticle(article)}>
-              <CarteVisuel src={article.imageUrl} ratio="aspect-[16/9]" />
-              <CarteCorps>
-                <Etiquette>{article.category}</Etiquette>
-                <span className="mt-3 font-display text-xl font-bold leading-snug text-ink">
+            <Reveal key={article.id} className="h-full">
+            <button type="button" onClick={() => onSelectArticle(article)} className="group flex h-full w-full cursor-pointer flex-col text-left">
+              <span className="block aspect-[16/9] w-full overflow-hidden">
+                <img src={article.imageUrl} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.035]" />
+              </span>
+              <span className="mt-5 text-xs font-bold uppercase tracking-[0.1em] text-rve-red-ink">{article.category} · {article.date}</span>
+              <span className="mt-3 font-display text-xl font-bold leading-snug text-ink group-hover:text-rve-green-ink">
                   {article.title}
-                </span>
-                <span className="mt-3 line-clamp-2 text-sm leading-relaxed text-ink-soft">
+              </span>
+              <span className="mt-3 line-clamp-2 text-sm leading-relaxed text-ink-soft">
                   {article.excerpt}
-                </span>
-                <Meta items={[article.date, article.readTime]} className="mt-auto pt-5" />
-                <CartePied>Lire l’article</CartePied>
-              </CarteCorps>
-            </Carte>
+              </span>
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-rve-green-ink underline underline-offset-4">Lire l’article <ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
+            </button>
+            </Reveal>
           ))}
         </div>
 

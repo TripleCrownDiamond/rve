@@ -1,6 +1,5 @@
 import React from 'react';
-import { Flottante, Tache } from './Decor';
-import { Reveal } from './Reveal';
+import { Cadence, CadenceItem, Reveal } from './Reveal';
 import { Lien } from '../router';
 import { 
   Users2, 
@@ -123,10 +122,7 @@ interface DomainsSectionProps {
 
 export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }) => {
   return (
-    <section id="domaines" className="relative overflow-hidden bg-surface pt-10 pb-20 lg:pt-12 lg:pb-28">
-      <Flottante derive={16} duree={22} rotation={4} className="pointer-events-none absolute -left-24 bottom-24">
-        <Tache couleur="var(--color-rve-yellow)" className="h-64 w-64 opacity-[0.09]" />
-      </Flottante>
+    <section id="domaines" className="bg-surface-raised py-20 lg:py-28">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
         {/* Les six domaines sont visibles sur l’accueil ; leur développement
             complet reste disponible sur les pages dédiées. */}
@@ -140,43 +136,33 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
         </Reveal>
 
         {/* Chaque domaine est accessible directement depuis l’accueil. */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <Cadence className="grid grid-cols-1 gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
           {DOMAINS.map((domain) => (
+            <CadenceItem key={domain.id}>
             <button
-              key={domain.id}
               type="button"
               onClick={() => onSelectDomain(domain)}
-              className="group flex cursor-pointer flex-col justify-between rounded-carte border border-line bg-surface p-7 text-left transition-[box-shadow,transform] duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:-translate-y-1 hover:shadow-lg active:scale-[0.99] sm:p-8"
+              className="group flex h-full w-full cursor-pointer flex-col items-start text-left"
             >
               <div>
-                {/* Pastille d'icone. Pas de marqueur numerote : les six
-                    domaines sont simultanes, pas une sequence. Rayon interieur
-                    (4 px) + marge = rayon exterieur (8 px). */}
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-[4px] border border-line bg-surface-sunken">
+                <div className="mb-5 inline-flex transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110">
                   {domain.icon}
                 </div>
-
-                {/* Title */}
-                <h3 className="text-lg font-bold text-ink group-hover:text-rve-green transition-colors leading-snug mb-3">
+                <h3 className="mb-3 text-lg font-bold leading-snug text-ink transition-colors group-hover:text-rve-green">
                   {domain.title}
                 </h3>
-
-                {/* Short Description */}
-                <p className="text-sm text-ink-soft leading-relaxed line-clamp-2 mb-6">
+                <p className="mb-5 text-sm leading-relaxed text-ink-soft">
                   {domain.shortDesc}
                 </p>
               </div>
-
-              {/* Bottom Metadata & Affordance */}
-              {/* L'alignement ODD et le detail complet vivent dans la fiche,
-                  au clic : la carte n'en garde que l'amorce. */}
-              <span className="inline-flex items-center gap-1 text-[0.8125rem] font-semibold text-rve-green-ink">
+              <span className="inline-flex items-center gap-1 text-[0.8125rem] font-semibold text-rve-green-ink underline decoration-rve-green/40 underline-offset-4 group-hover:decoration-rve-green">
                 Explorer
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-150 group-hover:translate-x-0.5" />
               </span>
             </button>
+            </CadenceItem>
           ))}
-        </div>
+        </Cadence>
         <Lien vers="/domaines" className="mt-8 inline-flex items-center gap-2 font-semibold text-rve-green-ink underline-offset-4 hover:underline">
           Explorer tous les domaines en détail <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
         </Lien>

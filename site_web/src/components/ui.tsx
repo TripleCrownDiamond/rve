@@ -120,13 +120,11 @@ export const Carte: React.FC<CarteProps> = ({
   sourde = false,
   ...reste
 }) => {
-  const base = `flex h-full flex-col rounded-carte border border-line ${
+  const base = `flex h-full flex-col ${
     sourde ? 'bg-surface-sunken' : 'bg-surface'
   }`;
-  // §43 : « Survol : ombre et translation −4 px ». Seuls `transform` et
-  // `box-shadow` sont animés, jamais une propriété de mise en page.
   const interactif =
-    'group cursor-pointer text-left transition-[box-shadow,transform] duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:-translate-y-1 hover:shadow-lg active:scale-[0.99]';
+    'group cursor-pointer text-left transition-transform duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:-translate-y-1 active:scale-[0.99]';
 
   const classes = `${base} ${vers || onClick ? interactif : ''} ${className}`;
 

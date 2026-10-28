@@ -65,7 +65,7 @@ const FAMILLES: Famille[] = [
     vers: '/reseau',
     enfants: [
       { label: 'Présentation', vers: '/reseau', detail: 'Mission, membres et valeurs', icone: BookOpen },
-      { label: 'Organisations membres', vers: '/membres', detail: 'Les neuf OSC et leurs partenaires', icone: Users2 },
+      { label: 'Organisations membres', vers: '/membres', detail: 'Les neuf organisations du réseau', icone: Users2 },
       { label: 'Gouvernance', vers: '/gouvernance', detail: 'Les quatre organes de décision', icone: Landmark },
     ],
     encart: {
@@ -123,19 +123,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
   const { segments } = useRoute();
   const [menuOuvert, setMenuOuvert] = useState(false);
   const [deroulant, setDeroulant] = useState<string | null>(null);
-  const [defile, setDefile] = useState(false);
   const barre = useRef<HTMLElement>(null);
 
   const racine = segments[0] ? `/${segments[0]}` : '/';
   const familleActive = (f: Famille) =>
     f.vers === racine || f.enfants.some((e) => e.vers === racine);
-
-  useEffect(() => {
-    const auDefilement = () => setDefile(window.scrollY > 24);
-    auDefilement();
-    window.addEventListener('scroll', auDefilement, { passive: true });
-    return () => window.removeEventListener('scroll', auDefilement);
-  }, []);
 
   useEffect(() => {
     setMenuOuvert(false);
@@ -161,14 +153,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
   }, [deroulant]);
 
   const familleOuverte = FAMILLES.find((f) => f.label === deroulant) || null;
-  const opaque = defile || menuOuvert || deroulant !== null;
+  const opaque = true;
 
   return (
     <header
       ref={barre}
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-200 ${
         opaque
-          ? 'border-b border-line bg-surface py-3 shadow-sm'
+          ? 'border-b-2 border-rve-green/25 bg-surface-raised/95 py-3 shadow-sm backdrop-blur-sm'
           : 'border-b border-transparent bg-transparent py-5'
       }`}
     >

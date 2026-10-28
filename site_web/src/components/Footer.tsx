@@ -10,7 +10,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenContact, onOpenJoin }) => {
   return (
-    <footer className="bg-night text-on-night-muted pt-16 pb-12 border-t border-night">
+    <footer className="border-t-8 border-rve-yellow bg-forest pt-16 pb-12 text-on-night-muted">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
         {/* Main Footer Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-night/80">

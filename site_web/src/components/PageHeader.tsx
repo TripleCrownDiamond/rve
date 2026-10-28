@@ -44,7 +44,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   meta = [],
 }) => {
   return (
-    <header className="relative overflow-hidden bg-night-deep">
+    <header className="relative overflow-hidden bg-rve-green-deep">
       <div className="absolute inset-0" aria-hidden="true">
         <img
           src={image}
@@ -53,8 +53,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           style={{ objectPosition: cadrage }}
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-night-deep/62" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night-deep/70 to-transparent" />
+        <div className="absolute inset-0 bg-rve-green-deep/58" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-[1240px] px-6 pt-36 pb-28 sm:px-8 sm:pt-40 sm:pb-32 lg:px-10">
@@ -93,7 +92,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           </nav>
         )}
 
-        <h1 className="max-w-[20ch] font-display text-[clamp(2rem,4.6vw,3.5rem)] font-extrabold leading-[1.06] tracking-tight text-white">
+        <h1 className="max-w-[20ch] font-display text-[clamp(2rem,4.2vw,3.2rem)] font-extrabold leading-[1.08] tracking-tight text-white">
           {titre}
         </h1>
 

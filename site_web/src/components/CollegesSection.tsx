@@ -56,7 +56,7 @@ export const CollegesSection: React.FC = () => {
                   <h3 id="membre-detail-titre" className="mt-2 font-display text-xl font-bold leading-snug sm:text-2xl">{membreActif.name}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-ink-soft">{membreActif.description}</p>
                 </div>
-                <span className="flex h-20 w-28 items-center justify-center rounded-carte border border-line p-3 [&_img]:max-h-16">{membreActif.logo}</span>
+                <span className="flex h-20 w-28 items-center justify-center p-3 [&_img]:max-h-16">{membreActif.logo}</span>
               </div>
               {membreActif.profileComplete && (
                 <div className="mt-6 grid gap-5 border-t border-line pt-5 text-sm sm:grid-cols-2">

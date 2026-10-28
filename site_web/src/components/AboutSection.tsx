@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Flottante, Lignes, Semis } from './Decor';
+import { Reveal } from './Reveal';
 import { Target, HeartHandshake, Scale, Shield, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface AboutSectionProps {
@@ -16,7 +17,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
       </Flottante>
       <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
         {/* Section Header */}
-        <div className="max-w-2xl mb-16">
+        <Reveal as="header" className="max-w-2xl mb-16">
           <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
             Neuf organisations qui cessent de travailler chacune de son côté
           </h2>
@@ -25,43 +26,43 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
             séparément sur les mêmes terrains. Elles préparent désormais leurs
             positions ensemble et les portent d’une seule voix.
           </p>
-        </div>
+        </Reveal>
 
         {/* 2-Column Editorial Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Interactive Strategic Narrative */}
           <div className="lg:col-span-7 space-y-8">
             {/* Segmented control for tabs */}
-            <div className="flex items-center p-1 bg-surface-sunken rounded-carte w-fit">
+            <div className="flex flex-wrap items-center gap-1 w-fit">
               <button
                 onClick={() => setActiveTab('mission')}
-                className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
                   activeTab === 'mission'
-                    ? 'bg-white text-ink shadow-sm'
+                    ? 'bg-rve-green text-white shadow-sm'
                     : 'text-ink-soft hover:text-ink'
                 }`}
               >
-                Notre Mission
+                <Target className="h-4 w-4" aria-hidden="true" /> Notre Mission
               </button>
               <button
                 onClick={() => setActiveTab('vision')}
-                className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
                   activeTab === 'vision'
-                    ? 'bg-white text-ink shadow-sm'
+                    ? 'bg-rve-red text-white shadow-sm'
                     : 'text-ink-soft hover:text-ink'
                 }`}
               >
-                Notre Vision
+                <HeartHandshake className="h-4 w-4" aria-hidden="true" /> Notre Vision
               </button>
               <button
                 onClick={() => setActiveTab('approche')}
-                className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
                   activeTab === 'approche'
-                    ? 'bg-white text-ink shadow-sm'
+                    ? 'bg-rve-yellow text-ink shadow-sm'
                     : 'text-ink-soft hover:text-ink'
                 }`}
               >
-                Notre Démarche
+                <Scale className="h-4 w-4" aria-hidden="true" /> Notre Démarche
               </button>
             </div>
 
@@ -76,11 +77,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
                   bailleurs, aux autorités traditionnelles et aux assemblées locales.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                  <div className="p-4 rounded-carte bg-white border border-line/80 shadow-xs">
+                  <div className="py-3">
                     <span className="text-xs font-bold text-rve-green block mb-1">Concertation permanente</span>
                     <p className="text-xs text-ink-soft">Harmonisation des agendas d'intervention et mutualisation des ressources entre OSC.</p>
                   </div>
-                  <div className="p-4 rounded-carte bg-white border border-line/80 shadow-xs">
+                  <div className="py-3">
                     <span className="text-xs font-bold text-rve-yellow block mb-1">Plaidoyer éclairé</span>
                     <p className="text-xs text-ink-soft">Formulation de recommandations appuyées sur des données de terrain rigoureuses.</p>
                   </div>
@@ -98,11 +99,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
                   Nous envisageons une société où le leadership féminin est reconnu comme un levier fondamental de prospérité démocratique et économique, depuis les villages du Nord jusqu’aux centres urbains du Sud Bénin.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                  <div className="p-4 rounded-carte bg-white border border-line/80 shadow-xs">
+                  <div className="py-3">
                     <span className="text-xs font-bold text-rve-green block mb-1">Équité d'accès</span>
                     <p className="text-xs text-ink-soft">Zéro disparité géographique ou économique dans l'accès aux droits fondamentaux.</p>
                   </div>
-                  <div className="p-4 rounded-carte bg-white border border-line/80 shadow-xs">
+                  <div className="py-3">
                     <span className="text-xs font-bold text-rve-red block mb-1">Voix décisionnelle</span>
                     <p className="text-xs text-ink-soft">Représentation active dans les instances délibératives nationales et communales.</p>
                   </div>
@@ -136,7 +137,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
             <div className="pt-4 flex items-center gap-4">
               <button
                 onClick={onOpenJoin}
-                className="px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-ink hover:bg-night-deep rounded-carte transition-colors flex items-center gap-2 cursor-pointer"
+                className="px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-rve-green hover:bg-rve-green-ink rounded-carte transition-colors flex items-center gap-2 cursor-pointer"
               >
                 <span>Adhérer aux principes du RVE-Bénin</span>
                 <ArrowRight className="w-4 h-4" />
@@ -156,7 +157,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
 
               Le détail a sa place sur la page interne du réseau, pas ici. */}
           <div className="lg:col-span-5">
-            <figure className="overflow-hidden rounded-carte border border-line bg-surface">
+            <figure className="overflow-hidden bg-surface">
               <img
                 src="/assets/img/participante-table.jpg"
                 alt="Une membre du réseau lors d’une réunion de travail"
@@ -166,7 +167,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
                 className="aspect-[4/5] w-full object-cover"
                 style={{ objectPosition: '55% 35%' }}
               />
-              <figcaption className="flex items-center justify-between gap-4 border-t border-line-soft px-6 py-4 text-[0.8125rem]">
+              <figcaption className="flex items-center justify-between gap-4 py-4 text-[0.8125rem]">
                 <span className="text-ink-muted">Siège de coordination</span>
                 <span className="font-semibold text-ink">Cotonou, Bénin</span>
               </figcaption>

@@ -60,10 +60,10 @@
      Toutes dérivées de la teinte 135° du vert institutionnel, donc
      aucune quatrième couleur n'est introduite (interdit chromatique §18).
      --------------------------------------------------------------- */
-  --color-surface: #FFFFFF;
-  --color-surface-raised: #F6FDF8;   /* cartes posées sur fond clair — sat 3 % */
-  --color-surface-sunken: #EEF8F0;   /* bandes de repos — sat 5 % */
-  --color-surface-rest: #E2F1E6;     /* repos appuyé — sat 8 % */
+  --color-surface: #FFFEFA;
+  --color-surface-raised: #FFF8E7;
+  --color-surface-sunken: #EDF7EC;
+  --color-surface-rest: #DFF0E1;
 
   /* ---------------------------------------------------------------
      FONDS SOMBRES — dérivés de la même teinte 135°.

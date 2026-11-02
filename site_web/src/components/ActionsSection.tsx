@@ -77,7 +77,7 @@ export const ActionsSection: React.FC<ActionsSectionProps> = ({
           {ARTICLES.slice(0, 2).map((article) => (
             <Reveal key={article.id} className="h-full">
             <button type="button" onClick={() => onSelectArticle(article)} className="group flex h-full w-full cursor-pointer flex-col text-left">
-              <span className="block aspect-[16/9] w-full overflow-hidden">
+              <span data-scroll="photo" className="block aspect-[16/9] w-full overflow-hidden">
                 <img src={article.imageUrl} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.035]" />
               </span>
               <span className="mt-5 text-xs font-bold uppercase tracking-[0.1em] text-rve-red-ink">{article.category} · {article.date}</span>

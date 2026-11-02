@@ -27,6 +27,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               <h2
+                data-scroll="left"
                 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-rve-green-deep tracking-tight leading-tight"
                 style={{ textWrap: 'balance' }}
               >
@@ -58,23 +59,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
             {/* Right Quick Contact Info */}
             <Reveal className="lg:col-span-4 space-y-4">
-              <h3 className="text-xs font-bold text-rve-green-ink uppercase tracking-wider pb-3">
+              <h3 data-scroll="right" className="text-xs font-bold text-rve-green-ink uppercase tracking-wider pb-3">
                 Secrétariat Exécutif du Réseau
               </h3>
 
-              <div className="rve-gsap-icon flex items-start gap-3 text-xs sm:text-sm text-ink-soft">
+              <div data-scroll="right" className="rve-gsap-icon flex items-start gap-3 text-xs sm:text-sm text-ink-soft">
                 <MapPin className="w-4 h-4 text-rve-red shrink-0 mt-0.5" />
                 <span>Agla Akplomey, 13ᵉ arrondissement de Cotonou, département du Littoral</span>
               </div>
 
-              <div className="rve-gsap-icon flex items-center gap-3 text-xs sm:text-sm text-ink-soft">
+              <div data-scroll="right" className="rve-gsap-icon flex items-center gap-3 text-xs sm:text-sm text-ink-soft">
                 <Mail className="w-4 h-4 text-rve-green shrink-0" />
                 <a href="mailto:rvoixessentiellesbenin@gmail.com" className="break-all hover:text-rve-green-ink transition-colors">
                   rvoixessentiellesbenin@gmail.com
                 </a>
               </div>
 
-              <div className="rve-gsap-icon flex items-center gap-3 text-xs sm:text-sm text-ink-soft">
+              <div data-scroll="right" className="rve-gsap-icon flex items-center gap-3 text-xs sm:text-sm text-ink-soft">
                 <Phone className="w-4 h-4 text-rve-yellow-ink shrink-0" />
                 <a href="tel:+2290152634545" className="hover:text-rve-green-ink transition-colors">+229 01 52 63 45 45</a>
               </div>

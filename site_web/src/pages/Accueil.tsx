@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Hero } from '../components/Hero.tsx';
 import { AboutSection } from '../components/AboutSection.tsx';
 import { CollegesSection } from '../components/CollegesSection.tsx';
@@ -6,6 +6,7 @@ import { PartenairesSection } from '../components/PartenairesSection.tsx';
 import { DomainsSection, DomainItem } from '../components/DomainsSection.tsx';
 import { ActionsSection, ActionArticle } from '../components/ActionsSection.tsx';
 import { ContactSection } from '../components/ContactSection.tsx';
+import { useGsapScroll } from '../hooks/useGsapScroll';
 
 interface AccueilProps {
   onOpenContact: (subject?: string) => void;
@@ -27,12 +28,14 @@ export const Accueil: React.FC<AccueilProps> = ({
   onSelectArticle,
   onSelectDomain,
 }) => {
+  const pageRef = useRef<HTMLDivElement>(null);
+  useGsapScroll(pageRef);
   const versSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <>
+    <div ref={pageRef}>
       <Hero
         onDiscoverClick={() => versSection('a-propos')}
         onActionsClick={() => versSection('actions')}
@@ -44,6 +47,6 @@ export const Accueil: React.FC<AccueilProps> = ({
       <DomainsSection onSelectDomain={onSelectDomain} />
       <ActionsSection onSelectArticle={onSelectArticle} />
       <ContactSection onOpenContact={onOpenContact} onOpenJoin={onOpenJoin} />
-    </>
+    </div>
   );
 };

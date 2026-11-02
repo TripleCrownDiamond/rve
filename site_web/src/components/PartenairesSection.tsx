@@ -40,7 +40,7 @@ export const PartenairesSection: React.FC = () => {
                 className="group grid items-center gap-6 transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-white sm:grid-cols-[200px_minmax(0,1fr)]"
                 aria-label={`Découvrir ${partenaire.name}`}
               >
-                <span className="flex h-24 w-44 items-center justify-start bg-white px-5 [&_img]:max-h-16 [&_img]:max-w-44 [&_img]:object-contain">
+                <span data-scroll="left" className="flex h-24 w-44 items-center justify-start bg-white px-5 [&_img]:max-h-16 [&_img]:max-w-44 [&_img]:object-contain">
                   {partenaire.logo}
                 </span>
                 <span className="flex flex-col">

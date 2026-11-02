@@ -151,7 +151,7 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
                 <div data-gsap-glow={domain.accentColor} className={`rve-gsap-icon mb-5 inline-flex h-11 w-11 items-center justify-center ${domain.id % 3 === 1 ? 'bg-rve-green/15' : domain.id % 3 === 2 ? 'bg-rve-red/15' : 'bg-rve-yellow/35'}`}>
                   {domain.icon}
                 </div>
-                <h3 className="mb-3 text-lg font-bold leading-snug text-ink transition-colors group-hover:text-rve-green">
+                <h3 data-scroll="rise" className="mb-3 text-lg font-bold leading-snug text-ink transition-colors group-hover:text-rve-green">
                   {domain.title}
                 </h3>
                 <p className="mb-5 text-sm leading-relaxed text-ink-soft">

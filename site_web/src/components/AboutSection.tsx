@@ -22,7 +22,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
         {/* Section Header */}
         <Reveal as="header" className="max-w-2xl mb-16">
           <p className="mb-5 inline-block bg-rve-red-ink px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">Notre raison d’être</p>
-          <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
+          <h2 data-scroll="left" className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
             Neuf organisations qui cessent de travailler chacune de son côté
           </h2>
           <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-ink-soft sm:text-lg">
@@ -161,7 +161,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
 
               Le détail a sa place sur la page interne du réseau, pas ici. */}
           <Reveal className="lg:col-span-5">
-            <figure className="overflow-hidden bg-surface">
+            <figure data-scroll="photo" className="overflow-hidden bg-surface">
               <img
                 src="/assets/img/participante-table.jpg"
                 alt="Une membre du réseau lors d’une réunion de travail"

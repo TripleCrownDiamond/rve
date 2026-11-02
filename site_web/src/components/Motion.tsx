@@ -73,6 +73,7 @@ export const Compteur: React.FC<{
     if (mouvementReduit) return;
     const el = ref.current;
     if (!el) return;
+    let rafId: number | undefined;
 
     const observateur = new IntersectionObserver(
       ([e]) => {
@@ -80,24 +81,28 @@ export const Compteur: React.FC<{
         observateur.disconnect();
         const depart = performance.now();
         const tick = (t: number) => {
-          const p = Math.min((t - depart) / (duration * 1000), 1);
+          const p = Math.max(0, Math.min((t - depart) / (duration * 1000), 1));
           // Sortie expo : le compte ralentit en approchant de sa valeur,
           // ce qui donne l'impression qu'il se pose au lieu de s'arrêter.
           const eased = 1 - Math.pow(1 - p, 3);
           setAffiche(Math.round(valeur * eased));
-          if (p < 1) requestAnimationFrame(tick);
+          if (p < 1) rafId = requestAnimationFrame(tick);
         };
-        requestAnimationFrame(tick);
+        rafId = requestAnimationFrame(tick);
       },
       { threshold: 0.4 },
     );
     observateur.observe(el);
-    return () => observateur.disconnect();
+    return () => {
+      observateur.disconnect();
+      if (rafId !== undefined) cancelAnimationFrame(rafId);
+    };
   }, [valeur, duration, mouvementReduit]);
 
   return (
     <span ref={ref} className={className}>
-      {affiche}
+      <span className="sr-only">{valeur}</span>
+      <span aria-hidden="true">{mouvementReduit ? valeur : affiche}</span>
     </span>
   );
 };

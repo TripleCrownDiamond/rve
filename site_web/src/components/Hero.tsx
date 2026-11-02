@@ -74,7 +74,7 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick, onActionsClick, onO
   return (
     <section ref={sectionRef} className="bg-surface">
       <div
-        className="relative mt-20 overflow-hidden bg-rve-green-deep sm:mt-24"
+        className="relative mt-[82px] overflow-hidden bg-rve-green-deep"
         role="region"
         aria-roledescription="carrousel"
         aria-label="Photos du Réseau Voix EssentiELLES Bénin"

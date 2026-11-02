@@ -18,6 +18,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
       <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
         {/* Section Header */}
         <Reveal as="header" className="max-w-2xl mb-16">
+          <p className="mb-5 inline-block bg-rve-red-ink px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">Notre raison d’être</p>
           <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
             Neuf organisations qui cessent de travailler chacune de son côté
           </h2>
@@ -82,7 +83,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
                     <p className="text-xs text-ink-soft">Harmonisation des agendas d'intervention et mutualisation des ressources entre OSC.</p>
                   </div>
                   <div className="py-3">
-                    <span className="text-xs font-bold text-rve-yellow block mb-1">Plaidoyer éclairé</span>
+                    <span className="text-xs font-bold text-rve-yellow-ink block mb-1">Plaidoyer éclairé</span>
                     <p className="text-xs text-ink-soft">Formulation de recommandations appuyées sur des données de terrain rigoureuses.</p>
                   </div>
                 </div>
@@ -167,7 +168,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
                 className="aspect-[4/5] w-full object-cover"
                 style={{ objectPosition: '55% 35%' }}
               />
-              <figcaption className="flex items-center justify-between gap-4 py-4 text-[0.8125rem]">
+              <figcaption className="flex items-center justify-between gap-4 bg-rve-yellow px-4 py-4 text-[0.8125rem]">
                 <span className="text-ink-muted">Siège de coordination</span>
                 <span className="font-semibold text-ink">Cotonou, Bénin</span>
               </figcaption>

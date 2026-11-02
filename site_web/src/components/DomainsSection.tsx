@@ -74,7 +74,7 @@ export const DOMAINS: DomainItem[] = [
     title: 'Éducation des filles et des femmes',
     shortDesc: 'Lutter contre le décrochage scolaire, promouvoir l’alphabétisation fonctionnelle et encourager les filières STEM pour les jeunes filles.',
     fullDesc: 'Nous militons pour le maintien des filles à l’école au-delà du premier cycle secondaire, l’octroi de bourses d’excellence et la réinsertion éducative des jeunes mères grâce à des centres d’apprentissage adaptés.',
-    icon: <GraduationCap className="w-6 h-6 text-rve-yellow" />,
+    icon: <GraduationCap className="w-6 h-6 text-rve-yellow-ink" />,
     accentColor: 'var(--color-rve-yellow)',
     borderColor: 'hover:border-rve-yellow/50',
     keyActions: [
@@ -145,7 +145,7 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
               className="group flex h-full w-full cursor-pointer flex-col items-start text-left"
             >
               <div>
-                <div className="mb-5 inline-flex transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110">
+                <div className={`mb-5 inline-flex h-11 w-11 items-center justify-center transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${domain.id % 3 === 1 ? 'bg-rve-green/15' : domain.id % 3 === 2 ? 'bg-rve-red/15' : 'bg-rve-yellow/35'}`}>
                   {domain.icon}
                 </div>
                 <h3 className="mb-3 text-lg font-bold leading-snug text-ink transition-colors group-hover:text-rve-green">

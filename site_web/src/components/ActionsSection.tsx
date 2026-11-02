@@ -59,13 +59,13 @@ export const ActionsSection: React.FC<ActionsSectionProps> = ({
   onSelectArticle,
 }) => {
   return (
-    <section id="actions" className="overflow-hidden bg-surface-sunken py-20 lg:py-28">
+    <section id="actions" className="overflow-hidden bg-surface-rest py-20 lg:py-28">
       <div className="relative mx-auto w-full max-w-[1240px] px-6 sm:px-8">
         <Flottante derive={11} duree={18} retard={0.8} className="pointer-events-none absolute -left-12 top-24">
           <Semis className="h-32 w-44 opacity-[0.1]" />
         </Flottante>
         <Reveal as="header" className="mb-14 max-w-2xl">
-          <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
+          <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-rve-red-ink sm:text-4xl">
             Actualités du réseau
           </h2>
           <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-ink-soft">

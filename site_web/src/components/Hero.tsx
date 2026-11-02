@@ -55,19 +55,19 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick, onActionsClick, onO
         </div>
       </div>
 
-      <div className="bg-surface-rest">
+      <div className="bg-surface-honey">
         <div className="mx-auto max-w-[1240px] px-6 py-10 sm:px-8 lg:px-10">
           <dl className="grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-4">
             {[
-              ['9', 'Organisations membres', 'OSC féminines fédérées'],
-              ['6', 'Domaines d’intervention', 'Droits, santé, climat, leadership'],
-              ['2025', 'Année de création', 'Naissance de la coalition'],
-              ['1', 'Voix collective', 'Un plaidoyer porté ensemble'],
-            ].map(([figure, label, detail]) => (
+              ['9', 'Organisations membres', 'OSC féminines fédérées', 'text-rve-red-ink'],
+              ['6', 'Domaines d’intervention', 'Droits, santé, climat, leadership', 'text-rve-green-deep'],
+              ['2025', 'Année de création', 'Naissance de la coalition', 'text-rve-yellow-ink'],
+              ['1', 'Voix collective', 'Un plaidoyer porté ensemble', 'text-rve-red-ink'],
+            ].map(([figure, label, detail, couleur]) => (
               <div key={label}>
                 <dt className="sr-only">{label}</dt>
                 <dd>
-                  <span className="block font-display text-4xl font-extrabold tabular-nums leading-none text-rve-green-deep">
+                  <span className={`block font-display text-4xl font-extrabold tabular-nums leading-none ${couleur}`}>
                     <Compteur valeur={Number(figure)} />
                   </span>
                   <span className="mt-2 block text-sm font-bold text-ink">{label}</span>

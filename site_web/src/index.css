@@ -130,17 +130,6 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   animation: rve-tab-enter var(--duree-etat) var(--courbe-sortie) both;
 }
 
-/* Les pictogrammes répondent au survol et au clavier sans mouvement permanent. */
-.rve-icon-motion svg {
-  transform-origin: center;
-  transition: transform var(--duree-etat) var(--courbe-sortie);
-}
-
-.rve-icon-motion:is(:hover, :focus-visible) svg,
-.group:is(:hover, :focus-visible) .rve-icon-motion svg {
-  transform: translateY(-2px) rotate(-8deg) scale(1.08);
-}
-
 /* Focus clavier visible sur toute interaction — WCAG 2.4.7 + charte §43
    (« focus contour 2 px »). */
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { Compteur } from './Motion';
 import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { cadence, duree, ease } from '../motion';
+import { useGsapIcons } from '../hooks/useGsapIcons';
 
 const arriveeHero = {
   cache: { opacity: 0, y: 14 },
@@ -38,6 +39,8 @@ const photos = [
 
 /** Les photos défilent ; le texte reste sous les visages. */
 export const Hero: React.FC<HeroProps> = ({ onDiscoverClick, onActionsClick, onOpenJoin }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  useGsapIcons(sectionRef);
   const mouvementReduit = useReducedMotion();
   const [photoActive, setPhotoActive] = useState(0);
   const [pauseManuelle, setPauseManuelle] = useState(false);
@@ -69,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick, onActionsClick, onO
   };
 
   return (
-    <section className="bg-surface">
+    <section ref={sectionRef} className="bg-surface">
       <div
         className="relative mt-20 overflow-hidden bg-rve-green-deep sm:mt-24"
         role="region"
@@ -130,8 +133,8 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick, onActionsClick, onO
               </motion.p>
             </div>
             <motion.div variants={arriveeHero} className="flex shrink-0 flex-wrap items-center gap-3">
-              <button onClick={onDiscoverClick} className="group inline-flex cursor-pointer items-center gap-2 bg-rve-yellow px-5 py-3 text-sm font-bold text-rve-green-deep transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-white">
-                Découvrir le réseau <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+              <button onClick={onDiscoverClick} data-gsap-glow="var(--color-rve-yellow)" className="rve-gsap-icon group inline-flex cursor-pointer items-center gap-2 bg-rve-yellow px-5 py-3 text-sm font-bold text-rve-green-deep transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-white">
+                Découvrir le réseau <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </button>
               <button onClick={onActionsClick} className="cursor-pointer px-2 py-3 text-sm font-bold text-white underline decoration-white/60 underline-offset-4 hover:decoration-white">
                 Voir nos actions

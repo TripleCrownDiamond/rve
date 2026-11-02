@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Cadence, CadenceItem, Reveal } from './Reveal';
 import { Lien } from '../router';
+import { useGsapIcons } from '../hooks/useGsapIcons';
 import { 
   Users2, 
   HeartPulse, 
@@ -121,8 +122,10 @@ interface DomainsSectionProps {
 }
 
 export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  useGsapIcons(sectionRef);
   return (
-    <section id="domaines" className="bg-surface-raised py-20 lg:py-28">
+    <section ref={sectionRef} id="domaines" className="bg-surface-raised py-20 lg:py-28">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
         {/* Les six domaines sont visibles sur l’accueil ; leur développement
             complet reste disponible sur les pages dédiées. */}
@@ -145,7 +148,7 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
               className="group flex h-full w-full cursor-pointer flex-col items-start text-left"
             >
               <div>
-                <div className={`rve-icon-motion mb-5 inline-flex h-11 w-11 items-center justify-center transition-transform duration-200 group-hover:-translate-y-1 ${domain.id % 3 === 1 ? 'bg-rve-green/15' : domain.id % 3 === 2 ? 'bg-rve-red/15' : 'bg-rve-yellow/35'}`}>
+                <div data-gsap-glow={domain.accentColor} className={`rve-gsap-icon mb-5 inline-flex h-11 w-11 items-center justify-center ${domain.id % 3 === 1 ? 'bg-rve-green/15' : domain.id % 3 === 2 ? 'bg-rve-red/15' : 'bg-rve-yellow/35'}`}>
                   {domain.icon}
                 </div>
                 <h3 className="mb-3 text-lg font-bold leading-snug text-ink transition-colors group-hover:text-rve-green">

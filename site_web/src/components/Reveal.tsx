@@ -17,7 +17,7 @@ import { fonduMontee, parentCadence, zoneReveal } from '../motion';
 interface RevealProps {
   children: React.ReactNode;
   className?: string;
-  as?: 'div' | 'header' | 'li' | 'section';
+  as?: 'div' | 'header' | 'li' | 'section' | 'ul';
 }
 
 export const Reveal: React.FC<RevealProps> = ({

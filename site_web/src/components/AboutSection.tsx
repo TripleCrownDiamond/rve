@@ -69,7 +69,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
 
             {/* Tab 1: Mission */}
             {activeTab === 'mission' && (
-              <div className="space-y-6 animate-in fade-in-50 duration-200">
+              <div className="rve-tab-enter space-y-6">
                 <blockquote className="font-display text-xl leading-snug text-ink sm:text-2xl">
                   « Fédérer les organisations féminines de la société civile autour d’actions concertées pour promouvoir les droits des femmes, des filles et des enfants, renforcer les capacités des membres, développer des partenariats stratégiques et porter un plaidoyer collectif. »
                 </blockquote>
@@ -92,7 +92,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
 
             {/* Tab 2: Vision */}
             {activeTab === 'vision' && (
-              <div className="space-y-6 animate-in fade-in-50 duration-200">
+              <div className="rve-tab-enter space-y-6">
                 <blockquote className="font-display text-xl leading-snug text-ink sm:text-2xl">
                   « Un Bénin où toutes les femmes et les filles jouissent pleinement de leurs droits, accèdent équitablement à la santé, à l’éducation et aux opportunités de développement, et participent pleinement aux décisions qui façonnent leur vie et leur communauté. »
                 </blockquote>
@@ -114,7 +114,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
 
             {/* Tab 3: Démarche */}
             {activeTab === 'approche' && (
-              <div className="space-y-6 animate-in fade-in-50 duration-200">
+              <div className="rve-tab-enter space-y-6">
                 <p className="text-ink leading-relaxed text-base">
                   Notre démarche repose sur une articulation étroite entre ancrage communautaire de proximité et plaidoyer institutionnel de haut niveau. Chaque prise de parole s’appuie sur les réalités quotidiennes vécues par les femmes béninoises.
                 </p>
@@ -157,7 +157,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
               page dit déjà, au lieu de laisser la photographie parler.
 
               Le détail a sa place sur la page interne du réseau, pas ici. */}
-          <div className="lg:col-span-5">
+          <Reveal className="lg:col-span-5">
             <figure className="overflow-hidden bg-surface">
               <img
                 src="/assets/img/participante-table.jpg"
@@ -173,7 +173,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
                 <span className="font-semibold text-ink">Cotonou, Bénin</span>
               </figcaption>
             </figure>
-          </div>
+          </Reveal>
 
         </div>
       </div>

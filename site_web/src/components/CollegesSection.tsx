@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Vague } from './Vague';
+import { Cadence, CadenceItem, Reveal } from './Reveal';
 import { MEMBER_ORGANIZATIONS } from './MemberLogos';
 import { Lien } from '../router';
 
@@ -15,26 +16,26 @@ export const CollegesSection: React.FC = () => {
   }, [membreSelectionne]);
 
   return (
-    <section id="colleges" aria-labelledby="membres-titre" className="overflow-hidden bg-surface">
+    <section id="colleges" aria-labelledby="membres-titre" className="overflow-hidden bg-rve-red-ink">
       <div className="bg-rve-green">
         <div className="mx-auto grid max-w-[1240px] gap-10 px-6 pt-16 pb-10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:items-center lg:pt-20 lg:pb-12">
-          <div>
+          <Reveal>
             <p className="font-display text-[clamp(5.5rem,14vw,10rem)] font-extrabold leading-none text-white">9</p>
             <h2 id="membres-titre" className="mt-2 max-w-[20ch] font-display text-3xl font-bold leading-tight text-white">organisations membres, une voix collective</h2>
             <p className="mt-4 max-w-[48ch] leading-relaxed text-white/90">Le réseau réunit des organisations féminines aux expériences et aux territoires complémentaires.</p>
             <Lien vers="/membres" className="mt-6 inline-flex rounded-bouton border border-white px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-rve-green-ink">Découvrir les neuf organisations</Lien>
-          </div>
-          <ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3" aria-label="Les neuf organisations membres">
+          </Reveal>
+          <Cadence className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3" as="ul">
             {membres.map((m) => (
-              <li key={m.id}>
+              <CadenceItem key={m.id} as="li">
                 <button
                   type="button"
                   onClick={() => setMembreSelectionne(m.id)}
                   aria-label={`Afficher les informations de ${m.name}`}
                   aria-expanded={membreSelectionne === m.id}
-                  className="group relative flex min-h-36 w-full cursor-pointer flex-col items-start justify-between overflow-hidden rounded-carte bg-white/12 p-3 text-left text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white sm:p-4"
+                  className="group relative flex min-h-36 w-full cursor-pointer flex-col items-start justify-between overflow-hidden rounded-carte bg-white/12 p-3 text-left text-white transition-[transform,background-color] duration-200 hover:-translate-y-1 hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white sm:p-4"
                 >
-                  <span className={`mx-auto flex h-16 w-full max-w-32 items-center justify-center overflow-hidden rounded-carte bg-white p-1.5 ${['fran', 'bwaa', 'frh'].includes(m.id) ? '[&_img]:h-full [&_img]:max-h-none [&_img]:object-cover' : '[&_img]:max-h-14'}`}>{m.logo}</span>
+                  <span className={`mx-auto flex h-16 w-full max-w-32 items-center justify-center overflow-hidden rounded-carte bg-white p-1.5 transition-transform duration-200 group-hover:scale-[1.04] ${['fran', 'bwaa', 'frh'].includes(m.id) ? '[&_img]:h-full [&_img]:max-h-none [&_img]:object-cover' : '[&_img]:max-h-14'}`}>{m.logo}</span>
                   <span className="mt-3 block w-full text-center">
                     <span className="block text-sm font-bold leading-snug sm:text-base">{m.shortName}</span>
                     <span className="mt-1 line-clamp-2 text-[11px] leading-snug text-white/85 sm:hidden">{m.profileComplete ? m.focus : 'Présentation à compléter'}</span>
@@ -45,9 +46,9 @@ export const CollegesSection: React.FC = () => {
                     {m.zone && <span className="mt-2 line-clamp-1 text-[10px] font-semibold">{m.zone}</span>}
                   </span>
                 </button>
-              </li>
+              </CadenceItem>
             ))}
-          </ul>
+          </Cadence>
           {membreActif && (
             <div ref={detailRef} role="region" aria-labelledby="membre-detail-titre" className="rounded-carte bg-white p-6 text-ink sm:p-8 lg:col-span-2">
               <div className="flex flex-wrap items-start justify-between gap-5">
@@ -69,7 +70,7 @@ export const CollegesSection: React.FC = () => {
           )}
         </div>
       </div>
-      <Vague termine="var(--color-rve-green)" className="pointer-events-none -ml-12 -mt-px -mb-px block h-24 w-[calc(100%+6rem)] max-w-none sm:h-28 lg:h-32" />
+      <Vague termine="var(--color-rve-green)" dessine className="pointer-events-none -ml-12 -mt-px -mb-px block h-24 w-[calc(100%+6rem)] max-w-none sm:h-28 lg:h-32" />
     </section>
   );
 };

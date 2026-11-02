@@ -121,6 +121,15 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: var(--font-display);
 }
 
+@keyframes rve-tab-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rve-tab-enter {
+  animation: rve-tab-enter var(--duree-etat) var(--courbe-sortie) both;
+}
+
 /* Focus clavier visible sur toute interaction — WCAG 2.4.7 + charte §43
    (« focus contour 2 px »). */
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {

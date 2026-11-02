@@ -145,7 +145,7 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
               className="group flex h-full w-full cursor-pointer flex-col items-start text-left"
             >
               <div>
-                <div className={`mb-5 inline-flex h-11 w-11 items-center justify-center transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${domain.id % 3 === 1 ? 'bg-rve-green/15' : domain.id % 3 === 2 ? 'bg-rve-red/15' : 'bg-rve-yellow/35'}`}>
+                <div className={`rve-icon-motion mb-5 inline-flex h-11 w-11 items-center justify-center transition-transform duration-200 group-hover:-translate-y-1 ${domain.id % 3 === 1 ? 'bg-rve-green/15' : domain.id % 3 === 2 ? 'bg-rve-red/15' : 'bg-rve-yellow/35'}`}>
                   {domain.icon}
                 </div>
                 <h3 className="mb-3 text-lg font-bold leading-snug text-ink transition-colors group-hover:text-rve-green">

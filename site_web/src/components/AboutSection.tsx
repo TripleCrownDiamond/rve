@@ -37,7 +37,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
             <div className="flex flex-wrap items-center gap-1 w-fit">
               <button
                 onClick={() => setActiveTab('mission')}
-                className={`inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
+                className={`rve-icon-motion inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
                   activeTab === 'mission'
                     ? 'bg-rve-green text-white shadow-sm'
                     : 'text-ink-soft hover:text-ink'
@@ -47,7 +47,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
               </button>
               <button
                 onClick={() => setActiveTab('vision')}
-                className={`inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
+                className={`rve-icon-motion inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
                   activeTab === 'vision'
                     ? 'bg-rve-red text-white shadow-sm'
                     : 'text-ink-soft hover:text-ink'
@@ -57,7 +57,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
               </button>
               <button
                 onClick={() => setActiveTab('approche')}
-                className={`inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
+                className={`rve-icon-motion inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all cursor-pointer ${
                   activeTab === 'approche'
                     ? 'bg-rve-yellow text-ink shadow-sm'
                     : 'text-ink-soft hover:text-ink'
@@ -138,7 +138,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
             <div className="pt-4 flex items-center gap-4">
               <button
                 onClick={onOpenJoin}
-                className="px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-rve-green hover:bg-rve-green-ink rounded-carte transition-colors flex items-center gap-2 cursor-pointer"
+                className="rve-icon-motion px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-rve-green hover:bg-rve-green-ink rounded-carte transition-colors flex items-center gap-2 cursor-pointer"
               >
                 <span>Adhérer aux principes du RVE-Bénin</span>
                 <ArrowRight className="w-4 h-4" />

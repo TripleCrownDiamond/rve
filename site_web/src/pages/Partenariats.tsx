@@ -2,7 +2,6 @@ import React from 'react';
 import { Coins, GraduationCap, Handshake, Megaphone } from 'lucide-react';
 import { PageHeader, PageBody } from '../components/PageHeader';
 import { Tache } from '../components/Decor';
-import { MEMBER_ORGANIZATIONS } from '../components/MemberLogos';
 import {
   Bouton,
   Carte,
@@ -72,10 +71,6 @@ const FORMES = [
 ];
 
 export const PagePartenariats: React.FC = () => {
-  const partenaires = MEMBER_ORGANIZATIONS.filter(
-    (m) => m.category === 'Partenaire Stratégique',
-  );
-
   return (
     <>
       <PageHeader
@@ -92,26 +87,18 @@ export const PagePartenariats: React.FC = () => {
           className="absolute -left-24 top-32 h-60 w-60 opacity-[0.07]"
         />
 
-        {partenaires.length > 0 && (
-          <div className="relative mb-16">
-            <TitreSection titre="Les partenaires du réseau" />
-            <p className="mt-3 max-w-[62ch] text-ink-soft">Speak Up Africa accompagne le programme Voix EssentiELLES. Le réseau a notamment participé à une activité de la FJAD soutenue dans le cadre de la phase 2 du programme.</p>
-            <ul className="mt-8 flex flex-wrap gap-4 sm:gap-5">
-              {partenaires.map((p) => (
-                <li key={p.id}>
-                  <Lien
-                    vers={`/partenariats/${p.id}`}
-                    title={p.name}
-                    aria-label={`${p.name} — voir la fiche`}
-                    className="group flex h-28 w-44 cursor-pointer items-center justify-center rounded-carte border border-line bg-surface px-6 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-rve-green/40 hover:shadow-md sm:h-32 sm:w-48"
-                  >
-                    {p.logo}
-                  </Lien>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {/* La liste des partenaires vivait ici, en doublon de la page qui
+            leur est consacrée. Cette page répond à « comment collaborer »,
+            l'autre à « qui nous appuie ». Un lien suffit. */}
+        <div className="relative mb-14 flex flex-wrap items-center gap-4 rounded-carte border border-line bg-surface-raised p-6">
+          <p className="min-w-0 flex-1 text-sm leading-relaxed text-ink-soft">
+            Les organisations qui appuient déjà le réseau — appuis techniques, financiers et institutionnels —
+            sont présentées sur leur propre page.
+          </p>
+          <Lien vers="/partenaires" className="inline-flex shrink-0 items-center gap-2 rounded-bouton bg-rve-green px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-rve-green-ink">
+            Voir nos partenaires
+          </Lien>
+        </div>
 
         <TitreSection titre="Formes de collaboration" className="relative mb-8" />
         <Grille colonnes={2} className="relative">

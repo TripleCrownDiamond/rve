@@ -20,10 +20,15 @@ export const CollegesSection: React.FC = () => {
       <div className="bg-rve-green">
         <div className="mx-auto grid max-w-[1240px] gap-10 px-6 pt-16 pb-10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:items-center lg:pt-20 lg:pb-12">
           <Reveal>
-            <p data-scroll="scale" className="font-display text-[clamp(5.5rem,14vw,10rem)] font-extrabold leading-none text-white">9</p>
-            <h2 id="membres-titre" className="mt-2 max-w-[20ch] font-display text-3xl font-bold leading-tight text-white">organisations membres, une voix collective</h2>
+            <h2
+              id="membres-titre"
+              data-scroll="scale"
+              className="max-w-[16ch] font-display text-[clamp(2.1rem,5vw,3.6rem)] font-extrabold leading-[1.08] text-white"
+            >
+              Des organisations membres, une voix collective
+            </h2>
             <p className="mt-4 max-w-[48ch] leading-relaxed text-white/90">Le réseau réunit des organisations féminines aux expériences et aux territoires complémentaires.</p>
-            <Lien vers="/membres" className="mt-6 inline-flex rounded-bouton border border-white px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-rve-green-ink">Découvrir les neuf organisations</Lien>
+            <Lien vers="/membres" className="mt-6 inline-flex rounded-bouton border border-white px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-rve-green-ink">Découvrir les organisations membres</Lien>
           </Reveal>
           <Cadence className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3" as="ul">
             {membres.map((m) => (

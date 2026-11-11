@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-const DESTINATAIRE = 'rvoixessentiellesbenin@gmail.com';
+import { CONTACT } from '../data/reseau';
+
+const DESTINATAIRE = CONTACT.email;
 
 type TypeDemande = 'Renseignement général' | 'Adhésion' | 'Partenariat' | 'Presse' | 'Autre demande';
 

@@ -22,8 +22,8 @@ export function useGsapScroll(scope: RefObject<HTMLElement | null>) {
           const direction = (element.dataset.scroll || 'rise') as Direction;
           const depart = {
             rise: { y: 24, opacity: 0 },
-            left: { x: -32, opacity: 0 },
-            right: { x: 32, opacity: 0 },
+            left: { x: -24, opacity: 0 },
+            right: { x: 24, opacity: 0 },
             scale: { scale: 0.88, opacity: 0 },
             photo: { scale: 1.035, opacity: 0 },
           }[direction];

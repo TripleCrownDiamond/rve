@@ -5,12 +5,12 @@ import { CollegesSection } from '../components/CollegesSection.tsx';
 import { PartenairesSection } from '../components/PartenairesSection.tsx';
 import { DomainsSection, DomainItem } from '../components/DomainsSection.tsx';
 import { ActionsSection, ActionArticle } from '../components/ActionsSection.tsx';
+import { GalerieSection } from '../components/GalerieSection.tsx';
 import { ContactSection } from '../components/ContactSection.tsx';
 import { useGsapScroll } from '../hooks/useGsapScroll';
 
 interface AccueilProps {
   onOpenContact: (subject?: string) => void;
-  onOpenJoin: () => void;
   onSelectArticle: (a: ActionArticle) => void;
   onSelectDomain: (d: DomainItem) => void;
 }
@@ -24,7 +24,6 @@ interface AccueilProps {
  */
 export const Accueil: React.FC<AccueilProps> = ({
   onOpenContact,
-  onOpenJoin,
   onSelectArticle,
   onSelectDomain,
 }) => {
@@ -38,15 +37,15 @@ export const Accueil: React.FC<AccueilProps> = ({
     <div ref={pageRef}>
       <Hero
         onDiscoverClick={() => versSection('a-propos')}
-        onActionsClick={() => versSection('actions')}
-        onOpenJoin={onOpenJoin}
+        onOpenContact={onOpenContact}
       />
-      <AboutSection onOpenJoin={onOpenJoin} />
+      <AboutSection onOpenContact={onOpenContact} />
       <CollegesSection />
       <PartenairesSection />
       <DomainsSection onSelectDomain={onSelectDomain} />
       <ActionsSection onSelectArticle={onSelectArticle} />
-      <ContactSection onOpenContact={onOpenContact} onOpenJoin={onOpenJoin} />
+      <GalerieSection />
+      <ContactSection onOpenContact={onOpenContact} />
     </div>
   );
 };

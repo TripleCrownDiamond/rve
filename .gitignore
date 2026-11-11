@@ -24,6 +24,11 @@ dist/
 05_Donnees/
 06_Images_Generees/
 _SAUVEGARDES/
+03_PLAN_COMMUNICATION/
+04_PRESENTATION/
+07_MOCKUPS/
+Mail_Proposition_Charte_et_Site.txt
+.agents/
 
 # Skills et agents installés localement : outillage du poste, pas le projet.
 .claude/skills/
@@ -34,3 +39,6 @@ _SAUVEGARDES/
 _contact_sheet.html
 _planche_actifs.html
 .freebuff/
+
+# Captures de travail, hors livrable
+site_web/apercu-*

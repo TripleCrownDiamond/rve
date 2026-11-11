@@ -2,26 +2,27 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Logo } from './Logo.tsx';
 import {
   ArrowRight,
-  ArrowUpRight,
   BookOpen,
   Briefcase,
   CalendarDays,
   ChevronDown,
+  FileText,
   Handshake,
+  HeartHandshake,
+  Images,
   Landmark,
   Menu,
+  Network,
   Newspaper,
   Target,
   UserRound,
   Users2,
   X,
-  Mail,
 } from 'lucide-react';
 import { Lien, useRoute } from '../router';
 
 interface NavbarProps {
   onOpenContact: (subject?: string) => void;
-  onOpenJoin: () => void;
 }
 
 /**
@@ -64,16 +65,18 @@ const FAMILLES: Famille[] = [
     label: 'Le réseau',
     vers: '/reseau',
     enfants: [
-      { label: 'Présentation', vers: '/reseau', detail: 'Mission, membres et valeurs', icone: BookOpen },
-      { label: 'Organisations membres', vers: '/membres', detail: 'Les neuf organisations du réseau', icone: Users2 },
-      { label: 'Gouvernance', vers: '/gouvernance', detail: 'Les quatre organes de décision', icone: Landmark },
+      { label: 'Présentation', vers: '/reseau', detail: 'But, objectifs, valeurs', icone: BookOpen },
+      { label: 'Organisations membres', vers: '/membres', detail: 'Les organisations membres du réseau', icone: Users2 },
+      { label: 'Équipe', vers: '/equipe', detail: 'Postes statutaires et points focaux', icone: UserRound },
+      { label: 'Organigramme', vers: '/organigramme', detail: 'Qui décide, qui contrôle, qui exécute', icone: Network },
+      { label: 'Gouvernance', vers: '/gouvernance', detail: 'Les quatre organes statutaires', icone: Landmark },
     ],
     encart: {
-      titre: 'Neuf organisations, une seule voix',
+      titre: 'Des organisations, une seule voix',
       texte: 'Les organisations membres mettent leurs expériences en commun.',
-      vers: '/reseau',
-      action: 'Découvrir le réseau',
-      image: '/assets/img/pleniere-parakou.jpg',
+      vers: '/membres',
+      action: 'Découvrir les membres',
+      image: '/assets/img/hero/wa-32.jpg',
     },
   },
   {
@@ -81,45 +84,53 @@ const FAMILLES: Famille[] = [
     vers: '/domaines',
     enfants: [
       { label: 'Domaines d’intervention', vers: '/domaines', detail: 'Les six champs de travail', icone: Target },
+      { label: 'Projets', vers: '/projets', detail: 'Les participations documentées du réseau', icone: Briefcase },
       { label: 'Actualités', vers: '/actions', detail: 'Articles et comptes rendus', icone: Newspaper },
-      { label: 'Projets', vers: '/projets', detail: 'Les participations documentées du réseau', icone: Target },
       { label: 'Agenda', vers: '/agenda', detail: 'Activités et rendez-vous confirmés', icone: CalendarDays },
     ],
     encart: {
-      titre: 'Dernières actualités',
-      texte: 'Concertations, ateliers techniques et missions de plaidoyer du réseau.',
+      titre: 'Renforcer, plaider, coordonner',
+      texte: 'Les moyens d’action que les statuts assignent au réseau.',
       vers: '/actions',
       action: 'Voir les actions',
-      image: '/assets/img/atelier-ecriture.jpg',
+      image: '/assets/img/hero/IMG_4809.jpg',
     },
   },
   {
-    // Une seule page : un déroulant à une entrée ajouterait un geste pour
-    // atteindre ce qu'un lien direct donne tout de suite.
     label: 'Ressources',
     vers: '/ressources',
-    enfants: [],
+    enfants: [
+      { label: 'Galerie photo', vers: '/galerie', detail: 'Rencontres, formations et ateliers en images', icone: Images },
+      { label: 'Documents et publications', vers: '/ressources', detail: 'Rapports, études, notes de plaidoyer', icone: FileText },
+    ],
+    encart: {
+      titre: 'La galerie du réseau',
+      texte: 'Les photographies des activités menées avec les organisations membres.',
+      vers: '/galerie',
+      action: 'Ouvrir la galerie',
+      image: '/assets/img/hero/clm-32.jpg',
+    },
   },
   {
     label: 'S’engager',
-    vers: '/partenariats',
+    vers: '/partenaires',
     enfants: [
-      { label: 'Partenariats', vers: '/partenariats', detail: 'Quatre formes de collaboration', icone: Handshake },
+      { label: 'Partenaires', vers: '/partenaires', detail: 'Appuis techniques, financiers, institutionnels', icone: Handshake },
+      { label: 'Formes de collaboration', vers: '/partenariats', detail: 'Quatre manières de travailler ensemble', icone: HeartHandshake },
       { label: 'Opportunités', vers: '/opportunites', detail: 'Emplois, appels d’offres, candidatures', icone: Briefcase },
-      { label: 'Contact', vers: '/contact', detail: 'Coordonnées et demande de collaboration', icone: Mail },
-      { label: 'Adhésion', vers: '/adhesion', detail: 'Présenter une organisation', icone: UserRound },
+      { label: 'Adhésion', vers: '/adhesion', detail: 'Présenter une organisation au réseau', icone: UserRound },
     ],
     encart: {
-      titre: 'Rejoindre le réseau',
-      texte: 'Les organisations féminines de la société civile béninoise peuvent déposer une candidature.',
-      vers: '/adhesion',
-      action: 'Comment adhérer',
-      image: '/assets/img/participante-table.jpg',
+      titre: 'Soutenir le réseau',
+      texte: 'Former, plaider, appuyer les initiatives locales des organisations membres.',
+      vers: '/don',
+      action: 'Faire un don',
+      image: '/assets/img/hero/IMG_4811.jpg',
     },
   },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const { segments } = useRoute();
   const [menuOuvert, setMenuOuvert] = useState(false);
   const [deroulant, setDeroulant] = useState<string | null>(null);
@@ -253,38 +264,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
           })}
         </nav>
 
+        {/* Trois appels à l'action concurrents se disputaient cette place :
+            « Contact », « Adhésion » et « Rejoindre le réseau », dont deux
+            menaient au même formulaire. Il en reste un seul, plus le don,
+            qui est une action d'une autre nature. */}
         <div className="hidden shrink-0 items-center gap-2 lg:flex">
-          {/* Accès au back-office. Discret : il ne concerne que le
-              secrétariat, pas les visiteurs du site. */}
-          <Lien
-            vers="/adhesion"
-            aria-label="Présenter une organisation"
-            title="Adhésion"
-            className={`flex h-9 w-9 items-center justify-center rounded-bouton transition-colors duration-150 ${
-              opaque
-                ? 'text-ink-muted hover:bg-surface-sunken hover:text-ink'
-                : 'text-white/75 hover:bg-white/15 hover:text-white'
-            }`}
-          >
-            <UserRound className="h-4 w-4" aria-hidden="true" />
-          </Lien>
           <button
             onClick={() => onOpenContact()}
-            className={`cursor-pointer rounded-bouton border px-4 py-2 text-xs font-semibold whitespace-nowrap transition-colors duration-150 ${
-              opaque
-                ? 'border-line text-ink-soft hover:bg-surface-sunken hover:text-rve-green-ink'
-                : 'border-white/40 text-white hover:bg-white/15'
-            }`}
+            className="cursor-pointer rounded-bouton border border-line px-4 py-2 text-xs font-bold whitespace-nowrap text-ink-soft transition-colors duration-150 hover:border-rve-green hover:bg-surface-sunken hover:text-rve-green-ink"
           >
-            Contact
+            Contacter
           </button>
-          <button
-            onClick={onOpenJoin}
-            className="flex cursor-pointer items-center gap-1.5 rounded-bouton bg-rve-green px-4 py-2 text-xs font-semibold whitespace-nowrap text-white shadow-sm transition-colors duration-150 hover:bg-rve-green-ink active:bg-rve-green-deep"
+          <Lien
+            vers="/don"
+            className="flex cursor-pointer items-center gap-1.5 rounded-bouton bg-rve-red px-4 py-2 text-xs font-bold whitespace-nowrap text-white shadow-sm transition-colors duration-150 hover:bg-rve-red-ink"
           >
-            Rejoindre le réseau
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </button>
+            <HeartHandshake className="h-3.5 w-3.5" aria-hidden="true" />
+            Faire un don
+          </Lien>
         </div>
 
         {/* Panneau rendu une seule fois et aligné sur le conteneur de
@@ -462,28 +459,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenJoin }) => 
                   setMenuOuvert(false);
                   onOpenContact();
                 }}
-                className="w-full cursor-pointer rounded-bouton bg-surface-sunken py-2.5 text-center text-sm font-semibold text-ink-soft transition-colors duration-150 hover:bg-line"
+                className="w-full cursor-pointer rounded-bouton border border-line py-2.5 text-center text-sm font-bold text-ink-soft transition-colors duration-150 hover:bg-surface-sunken"
               >
-                Contact
+                Contacter
               </button>
               <Lien
-                vers="/adhesion"
+                vers="/don"
                 onClick={() => setMenuOuvert(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-bouton border border-line py-2.5 text-center text-sm font-semibold text-ink-soft transition-colors duration-150 hover:bg-surface-sunken"
+                className="flex w-full items-center justify-center gap-2 rounded-bouton bg-rve-red py-2.5 text-center text-sm font-bold text-white transition-colors duration-150 hover:bg-rve-red-ink"
               >
-                <UserRound className="h-4 w-4" aria-hidden="true" />
-                Demande d’adhésion
+                <HeartHandshake className="h-4 w-4" aria-hidden="true" />
+                Faire un don
               </Lien>
-              <button
-                onClick={() => {
-                  setMenuOuvert(false);
-                  onOpenJoin();
-                }}
-                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-bouton bg-rve-green py-2.5 text-center text-sm font-semibold text-white transition-colors duration-150 hover:bg-rve-green-ink"
-              >
-                Rejoindre le réseau
-                <ArrowUpRight className="h-4 w-4" />
-              </button>
             </div>
           </div>
         </div>

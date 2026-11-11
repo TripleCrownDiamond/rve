@@ -18,12 +18,23 @@ interface RevealProps {
   children: React.ReactNode;
   className?: string;
   as?: 'div' | 'header' | 'li' | 'section' | 'ul';
+  /**
+   * Part du conteneur qui doit être visible pour déclencher l'entrée.
+   *
+   * La valeur par défaut (un quart) convient à un en-tête de section. Elle
+   * ne convient pas à un conteneur plus haut que quatre écrans : un quart
+   * de sa hauteur n'y tient jamais, et le bloc reste invisible pour
+   * toujours. Une grille de photographies est dans ce cas — d'où ce
+   * réglage, à abaisser pour les conteneurs très hauts.
+   */
+  seuil?: number;
 }
 
 export const Reveal: React.FC<RevealProps> = ({
   children,
   className = '',
   as = 'div',
+  seuil,
 }) => {
   const mouvementReduit = useReducedMotion();
   const Balise = motion[as];
@@ -39,7 +50,7 @@ export const Reveal: React.FC<RevealProps> = ({
       variants={fonduMontee}
       initial="cache"
       whileInView="vu"
-      viewport={zoneReveal}
+      viewport={seuil === undefined ? zoneReveal : { ...zoneReveal, amount: seuil }}
     >
       {children}
     </Balise>
@@ -51,6 +62,7 @@ export const Cadence: React.FC<RevealProps> = ({
   children,
   className = '',
   as = 'div',
+  seuil,
 }) => {
   const mouvementReduit = useReducedMotion();
   const Balise = motion[as];
@@ -66,7 +78,7 @@ export const Cadence: React.FC<RevealProps> = ({
       variants={parentCadence}
       initial="cache"
       whileInView="vu"
-      viewport={zoneReveal}
+      viewport={seuil === undefined ? zoneReveal : { ...zoneReveal, amount: seuil }}
     >
       {children}
     </Balise>

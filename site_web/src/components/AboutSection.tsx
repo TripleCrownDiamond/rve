@@ -1,3 +1,4 @@
+import { Lien } from '../router';
 import React, { useRef, useState } from 'react';
 import { Flottante, Lignes, Semis } from './Decor';
 import { Reveal } from './Reveal';
@@ -5,10 +6,10 @@ import { Target, HeartHandshake, Scale, Shield, Sparkles, CheckCircle2, ArrowRig
 import { useGsapIcons } from '../hooks/useGsapIcons';
 
 interface AboutSectionProps {
-  onOpenJoin: () => void;
+  onOpenContact: (subject?: string) => void;
 }
 
-export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
+export const AboutSection: React.FC<AboutSectionProps> = () => {
   const [activeTab, setActiveTab] = useState<'mission' | 'vision' | 'approche'>('mission');
   const sectionRef = useRef<HTMLElement>(null);
   useGsapIcons(sectionRef);
@@ -23,7 +24,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
         <Reveal as="header" className="max-w-2xl mb-16">
           <p className="mb-5 inline-block bg-rve-red-ink px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">Notre raison d’être</p>
           <h2 data-scroll="left" className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
-            Neuf organisations qui cessent de travailler chacune de son côté
+            Des organisations qui cessent de travailler chacune de son côté
           </h2>
           <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-ink-soft sm:text-lg">
             Le RVE-Bénin réunit des organisations féminines qui intervenaient
@@ -139,13 +140,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenJoin }) => {
 
             {/* Micro action */}
             <div className="pt-4 flex items-center gap-4">
-              <button
-                onClick={onOpenJoin}
-                className="rve-gsap-icon px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-rve-green hover:bg-rve-green-ink rounded-carte transition-colors flex items-center gap-2 cursor-pointer"
+              <Lien
+                vers="/reseau"
+                className="rve-gsap-icon flex cursor-pointer items-center gap-2 rounded-carte bg-rve-green px-5 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-rve-green-ink sm:text-sm"
               >
-                <span>Adhérer aux principes du RVE-Bénin</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+                <span>Le but et les valeurs du réseau</span>
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Lien>
             </div>
           </div>
 

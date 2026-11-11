@@ -27,28 +27,28 @@ export const VALUES = [
   },
   {
     id: 'sororite',
-    title: 'Solidarité & Sororité',
+    title: 'Solidarité et sororité',
     desc: 'Cultiver l’entraide inconditionnelle, l’écoute bienveillante et l’union fraternelle entre toutes les organisations membres pour décupler notre résonance.',
     icon: <Heart className="w-5 h-5 text-rve-red" />,
     accent: 'var(--color-rve-red)',
   },
   {
     id: 'innovation',
-    title: 'Innovation & Excellence',
+    title: 'Innovation et excellence',
     desc: 'Adopter des approches créatives, s’appuyer sur la rigueur méthodologique, les données probantes et viser l’impact mesurable le plus élevé.',
     icon: <Lightbulb className="w-5 h-5 text-rve-green" />,
     accent: 'var(--color-rve-green)',
   },
   {
     id: 'partenariat',
-    title: 'Partenariat & Collaboration',
+    title: 'Partenariat et collaboration',
     desc: 'Bâtir des alliances constructives avec l’État, les partenaires techniques et financiers, le secteur privé et la société civile internationale.',
     icon: <Handshake className="w-5 h-5 text-rve-yellow" />,
     accent: 'var(--color-rve-yellow)',
   },
   {
     id: 'redevabilite',
-    title: 'Redevabilité & Transparence',
+    title: 'Redevabilité et transparence',
     desc: 'Incarner une gouvernance exemplaire, rendre compte avec clarté à nos communautés bénéficiaires et honorer les engagements pris envers nos partenaires.',
     icon: <Eye className="w-5 h-5 text-ink" />,
     accent: 'var(--color-ink)',
@@ -100,31 +100,31 @@ export const VisionValuesSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 6 Values Grid (3x2) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {VALUES.map((val, idx) => (
-            <div
-              key={val.id}
-              className="p-7 rounded-2xl bg-surface-raised border border-line/80 hover:border-line hover:shadow-xs transition-all duration-200"
-            >
-              <div className="flex items-center justify-between mb-5">
-                <div className="w-10 h-10 rounded-xl bg-white border border-line/80 flex items-center justify-center shadow-2xs">
-                  {val.icon}
+        {/* Les six valeurs de l'article 8.
+            Elles portaient un repère « VALEUR 01 » à « 06 ». Numéroter n'a de
+            sens que pour une séquence ; six valeurs n'en sont pas une, et le
+            repère laissait croire à un ordre d'importance. Il est remplacé
+            par un bandeau de couleur, qui distingue sans classer. */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 sm:gap-8">
+          {VALUES.map((val, idx) => {
+            const teinte = ['bg-rve-green', 'bg-rve-yellow', 'bg-rve-red'][idx % 3];
+            return (
+              <div
+                key={val.id}
+                data-scroll="up"
+                className="group overflow-hidden rounded-2xl border border-line/80 bg-surface-raised transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-line hover:shadow-md"
+              >
+                <span className={`block h-1.5 w-full ${teinte}`} aria-hidden="true" />
+                <div className="p-7">
+                  <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-line/80 bg-white shadow-2xs transition-transform duration-200 group-hover:scale-110">
+                    {val.icon}
+                  </div>
+                  <h4 className="mb-2.5 text-lg font-bold text-ink">{val.title}</h4>
+                  <p className="text-sm leading-relaxed text-ink-soft">{val.desc}</p>
                 </div>
-                <span className="text-xs font-mono font-bold text-ink-muted">
-                  VALEUR 0{idx + 1}
-                </span>
               </div>
-
-              <h4 className="text-lg font-bold text-ink mb-2.5">
-                {val.title}
-              </h4>
-
-              <p className="text-sm text-ink-soft leading-relaxed">
-                {val.desc}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

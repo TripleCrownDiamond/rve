@@ -1,17 +1,18 @@
 import React, { useRef } from 'react';
-import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, HeartHandshake } from 'lucide-react';
+import { Lien } from '../router';
+import { useContenu } from '../data/contenu';
+import { CONTACT } from '../data/reseau';
+import { ReseauxSociaux } from './ReseauxSociaux';
 import { Reveal } from './Reveal';
 import { useGsapIcons } from '../hooks/useGsapIcons';
 
 interface ContactSectionProps {
   onOpenContact: (subject?: string) => void;
-  onOpenJoin: () => void;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({
-  onOpenContact,
-  onOpenJoin,
-}) => {
+export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenContact }) => {
+  const contact = useContenu('contact');
   const sectionRef = useRef<HTMLElement>(null);
   useGsapIcons(sectionRef);
   return (
@@ -44,16 +45,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   className="rve-gsap-icon group flex cursor-pointer items-center gap-2 bg-rve-green px-7 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-rve-green-ink sm:text-base"
                 >
                   <Mail className="w-4 h-4" />
-                  <span>Nous contacter</span>
+                  <span>Contacter</span>
                 </button>
 
-                <button
-                  onClick={onOpenJoin}
-                  className="rve-gsap-icon px-2 py-3.5 text-sm sm:text-base font-semibold text-rve-green-ink hover:text-rve-green transition-colors flex items-center gap-2 cursor-pointer underline underline-offset-4"
+                {/* Le second bouton menait au même formulaire que le premier.
+                    Il mène désormais au don, qui est une action distincte. */}
+                <Lien
+                  vers="/don"
+                  className="rve-gsap-icon flex cursor-pointer items-center gap-2 border-2 border-rve-red px-7 py-3 text-sm font-semibold text-rve-red-ink transition-colors duration-150 hover:bg-rve-red hover:text-white sm:text-base"
                 >
-                  <span>Rejoindre la dynamique</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+                  <HeartHandshake className="h-4 w-4" aria-hidden="true" />
+                  <span>Faire un don</span>
+                </Lien>
               </div>
             </Reveal>
 
@@ -65,24 +68,24 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
               <div data-scroll="right" className="rve-gsap-icon flex items-start gap-3 text-xs sm:text-sm text-ink-soft">
                 <MapPin className="w-4 h-4 text-rve-red shrink-0 mt-0.5" />
-                <span>Agla Akplomey, 13ᵉ arrondissement de Cotonou, département du Littoral</span>
+                <span>{contact.adresse}, département du Littoral</span>
               </div>
 
               <div data-scroll="right" className="rve-gsap-icon flex items-center gap-3 text-xs sm:text-sm text-ink-soft">
                 <Mail className="w-4 h-4 text-rve-green shrink-0" />
-                <a href="mailto:rvoixessentiellesbenin@gmail.com" className="break-all hover:text-rve-green-ink transition-colors">
-                  rvoixessentiellesbenin@gmail.com
+                <a href={`mailto:${contact.email}`} className="break-all hover:text-rve-green-ink transition-colors">
+                  {contact.email}
                 </a>
               </div>
 
               <div data-scroll="right" className="rve-gsap-icon flex items-center gap-3 text-xs sm:text-sm text-ink-soft">
                 <Phone className="w-4 h-4 text-rve-yellow-ink shrink-0" />
-                <a href="tel:+2290152634545" className="hover:text-rve-green-ink transition-colors">+229 01 52 63 45 45</a>
+                <a href={CONTACT.telephoneLien} className="hover:text-rve-green-ink transition-colors">{contact.telephone}</a>
               </div>
 
-              <div className="pt-2 text-[11px] text-ink-muted">
-                02 BP 591 Cotonou
-              </div>
+              <div className="pt-2 text-[11px] text-ink-muted">{contact.postale}</div>
+
+              <ReseauxSociaux className="pt-2" />
             </Reveal>
           </div>
         </div>

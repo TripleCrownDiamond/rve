@@ -57,7 +57,7 @@ export const DOMAINS: DomainItem[] = [
   },
   {
     id: 3,
-    title: 'Changements climatiques & transition juste',
+    title: 'Changements climatiques',
     shortDesc: 'Placer les femmes au cœur de la résilience écologique, de l’agro-écologie et des politiques de justice climatique au Bénin.',
     fullDesc: 'Les femmes rurales étant les premières touchées par la désertification et les inondations au Bénin, le réseau soutient l’accès au foncier sécurisé, la diffusion de foyers améliorés et la participation aux plans communaux d’adaptation.',
     icon: <Leaf className="w-6 h-6 text-rve-green" />,
@@ -87,7 +87,7 @@ export const DOMAINS: DomainItem[] = [
   },
   {
     id: 5,
-    title: 'Autonomisation économique & entrepreneuriat',
+    title: 'Autonomisation économique et entrepreneuriat féminin',
     shortDesc: 'Développer l’inclusion financière, l’accès aux crédits adaptés, la structuration des coopératives et l’accès aux marchés.',
     fullDesc: 'Le RVE-Bénin accompagne les initiatives économiques féminines de la transformation agro-alimentaire à l’économie numérique, en facilitant l’intermédiation avec les institutions de microfinance et les fonds d’appui.',
     icon: <TrendingUp className="w-6 h-6 text-rve-red" />,
@@ -102,7 +102,7 @@ export const DOMAINS: DomainItem[] = [
   },
   {
     id: 6,
-    title: 'Recherche, données et innovation sociale',
+    title: 'Recherche et innovation',
     shortDesc: 'Produire des données probantes ventilées par genre pour éclairer le plaidoyer et documenter l’impact des politiques publiques.',
     fullDesc: 'Nous croyons en un militantisme appuyé sur la rigueur scientifique. Le réseau collabore avec des universitaires et des centres d’études pour produire des baromètres périodiques sur la condition féminine au Bénin.',
     icon: <FlaskConical className="w-6 h-6 text-rve-green" />,
@@ -131,10 +131,10 @@ export const DomainsSection: React.FC<DomainsSectionProps> = ({ onSelectDomain }
             complet reste disponible sur les pages dédiées. */}
         <Reveal as="header" className="mb-16 max-w-2xl">
           <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
-            Les domaines d’action du réseau
+            Les six domaines d’intervention
           </h2>
           <p className="mt-4 text-base leading-relaxed text-ink-soft">
-            Le RVE-Bénin agit sur les droits, la santé, le climat, l’éducation, l’autonomie économique et la production de données.
+            L’article 9 des statuts fixe les six champs dans lesquels le réseau intervient : genre et participation citoyenne, santé, climat, éducation, autonomisation économique, recherche et innovation.
           </p>
         </Reveal>
 

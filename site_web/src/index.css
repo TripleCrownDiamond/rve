@@ -109,12 +109,25 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   font-family: var(--font-body);
   color: var(--color-ink);
   background-color: var(--color-surface);
+
+  /* Les entrées au défilement partent décalées de 24 à 32 px sur l'axe
+     horizontal. Tant que l'animation n'a pas joué, l'élément dépasse donc
+     la largeur de l'écran : sur un téléphone de 375 px, cela suffit à créer
+     une barre de défilement latérale et à décaler l'en-tête fixe.
+     `clip` coupe ce débordement sans créer de conteneur de défilement, ce
+     que ferait `hidden` — et qui casserait les ancres et `position: sticky`.
+
+     La règle est posée sur `html` plus bas, pas ici : quand `html` est en
+     `visible`, le navigateur propage l'overflow de `body` à la zone
+     d'affichage, et `body` redevient `visible`. Posée sur `body` seul,
+     cette règle n'a donc aucun effet. */
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {

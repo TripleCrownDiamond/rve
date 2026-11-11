@@ -22,17 +22,20 @@ import {
 import { PageOpportunites, PageOpportunite } from './pages/Opportunites.tsx';
 import { PagePartenariats } from './pages/Partenariats.tsx';
 import { PageContact, PageConfidentialite } from './pages/Contact.tsx';
+import { PageGalerie, PageAlbum } from './pages/Galerie.tsx';
+import { PageEquipe, PagePersonne } from './pages/Equipe.tsx';
+import { PageOrganigramme } from './pages/Organigramme.tsx';
+import { PagePartenaires } from './pages/Partenaires.tsx';
+import { PageDon } from './pages/Don.tsx';
+import { PageAdmin } from './pages/Admin.tsx';
 import { PageProjets } from './pages/Projets.tsx';
 import { PageAdhesion } from './pages/Adhesion.tsx';
 import { PageAgenda } from './pages/Agenda.tsx';
-import { PageHeader, PageBody } from './components/PageHeader.tsx';
-import { Lien } from './router';
 
 import { ActionArticle } from './components/ActionsSection.tsx';
 import { DomainItem } from './components/DomainsSection.tsx';
 import {
   ContactModal,
-  JoinModal,
   ArticleModal,
   DomainDetailModal,
 } from './components/Modals.tsx';
@@ -51,7 +54,6 @@ export default function App() {
 
   const [contactOuvert, setContactOuvert] = useState(false);
   const [sujetContact, setSujetContact] = useState('Renseignement général');
-  const [adhesionOuverte, setAdhesionOuverte] = useState(false);
   const [article, setArticle] = useState<ActionArticle | null>(null);
   const [domaine, setDomaine] = useState<DomainItem | null>(null);
 
@@ -59,7 +61,11 @@ export default function App() {
     setSujetContact(sujet || 'Renseignement général');
     setContactOuvert(true);
   };
-  const ouvrirAdhesion = () => setAdhesionOuverte(true);
+
+  // Le site proposait trois portes d'entrée côte à côte — « Contact »,
+  // « Rejoindre le réseau », « Demande d'adhésion » — vers deux formulaires
+  // différents. Le réseau en a demandé une seule : tout passe désormais par
+  // le formulaire de contact, dont seul le sujet change.
 
   // L'espace d'administration et la connexion n'ont ni l'en-tête ni le
   // pied de page du site : ce ne sont pas des pages du site public, et les
@@ -74,7 +80,6 @@ export default function App() {
         return (
           <Accueil
             onOpenContact={ouvrirContact}
-            onOpenJoin={ouvrirAdhesion}
             onSelectArticle={setArticle}
             onSelectDomain={setDomaine}
           />
@@ -98,14 +103,21 @@ export default function App() {
       case 'opportunites':
         return id ? <PageOpportunite id={id} /> : <PageOpportunites />;
       case 'partenariats':
-        return id ? <PageMembre id={id} /> : <PagePartenariats />;
+        return <PagePartenariats />;
+      case 'partenaires':
+        return <PagePartenaires />;
+      case 'galerie':
+        return id ? <PageAlbum id={id} /> : <PageGalerie />;
+      case 'equipe':
+        return id ? <PagePersonne id={id} /> : <PageEquipe />;
+      case 'organigramme':
+        return <PageOrganigramme />;
+      case 'don':
+        return <PageDon />;
       case 'contact':
         return <PageContact />;
       case 'adhesion':
         return <PageAdhesion />;
-      case 'connexion':
-      case 'admin':
-        return <><PageHeader titre="Espace membre en préparation" amorce="L’accès aux comptes des organisations sera ouvert lorsque l’authentification sera mise en service." image="/assets/img/atelier-ecriture.jpg" fil={[{ label: 'Espace membre' }]} /><PageBody><div className="max-w-2xl rounded-carte border border-line bg-surface p-8"><p className="leading-relaxed text-ink-soft">Pour demander une mise à jour de votre fiche ou transmettre une information au réseau, contactez le Secrétariat exécutif.</p><Lien vers="/contact" className="mt-6 inline-flex rounded-bouton bg-rve-green px-5 py-3 text-sm font-bold text-white hover:bg-rve-green-ink">Contacter le Secrétariat exécutif</Lien></div></PageBody></>;
       case 'confidentialite':
         return <PageConfidentialite />;
       default:
@@ -113,23 +125,26 @@ export default function App() {
     }
   })();
 
+  // L'espace d'administration n'a ni en-tête ni pied de page du site : ce
+  // n'est pas une page publique, et l'y enfermer donnerait une console qui
+  // se croit encore une page d'accueil.
+  if (section === 'admin' || section === 'connexion') {
+    return <PageAdmin section={id} />;
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-surface font-body text-ink selection:bg-rve-green/20 selection:text-rve-green-deep">
       <ProgressionLecture />
-      <Navbar onOpenContact={ouvrirContact} onOpenJoin={ouvrirAdhesion} />
+      <Navbar onOpenContact={ouvrirContact} />
 
       <main className="flex-1">{page}</main>
 
-      <Footer onOpenContact={ouvrirContact} onOpenJoin={ouvrirAdhesion} />
+      <Footer onOpenContact={ouvrirContact} />
 
       <ContactModal
         isOpen={contactOuvert}
         onClose={() => setContactOuvert(false)}
         defaultSubject={sujetContact}
-      />
-      <JoinModal
-        isOpen={adhesionOuverte}
-        onClose={() => setAdhesionOuverte(false)}
       />
       <ArticleModal article={article} onClose={() => setArticle(null)} />
       <DomainDetailModal

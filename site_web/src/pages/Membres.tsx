@@ -13,6 +13,7 @@ import {
   TitreSection,
 } from '../components/ui';
 import { Lien } from '../router';
+import { useContenu } from '../data/contenu';
 
 /** Grille de marques. Le logo est le sujet ; le nom vit dans la fiche. */
 export const PageMembres: React.FC = () => {
@@ -22,7 +23,7 @@ export const PageMembres: React.FC = () => {
     <>
       <PageHeader
         titre="Les organisations membres"
-        amorce="Découvrez les neuf organisations membres du RVE-Bénin, leurs domaines d’action, leurs territoires et leurs coordonnées disponibles."
+        amorce="Découvrez les organisations membres du RVE-Bénin, leurs domaines d’action, leurs territoires et leurs coordonnées disponibles."
         image="/assets/img/pleniere-parakou.jpg"
         cadrage="40% 45%"
         fil={[{ label: 'Membres' }]}
@@ -61,6 +62,7 @@ export const PageMembres: React.FC = () => {
 
 /** Fiche d'une organisation. */
 export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
+  const personnes = useContenu('personnes');
   const org = MEMBER_ORGANIZATIONS.find((m) => m.id === id);
   if (!org) return <PageIntrouvable quoi="Cette organisation" retour="/membres" />;
 
@@ -68,6 +70,8 @@ export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
   const cheminParent = estPartenaire ? '/partenariats' : '/membres';
   const libelleParent = estPartenaire ? 'Partenariats' : 'Membres';
   const autres = MEMBER_ORGANIZATIONS.filter((m) => m.id !== id && m.category === org.category).slice(0, 3);
+  // Les points focaux déclarés par l'organisation ont chacun leur fiche.
+  const gens = personnes.filter((p) => p.organisation === id);
 
   return (
     <>
@@ -95,6 +99,30 @@ export const PageMembre: React.FC<{ id: string }> = ({ id }) => {
               {org.zone && <div><h3 className="font-semibold text-ink">Zone d’intervention</h3><p className="mt-2 text-ink-soft">{org.zone}</p></div>}
               {org.address && <div><h3 className="font-semibold text-ink">Siège</h3><p className="mt-2 text-ink-soft">{org.address}</p></div>}
             </div>}
+
+            {gens.length > 0 && (
+              <section className="mt-14" aria-labelledby="ses-representantes">
+                <TitreSection niveau={3} titre="Qui représente cette organisation" />
+                <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {gens.map((p) => (
+                    <li key={p.id}>
+                      <Lien
+                        vers={`/equipe/${p.id}`}
+                        className="group flex h-full items-center gap-4 rounded-carte border border-line bg-white p-4 transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                      >
+                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-rve-green/10 font-display text-sm font-extrabold text-rve-green-deep">
+                          {p.nom.replace(/^(Sa Majesté Reine|Dr|Mme|M\.)\s+/i, '').split(/\s+/).slice(0, 2).map((m) => m[0]).join('').toUpperCase()}
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block truncate text-sm font-bold text-ink group-hover:text-rve-green-ink">{p.nom}</span>
+                          <span className="mt-0.5 block text-xs text-ink-soft">{p.fonction}</span>
+                        </span>
+                      </Lien>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             <Bouton vers={cheminParent} icone="fleche" ton="secondaire" className="mt-10">
               {estPartenaire ? 'Voir les partenariats' : 'Voir toutes les organisations membres'}

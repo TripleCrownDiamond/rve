@@ -43,7 +43,7 @@ export const PageMembres: React.FC = () => {
               >
                 <span className={`mx-auto flex h-24 w-44 items-center justify-center overflow-hidden ${['fran', 'bwaa', 'frh'].includes(org.id) ? '[&_img]:h-full [&_img]:max-h-none [&_img]:object-cover' : '[&_img]:max-h-24'}`}>{org.logo}</span>
                 <span className="mt-4 font-display text-lg font-bold leading-snug text-ink">{org.name}</span>
-                <span className="mt-2 text-sm leading-relaxed text-ink-soft">{org.profileComplete ? org.focus : 'Profil à compléter'}</span>
+                <span className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-soft">{org.profileComplete ? org.focus : 'Profil à compléter'}</span>
                 {org.zone && <span className="mt-auto pt-4 text-xs font-medium text-rve-green-ink">{org.zone}</span>}
                 <span className="pointer-events-none absolute inset-0 hidden flex-col justify-center bg-rve-green p-6 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 sm:flex" aria-hidden="true">
                   <span className="font-display text-base font-bold leading-snug">{org.name}</span>

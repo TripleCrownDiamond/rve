@@ -26,8 +26,7 @@ import {
  * plupart du temps, ce qui est le meilleur moyen de faire croire qu'il ne
  * se passe rien.
  *
- * Le contenu ci-dessous est un jeu d'exemples destiné à la maquette. Le
- * réseau remplacera ces entrées par ses publications réelles.
+ * Aucune annonce n'est affichée tant que le Réseau n'en a pas validé une.
  */
 
 export type TypeOpportunite =

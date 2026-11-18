@@ -27,6 +27,8 @@ _SAUVEGARDES/
 03_PLAN_COMMUNICATION/
 04_PRESENTATION/
 07_MOCKUPS/
+08_VISUELS_SUPPORTS/
+09_PLAN_STRATEGIQUE/
 Mail_Proposition_Charte_et_Site.txt
 .agents/
 
@@ -42,3 +44,4 @@ _planche_actifs.html
 
 # Captures de travail, hors livrable
 site_web/apercu-*
+site_web/Apercu_*

@@ -152,7 +152,7 @@ export const PERSONNES: Personne[] = [
   { id: 'pauline-conde', nom: 'Pauline CONDE', fonction: 'Directrice exécutive', organisation: 'fadec' },
   { id: 'odry-agbessi', nom: 'Dr Odry F. AGBESSI', fonction: 'Présidente', organisation: 'via-me' },
   { id: 'anne-ella-mahoukpo', nom: 'Anne Ella MAHOUKPO', fonction: 'Coordonnatrice', organisation: 'gjfa' },
-  { id: 'alice-gougbe', nom: 'Alice GOUGBE', fonction: 'Présidente', organisation: 'bwaa' },
+  { id: 'alice-gougbe', nom: 'Dr Alice GOUGBE', fonction: 'Présidente', organisation: 'bwaa' },
 ];
 
 export const personnesDe = (organisation: string) =>

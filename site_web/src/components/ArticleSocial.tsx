@@ -203,28 +203,8 @@ interface Commentaire {
   duReseau?: boolean;
 }
 
-const EXEMPLES: Commentaire[] = [
-  {
-    id: 'c1',
-    auteur: 'Adjovi Sossou',
-    organisation: 'Coordinatrice départementale, Mono',
-    date: 'il y a 3 jours',
-    texte:
-      'La question de l’accès aux soins en zone rurale mériterait une session dédiée lors de la prochaine concertation. Nous avons des données de terrain à partager.',
-  },
-  {
-    id: 'c2',
-    auteur: 'Secrétariat exécutif',
-    organisation: 'RVE-Bénin',
-    date: 'il y a 2 jours',
-    duReseau: true,
-    texte:
-      'Merci pour cette proposition. Elle est transmise au collège Santé, qui prépare l’ordre du jour de la prochaine rencontre.',
-  },
-];
-
 export const Commentaires: React.FC<{ articleId: string }> = ({ articleId }) => {
-  const [liste, setListe] = useState<Commentaire[]>(EXEMPLES);
+  const [liste, setListe] = useState<Commentaire[]>([]);
   const [texte, setTexte] = useState('');
   const [envoye, setEnvoye] = useState(false);
 
